@@ -1,0 +1,2507 @@
+Topo1	Topo2	Dist	Dist_Bin	TokeDist	TokeBin
+Cornwall	FALLS VILLAGE	12.7757478477	local	575	document
+Kent	Cornwall	18.0378013677	local	2	adjacent
+Canaan	Kent	35.7689507428	local	23	sentence
+Salisbury	Canaan	9.04099568249	local	18	sentence
+Sharon	Salisbury	12.4482505532	local	19	sentence
+Falls Village	Sharon	12.6964142919	local	2	adjacent
+Sharon	Falls Village	12.6964142919	local	28	paragraph
+Cornwall	Sharon	12.8694509362	local	2	adjacent
+Salisbury	Cornwall	17.2886567336	local	2	adjacent
+Kent	Salisbury	29.0954916091	local	4	adjacent
+Canaan	Kent	35.7689507428	local	14	sentence
+Salisbury	Canaan	9.04099568249	local	4	adjacent
+Kent	Salisbury	29.0954916091	local	46	paragraph
+Chattanooga	Knoxville	161.819705587	region	7	sentence
+McMinn County	Chattanooga	77.6215683907	local	1	adjacent
+California	Gainesville	0.0	local	11	sentence
+Gainesville	California	0.0	local	19	sentence
+California	Gainesville	0.0	local	3	adjacent
+Texas	California	741.288528211	country	36	paragraph
+Gainesville	Texas	0.0	local	72	paragraph
+Texas	Gainesville	0.0	local	33	paragraph
+Gainesville	Texas	0.0	local	23	sentence
+Lindsay	Gainesville	8.37777509886	local	2	adjacent
+Gainesville	Lindsay	8.37777509886	local	12	sentence
+Lindsay	Gainesville	8.37777509886	local	2	adjacent
+Gainesville	Lindsay	8.37777509886	local	27	paragraph
+Cooke County	Gainesville	7.81042869897	local	1	adjacent
+American	Cooke County	0.0	local	12	sentence
+Gainesville	American	0.0	local	44	paragraph
+Cooke County	Gainesville	7.81042869897	local	10	sentence
+Gainesville	Cooke County	7.81042869897	local	18	sentence
+Walker County	Huntsville	1.89914037325	local	35	paragraph
+Huntsville	Walker County	1.89914037325	local	164	document
+New York	Virginia	285.032481355	region	5	sentence
+Richmond	New York	0.0	local	73	paragraph
+W.Va.	SOUTH CHARLESTON	0.0	local	1	adjacent
+Charleston	W.Va.	0.0	local	405	document
+Palestinians	EU	295.741272394	region	40	paragraph
+European Union	Palestinians	295.741272394	region	4	adjacent
+Israel	European Union	232.781617865	region	28	paragraph
+Europe	Israel	1099.15999119	country	2	adjacent
+European	Europe	0.0	local	5	sentence
+Israeli	European	1099.15999119	country	67	paragraph
+Egyptian	Israeli	0.0	local	5	sentence
+Israeli	Egyptian	0.0	local	9	sentence
+Israel	Israeli	0.0	local	18	sentence
+Prague	Israel	0.0	local	77	paragraph
+Czech Republic	Prague	0.0	local	21	sentence
+Czechs	Czech Republic	0.0	local	3	adjacent
+European Union	Czechs	0.0	local	7	sentence
+Jerusalem	European Union	0.0	local	12	sentence
+Czech Republic	Jerusalem	0.0	local	30	paragraph
+European Union	Czech Republic	0.0	local	13	sentence
+Jerusalem	European Union	0.0	local	10	sentence
+Anderson County	Elkhart	22.8062345141	local	23	sentence
+Elkhart	Anderson County	22.8062345141	local	12	sentence
+Anderson County	Elkhart	22.8062345141	local	22	sentence
+Tennessee Colony	Anderson County	16.4135125879	local	79	paragraph
+Mexican	Tennessee Colony	0.0	local	62	paragraph
+Palestine	Mexican	11432.1776907	global	25	sentence
+Grapeland	Palestine	11216.0008313	global	17	sentence
+Palestine	Grapeland	11216.0008313	global	1	adjacent
+Tennessee Colony	Palestine	11216.0008313	global	17	sentence
+Palestine	Tennessee Colony	11216.0008313	global	1	adjacent
+Minnesota	Rochester	0.0	local	14	sentence
+Lake Harriet	Minnesota	0.0	local	33	paragraph
+Rochester	Lake Harriet	120.10613586	local	109	paragraph
+W.Va.	CHARLESTON	0.0	local	1	adjacent
+Hartford	Mass.	0.0	local	13	sentence
+Tortola	Hartford	2696.32835338	global	211	document
+Hartford	Tortola	2696.32835338	global	29	paragraph
+Kansas	Manhattan	0.0	local	26	paragraph
+Missouri	Ozark	0.0	local	17	sentence
+Springfield	Missouri	0.0	local	9	sentence
+Los Angeles	L.A.	14.1842492254	local	37	paragraph
+South Los Angeles	Los Angeles	0.0	local	16	sentence
+Hall County	Gainesville	4.30926371664	local	60	paragraph
+Georgia	Hall County	0.0	local	5	sentence
+Gainesville	Georgia	0.0	local	37	paragraph
+Connecticut	Oakdale	0.0	local	22	sentence
+Stonington	Connecticut	0.0	local	39	paragraph
+N.J.	Tewksbury Twp.	0.0	local	209	document
+Huntsville	Walker County	1.89914037325	local	382	document
+Port Said	Zamalek	168.177673995	region	135	paragraph
+Tunisia	Port Said	0.0	local	40	paragraph
+Port Said	Tunisia	0.0	local	25	sentence
+Ismailia	Port Said	72.6648400312	local	168	document
+Cahir	Tipperary	19.2040562251	local	30	paragraph
+Tipperary	Cahir	19.2040562251	local	20	sentence
+Massachusetts	WESTFIELD	0.0	local	27	paragraph
+West Springfield	Massachusetts	0.0	local	15	sentence
+Eastland County	Fort Worth	148.625434044	local	9	sentence
+Eastland	Eastland County	0.0	local	17	sentence
+Callahan	Eastland	50.3554969296	local	1	adjacent
+Texas	Callahan	0.0	local	6	sentence
+Connecticut	Saratoga	0.0	local	7	sentence
+Hollywood	Connecticut	0.0	local	26	paragraph
+Connecticut	Hollywood	0.0	local	33	paragraph
+Saratoga	Connecticut	0.0	local	42	paragraph
+Los Angeles	Saratoga	493.942561226	region	89	paragraph
+Connecticut	Los Angeles	0.0	local	141	paragraph
+Los Angeles	Connecticut	0.0	local	125	paragraph
+Saratoga	Los Angeles	493.942561226	region	368	document
+Hollywood	Saratoga	484.990942844	region	5	sentence
+Connecticut	Hollywood	0.0	local	25	sentence
+Lebanon	Jackson Township	9204.347375	global	44	paragraph
+Grantville	Lebanon	9204.347375	global	20	sentence
+Lebanon	Grantville	9204.347375	global	7	sentence
+Myerstown	Lebanon	9204.347375	global	5	sentence
+Lebanon	Myerstown	9204.347375	global	11	sentence
+Myerstown	Lebanon	9204.347375	global	6	sentence
+Lebanon	Myerstown	9204.347375	global	22	sentence
+Evansville	Indianapolis	233.145964526	region	1	adjacent
+Indianapolis	Evansville	233.145964526	region	43	paragraph
+Evansville	Indianapolis	233.145964526	region	2	adjacent
+Indianapolis	Evansville	233.145964526	region	22	sentence
+London	Richmond	13.309413139	local	16	sentence
+Richmond	London	13.309413139	local	1	adjacent
+London	Richmond	13.309413139	local	16	sentence
+Richmond	London	13.309413139	local	12	sentence
+Twickenham	Richmond	3.16994673682	local	2	adjacent
+Richmond	Twickenham	3.16994673682	local	36	paragraph
+Clark County	Las Vegas	30.4685519466	local	34	paragraph
+U.S.	Clark County	0.0	local	184	document
+Nevada	U.S.	0.0	local	9	sentence
+Las Vegas	Nevada	0.0	local	7	sentence
+Pahrump	Las Vegas	76.2727491766	local	16	sentence
+U.S.	Pahrump	0.0	local	25	sentence
+Nevada	U.S.	0.0	local	4	adjacent
+Concord	Merrimack County	15.610380415	local	9	sentence
+U.S.	Concord	0.0	local	70	paragraph
+Concord	U.S.	0.0	local	77	paragraph
+Henderson County	Athens	2.12959801933	local	34	paragraph
+Athens	Henderson County	2.12959801933	local	27	paragraph
+N.C.	CARTHAGE	0.0	local	1	adjacent
+North Carolina	N.C.	0.0	local	19	sentence
+Carthage	North Carolina	0.0	local	19	sentence
+Raleigh	Carthage	84.9432920661	local	130	paragraph
+North Carolina	Raleigh	0.0	local	2	adjacent
+Carthage	North Carolina	0.0	local	88	paragraph
+Moore County	Carthage	7.87046453409	local	52	paragraph
+Alabama	Moore County	0.0	local	345	document
+Germany	Alabama	7136.07248348	global	22	sentence
+Gaza	Gazans	15.686309805	local	9	sentence
+Palestinian	Gaza	0.0	local	38	paragraph
+Gaza City	Palestinian	0.0	local	17	sentence
+Nashville	Niota	214.860299476	region	12	sentence
+Miami	Nashville	1312.03768846	country	58	paragraph
+Alachua County	Gainesville	6.37038338376	local	9	sentence
+Kentucky	Laurel County	0.0	local	15	sentence
+Laurel County	Kentucky	0.0	local	28	paragraph
+Kentucky	Laurel County	0.0	local	20	sentence
+Clark County	Kentucky	0.0	local	206	document
+Kentucky	Clark County	0.0	local	104	paragraph
+London	Kentucky	0.0	local	96	paragraph
+Laurel County	London	4.46967917436	local	31	paragraph
+Kentucky	Laurel County	0.0	local	156	document
+Laurel County	Kentucky	0.0	local	10	sentence
+Ohio	Springfield	0.0	local	1	adjacent
+Springfield	Ohio	0.0	local	38	paragraph
+Italian	Mass.	5944.84063094	global	8	sentence
+Northampton	Italian	0.0	local	15	sentence
+West Springfield	Northampton	24.2867997626	local	4	adjacent
+Mittineague Park	West Springfield	2.8178959362	local	31	paragraph
+Springfield	Mittineague Park	5.26170969581	local	251	document
+Amherst	Springfield	31.464995265	local	25	sentence
+Northampton	Amherst	11.5071606932	local	17	sentence
+Southwick	Northampton	31.8645074282	local	23	sentence
+Massachusetts	Southwick	0.0	local	5	sentence
+Southwick	Massachusetts	0.0	local	3	adjacent
+Italy	Southwick	0.0	local	8	sentence
+Cookeville	CHATTANOOGA	125.168818637	local	150	paragraph
+Tennessee	Cookeville	0.0	local	6	sentence
+American	Tennessee	0.0	local	322	document
+Tennessee	American	0.0	local	53	paragraph
+Chattanooga	Tennessee	0.0	local	37	paragraph
+Post Falls	Chattanooga	2968.52965462	global	46	paragraph
+Idaho	Post Falls	0.0	local	2	adjacent
+Utah	Idaho	0.0	local	2	adjacent
+Chattanooga	Utah	0.0	local	5	sentence
+East Ridge	Chattanooga	6.32106462272	local	36	paragraph
+Chattanooga	East Ridge	6.32106462272	local	9	sentence
+Post Falls	Chattanooga	2968.52965462	global	29	paragraph
+East Ridge	Post Falls	2974.83046588	global	72	paragraph
+Georgia	ATLANTA	0.0	local	10	sentence
+Arizona	Georgia	2118.13239106	global	62	paragraph
+Chicago	Arizona	0.0	local	23	sentence
+Georgia	Chicago	0.0	local	82	paragraph
+Rochester	Georgia	0.0	local	91	paragraph
+Oregon	Rochester	0.0	local	5	sentence
+Washington	Oregon	0.0	local	2	adjacent
+Oregon	Washington	0.0	local	3	adjacent
+Washington	Oregon	0.0	local	10	sentence
+Georgia	Washington	2894.10718159	global	28	paragraph
+L.A.	Port of Los Angeles	35.8659639549	local	9	sentence
+New Delhi	L.A.	12882.7151264	global	39	paragraph
+U.S.	New Delhi	0.0	local	68	paragraph
+Chatsworth	U.S.	0.0	local	18	sentence
+U.S.	Chatsworth	0.0	local	10	sentence
+Port of Los Angeles	U.S.	0.0	local	90	paragraph
+California	Port of Los Angeles	0.0	local	13	sentence
+Port of Los Angeles	California	0.0	local	4	adjacent
+Santa Ana	Port of Los Angeles	36.5564939197	local	27	paragraph
+Los Angeles	Santa Ana	48.6420227485	local	2	adjacent
+Harbor City	Los Angeles	29.5090223218	local	10	sentence
+Los Angeles	Harbor City	29.5090223218	local	14	sentence
+Laguna Hills	Los Angeles	71.4224079856	local	10	sentence
+Cherry Hinton	CAMBRIDGE	4.92307503029	local	49	paragraph
+Flumeri	Cherry Hinton	1677.88900505	global	38	paragraph
+Italy	Flumeri	0.0	local	3	adjacent
+England	Italy	715.495709078	country	22	sentence
+Kentford	England	0.0	local	18	sentence
+Newmarket	Kentford	5.98588124374	local	3	adjacent
+Cambridge	Newmarket	21.2414828634	local	5	sentence
+Kentford	Cambridge	27.2207346451	local	11	sentence
+Newmarket	Kentford	5.98588124374	local	7	sentence
+Cambridge	Newmarket	21.2414828634	local	17	sentence
+Chesterton	Cambridge	2.17966736411	local	5	sentence
+Cambridge	Chesterton	2.17966736411	local	9	sentence
+Minnesota	Parkers Prairie	0.0	local	30	paragraph
+Barrow County	Georgia	0.0	local	25	sentence
+U.S.	Barrow County	0.0	local	7	sentence
+Jackson County	U.S.	0.0	local	1	adjacent
+Scotforth	Lancaster	2.36790392031	local	20	sentence
+Russia	Sochi	0.0	local	10	sentence
+Sochi	Russia	0.0	local	20	sentence
+Krasnodar	Sochi	157.046797833	local	85	paragraph
+Sochi	Krasnodar	157.046797833	local	8	sentence
+Krasnodar	Sochi	157.046797833	local	84	paragraph
+Sochi	Krasnodar	157.046797833	local	51	paragraph
+Krasnodar	Sochi	157.046797833	local	83	paragraph
+Turkish	Krasnodar	0.0	local	233	document
+Lansing	Mich.	0.0	local	19	sentence
+Michigan	Lansing	0.0	local	79	paragraph
+Ann Arbor	Michigan	0.0	local	33	paragraph
+Oscoda	Ann Arbor	240.362897455	region	2	adjacent
+Pennsylvania	Philadelphia	0.0	local	16	sentence
+Las Vegas	Las Vegas Valley	29.200450427	local	7	sentence
+San Diego	Las Vegas	426.294743958	region	9	sentence
+Las Vegas	San Diego	426.294743958	region	25	sentence
+DeKalb County	Sycamore	9.59780219901	local	154	document
+Hopkins Park	DeKalb County	3.50482159361	local	17	sentence
+DeKalb County	Hopkins Park	3.50482159361	local	2	adjacent
+DeKalb	DeKalb County	1.42171891927	local	25	sentence
+DeKalb County	DeKalb	1.42171891927	local	1	adjacent
+DeKalb	DeKalb County	1.42171891927	local	9	sentence
+DeKalb County	DeKalb	1.42171891927	local	28	paragraph
+Sycamore	DeKalb County	9.59780219901	local	3	adjacent
+Palencia	U.S.	0.0	local	11	sentence
+Spain	Palencia	0.0	local	1	adjacent
+Palencia	Spain	0.0	local	1	adjacent
+France	Palencia	0.0	local	25	sentence
+United States	France	2203.58450688	global	12	sentence
+France	United States	2203.58450688	global	22	sentence
+Paredes de Nava	France	0.0	local	24	sentence
+Baltanas	Paredes de Nava	43.2041372381	local	2	adjacent
+Paredes de Nava	Baltanas	43.2041372381	local	21	sentence
+Baltanas	Paredes de Nava	43.2041372381	local	3	adjacent
+Kan.	Kansas City	0.0	local	2	adjacent
+Kansas City	Kan.	0.0	local	1	adjacent
+Kan.	Kansas City	0.0	local	2	adjacent
+Platte City	Kan.	0.0	local	2	adjacent
+Avondale Estates	Decatur	2.72944007156	local	1	adjacent
+Decatur	Avondale Estates	2.72944007156	local	15	sentence
+Avondale Estates	Decatur	2.72944007156	local	2	adjacent
+DeKalb County	Avondale Estates	3.90928868574	local	23	sentence
+Decatur	DeKalb County	6.43334833167	local	53	paragraph
+Avondale	Decatur	2.72944007156	local	4	adjacent
+Decatur	Avondale	2.72944007156	local	16	sentence
+Avondale	Decatur	2.72944007156	local	9	sentence
+Decatur	Avondale	2.72944007156	local	3	adjacent
+Avondale	Decatur	2.72944007156	local	22	sentence
+Decatur	Avondale	2.72944007156	local	1	adjacent
+Avondale	Decatur	2.72944007156	local	46	paragraph
+Cowley	Oxford	4.79253746966	local	15	sentence
+U.S.	Columbia	0.0	local	81	paragraph
+California	Columbus	0.0	local	14	sentence
+Columbus	California	0.0	local	62	paragraph
+California	Columbus	0.0	local	8	sentence
+Clarke	Athens	1.29425201174	local	33	paragraph
+Madison	Clarke	25.5018217656	local	1	adjacent
+Clarke	Madison	25.5018217656	local	1	adjacent
+Oconee	Clarke	13.7354377701	local	1	adjacent
+Oglethorpe	Oconee	32.6012402825	local	2	adjacent
+Georgia	Oglethorpe	0.0	local	36	paragraph
+Barrow	Georgia	0.0	local	3	adjacent
+Jackson	Barrow	21.6474785738	local	2	adjacent
+Georgia	Jackson	0.0	local	2	adjacent
+U.S.	Williston	0.0	local	27	paragraph
+Florida	U.S.	0.0	local	6	sentence
+Williston	Florida	0.0	local	48	paragraph
+Rockcastle County	Kentucky	0.0	local	117	paragraph
+U.S.	Rockcastle County	0.0	local	55	paragraph
+Illinois	U.S.	0.0	local	122	paragraph
+California	Illinois	2104.24930592	global	49	paragraph
+New York	California	3106.843273	global	133	paragraph
+Manhattan	New York	0.0	local	18	sentence
+New York	Manhattan	0.0	local	35	paragraph
+New York City	New York	0.0	local	1	adjacent
+Madison County	New York City	947.78142337	country	169	document
+Kentucky	Madison County	0.0	local	41	paragraph
+Louisville	Kentucky	0.0	local	8	sentence
+Kentucky	Louisville	0.0	local	12	sentence
+Richmond	Kentucky	0.0	local	10	sentence
+Henderson County	Athens	2.12959801933	local	279	document
+Athens	Henderson County	2.12959801933	local	21	sentence
+Oakland	Fremont	37.7734307812	local	74	paragraph
+Fremont	Oakland	37.7734307812	local	26	paragraph
+Newark	Fremont	4.9576049851	local	36	paragraph
+Hayward	Newark	15.8574289212	local	5	sentence
+Alameda County	Hayward	18.9958147747	local	27	paragraph
+Hayward	Alameda County	18.9958147747	local	122	paragraph
+Brownstown	Winchester	170.073104323	region	17	sentence
+Southport	Brownstown	87.5875750232	local	13	sentence
+Winchester	Southport	113.026435108	local	22	sentence
+Lake Ontario	Woodstock	232.931551202	region	49	paragraph
+Woodstock	Lake Ontario	232.931551202	region	134	paragraph
+Ontario	Woodstock	0.0	local	61	paragraph
+Woodstock	Ontario	0.0	local	11	sentence
+Elbow Lake	Minnesota	0.0	local	186	document
+Lexington County	Swansea	25.9204584204	local	4	adjacent
+S.C.	Lexington County	0.0	local	27	paragraph
+U.S.	S.C.	0.0	local	3	adjacent
+S.C.	U.S.	0.0	local	5	sentence
+Sinhalese	Sri Lankan	0.0	local	16	sentence
+Sri Lanka	Sinhalese	0.0	local	9	sentence
+Sinhalese	Sri Lanka	0.0	local	29	paragraph
+Sri Lanka	Sinhalese	0.0	local	8	sentence
+Sri Lankan	Sri Lanka	0.0	local	1	adjacent
+Sri Lanka	Sri Lankan	0.0	local	10	sentence
+Sri Lankan	Sri Lanka	0.0	local	1	adjacent
+Sri Lanka	Sri Lankan	0.0	local	18	sentence
+Sri Lankan	Sri Lanka	0.0	local	1	adjacent
+Akuressa	Sri Lankan	0.0	local	39	paragraph
+Matara	Akuressa	17.7254185474	local	3	adjacent
+Sri Lankan	Matara	0.0	local	7	sentence
+Colombo	Sri Lankan	0.0	local	2	adjacent
+Sri Lankan	Colombo	0.0	local	3	adjacent
+Sinhalese	Sri Lankan	0.0	local	26	paragraph
+Sri Lankan	Sinhalese	0.0	local	9	sentence
+Sinhalese	Sri Lankan	0.0	local	32	paragraph
+Akuressa	Sinhalese	115.252327455	local	1	adjacent
+Colombo	Akuressa	115.930834711	local	5	sentence
+Sri Lanka	Colombo	0.0	local	33	paragraph
+Sri Lankan	Sri Lanka	0.0	local	1	adjacent
+Sri Lanka	Sri Lankan	0.0	local	7	sentence
+Sri Lankan	Sri Lanka	0.0	local	1	adjacent
+Sinhalese	Sri Lankan	0.0	local	11	sentence
+Sri Lankan	Sinhalese	0.0	local	2	adjacent
+Sri Lanka	Sri Lankan	0.0	local	1	adjacent
+New Haven	CLINTON	33.7141619371	local	151	document
+Baghdad	Iraqi	0.0	local	8	sentence
+Iraqi	Baghdad	0.0	local	11	sentence
+Iraq	Iraqi	0.0	local	10	sentence
+U.S.	Iraq	7838.27558017	global	11	sentence
+Iraqi	U.S.	7838.27558017	global	2	adjacent
+Clarke County	Athens	1.29425201174	local	123	paragraph
+Augusta	Clarke County	140.953384985	local	60	paragraph
+British	Twickenham	54.4470629934	local	63	paragraph
+UK	British	0.0	local	10	sentence
+MOUNT GILEAD	Ohio	0.0	local	9	sentence
+Ohio	MOUNT GILEAD	0.0	local	53	paragraph
+Mount Gilead	Ohio	0.0	local	28	paragraph
+Morrow County	Mount Gilead	4.13510771035	local	2	adjacent
+Ohio	Morrow County	0.0	local	5	sentence
+Mount Gilead	Ohio	0.0	local	1	adjacent
+Euclid	Mount Gilead	159.332800759	local	52	paragraph
+Youngstown	Euclid	91.6103015183	local	45	paragraph
+Ohio	Youngstown	0.0	local	38	paragraph
+Mansfield	Ohio	0.0	local	51	paragraph
+Richland County	Mansfield	4.02383675035	local	2	adjacent
+Mansfield	Richland County	4.02383675035	local	11	sentence
+Columbus	Mansfield	97.5817275966	local	10	sentence
+Mansfield	Columbus	97.5817275966	local	1	adjacent
+Richland County	Mansfield	4.02383675035	local	16	sentence
+Toledo	Richland County	129.101833895	local	39	paragraph
+Columbus	Toledo	194.824498042	region	22	sentence
+CHARLESTON	Kanawha River	70.0703336761	local	5	sentence
+W.Va.	CHARLESTON	0.0	local	1	adjacent
+Kanawha River	W.Va.	0.0	local	17	sentence
+Charleston	Kanawha River	70.0703336761	local	2	adjacent
+West Virginia	Charleston	0.0	local	5	sentence
+Edwardsville	Glen Carbon	7.46374728914	local	24	sentence
+Illinois	Edwardsville	0.0	local	165	document
+Edwardsville	Illinois	0.0	local	312	document
+Glen Carbon	Edwardsville	7.46374728914	local	102	paragraph
+Edwardsville	Glen Carbon	7.46374728914	local	73	paragraph
+Glen Carbon	Edwardsville	7.46374728914	local	87	paragraph
+Edwardsville	Glen Carbon	7.46374728914	local	3	adjacent
+Glen Carbon	Edwardsville	7.46374728914	local	14	sentence
+Ky.	Muscogee County	0.0	local	222	document
+Fort Benning	Ky.	0.0	local	4	adjacent
+Muscogee County	Fort Benning	19.0487085231	local	19	sentence
+Ky.	Muscogee County	0.0	local	18	sentence
+Fort Benning	Ky.	0.0	local	13	sentence
+Stewart County	Fort Benning	33.5955933331	local	37	paragraph
+Lumpkin	Stewart County	5.10710691137	local	4	adjacent
+Ga.	Lumpkin	0.0	local	2	adjacent
+Lumpkin	Ga.	0.0	local	24	sentence
+Ga.	Lumpkin	0.0	local	13	sentence
+Lumpkin	Ga.	0.0	local	7	sentence
+River Lune	Lancaster	79.9781745884	local	11	sentence
+British	River Lune	54.4470629934	local	18	sentence
+River Lune	British	54.4470629934	local	79	paragraph
+England	River Lune	0.0	local	10	sentence
+Lebanese	Israel	0.0	local	2	adjacent
+BEIRUT	Lebanese	0.0	local	6	sentence
+Israel	BEIRUT	0.0	local	1	adjacent
+Lebanese	Israel	0.0	local	3	adjacent
+Israeli	Lebanese	0.0	local	7	sentence
+Lebanese	Israeli	0.0	local	27	paragraph
+Lebanon	Lebanese	0.0	local	9	sentence
+Israeli	Lebanon	0.0	local	31	paragraph
+Lebanese	Israeli	0.0	local	26	paragraph
+Israel	Lebanese	0.0	local	29	paragraph
+Israeli	Israel	0.0	local	9	sentence
+Columbia County	Harlem	16.1022316235	local	59	paragraph
+Harlem	Columbia County	16.1022316235	local	24	sentence
+Grovetown	Harlem	11.355418022	local	14	sentence
+Harlem	Grovetown	11.355418022	local	5	sentence
+Monroeville	Harlem	515.453212274	country	23	sentence
+Ala.	Monroeville	0.0	local	2	adjacent
+Washington	Ala.	873.798278459	country	18	sentence
+Monroeville	Washington	0.068016331439	local	1	adjacent
+D.C.	Monroeville	0.0	local	1	adjacent
+Ala.	D.C.	873.798278459	country	1	adjacent
+Monroeville	Ala.	0.0	local	5	sentence
+Washington	Monroeville	0.068016331439	local	7	sentence
+Grovetown	Washington	0.068016331439	local	7	sentence
+D.C.	Grovetown	0.0	local	5	sentence
+Newton County	D.C.	0.0	local	9	sentence
+Ga.	Newton County	0.0	local	2	adjacent
+Newton County	Ga.	0.0	local	11	sentence
+Grovetown	Newton County	153.87591045	local	5	sentence
+Harlem	Grovetown	11.355418022	local	1	adjacent
+Newton County	Harlem	143.665660677	local	1	adjacent
+Grovetown	Newton County	153.87591045	local	3	adjacent
+Newton County	Grovetown	153.87591045	local	6	sentence
+Alabama	Newton County	0.0	local	1	adjacent
+Ga.	Alabama	0.0	local	1	adjacent
+Harlem	Ga.	0.0	local	39	paragraph
+Columbia County	Harlem	16.1022316235	local	18	sentence
+Israel	Syria	0.0	local	6	sentence
+Syrian	Israel	0.0	local	1	adjacent
+Syria	Syrian	0.0	local	19	sentence
+Israel	Syria	0.0	local	15	sentence
+Gaza Strip	Israel	0.0	local	5	sentence
+Israel	Gaza Strip	0.0	local	5	sentence
+Golan Heights	Israel	0.0	local	7	sentence
+Israel	Golan Heights	0.0	local	3	adjacent
+Syria	Israel	0.0	local	3	adjacent
+Israelis	Syria	0.0	local	13	sentence
+Golan Heights	Israelis	0.0	local	13	sentence
+Lebanon	Golan Heights	0.0	local	55	paragraph
+Palestine	Lebanon	69.2381742938	local	5	sentence
+Lebanon	Palestine	69.2381742938	local	21	sentence
+Gaza	Lebanon	0.0	local	10	sentence
+Iran	Gaza	0.0	local	3	adjacent
+Syria	Iran	186.262149731	region	18	sentence
+Israel	Syria	0.0	local	2	adjacent
+Syrian	Israel	0.0	local	4	adjacent
+United States	Syrian	7858.07138388	global	18	sentence
+Iran	United States	7531.78724991	global	11	sentence
+Syria	Iran	186.262149731	region	4	adjacent
+U.S.	Syria	7858.07138388	global	5	sentence
+Israel	U.S.	8270.07495447	global	11	sentence
+U.S.	Israel	8270.07495447	global	9	sentence
+Litchfield	Torrington	8.16542425564	local	130	paragraph
+Torrington	Litchfield	8.16542425564	local	158	document
+Harwinton	Torrington	6.0652309544	local	3	adjacent
+Bantam	Harwinton	15.5622597828	local	2	adjacent
+Litchfield	Bantam	4.69343036877	local	2	adjacent
+Winsted	Litchfield	22.0721961412	local	2	adjacent
+Torrington	Winsted	14.3132384972	local	3	adjacent
+Harwinton	Torrington	6.0652309544	local	17	sentence
+Torrington	Harwinton	6.0652309544	local	9	sentence
+Naugatuck River	Torrington	54.1939231334	local	25	sentence
+Waterbury	Naugatuck River	27.2641894874	local	112	paragraph
+Albany	Waterbury	134.811759406	local	48	paragraph
+Torrington	Albany	108.177079084	local	122	paragraph
+Weston	Torrington	70.0508974823	local	4	adjacent
+Albany	Weston	164.223068678	region	2	adjacent
+Glastonbury	Albany	141.082677032	local	4	adjacent
+Torrington	Glastonbury	43.7873262847	local	2	adjacent
+Petersburg	U.S.	0.0	local	6	sentence
+New York	Petersburg	0.0	local	37	paragraph
+St. Petersburg	New York	0.0	local	2	adjacent
+U.S.	St. Petersburg	0.0	local	9	sentence
+New York	U.S.	0.0	local	8	sentence
+St. Petersburg	New York	0.0	local	7	sentence
+New York	St. Petersburg	0.0	local	1	adjacent
+St. Petersburg	New York	0.0	local	15	sentence
+North America	St. Petersburg	0.0	local	5	sentence
+St. Petersburg	North America	0.0	local	16	sentence
+New York	St. Petersburg	0.0	local	47	paragraph
+United States	New York	0.0	local	39	paragraph
+Russia	United States	87.2010511849	local	7	sentence
+Washington	Russia	6232.46809471	global	6	sentence
+United States	Washington	0.0	local	15	sentence
+Washington	United States	0.0	local	47	paragraph
+Moscow	Washington	0.068016331439	local	4	adjacent
+Washington	Moscow	0.068016331439	local	1	adjacent
+Moscow	Washington	0.068016331439	local	7	sentence
+New York	Moscow	0.0	local	7	sentence
+Los Angeles	New York	0.0	local	5	sentence
+Moscow	Los Angeles	9793.116359	global	33	paragraph
+Los Angeles	Moscow	9793.116359	global	48	paragraph
+Baltimore	Los Angeles	3761.79018446	global	60	paragraph
+Moscow	Baltimore	7445.15211751	global	2	adjacent
+Rego Park	Moscow	7522.71326231	global	15	sentence
+New York	Rego Park	0.0	local	2	adjacent
+Moscow	New York	0.0	local	2	adjacent
+Kiev	Moscow	758.512450683	country	2	adjacent
+Minsk	Kiev	435.268279606	region	2	adjacent
+Riga	Minsk	404.211508511	region	2	adjacent
+U.S.	Riga	0.0	local	7	sentence
+Riga	U.S.	0.0	local	4	adjacent
+New York	Riga	0.0	local	118	paragraph
+Russia	New York	5573.02166288	global	24	sentence
+Riga	Russia	0.0	local	7	sentence
+Moscow	Riga	844.747403548	country	5	sentence
+United States	Moscow	0.0	local	4	adjacent
+Moscow	United States	0.0	local	15	sentence
+Chicago	Moscow	8025.75494517	global	6	sentence
+Moscow	Chicago	8025.75494517	global	9	sentence
+U.S.	Moscow	0.0	local	3	adjacent
+New York	U.S.	0.0	local	3	adjacent
+Atlanta	New York	0.0	local	2	adjacent
+Lombard	DuPage County	8.13617988659	local	20	sentence
+Roselle	Lombard	13.0728234298	local	6	sentence
+Illinois	Roselle	0.0	local	4	adjacent
+Roselle	Illinois	0.0	local	13	sentence
+DuPage	Roselle	16.8077748138	local	11	sentence
+Illinois	DuPage	0.0	local	4	adjacent
+Bensenville	Illinois	0.0	local	22	sentence
+DuPage	Bensenville	17.9956207135	local	10	sentence
+Canada	DuPage	0.0	local	8	sentence
+Glen Ellyn	Canada	0.0	local	12	sentence
+Canada	Glen Ellyn	0.0	local	2	adjacent
+Canadian	Canada	0.0	local	13	sentence
+Canada	Canadian	0.0	local	3	adjacent
+Minnesota	Belle Plaine	0.0	local	19	sentence
+Watertown	Minnesota	0.0	local	10	sentence
+Montgomery	Watertown	61.9991905444	local	46	paragraph
+Watertown	Montgomery	61.9991905444	local	66	paragraph
+New York City	Springfield	1712.75487396	global	46	paragraph
+Springfield	New York City	1712.75487396	global	78	paragraph
+Licking County	NEWARK	8.89213490791	local	14	sentence
+Newark	Licking County	8.89213490791	local	3	adjacent
+Heath	Newark	5.38689516107	local	2	adjacent
+Pataskala	Heath	19.8435074012	local	2	adjacent
+Newark	Pataskala	24.3147437367	local	39	paragraph
+Licking County	Newark	8.89213490791	local	30	paragraph
+Ohio	Licking County	0.0	local	247	document
+Massachusetts	Mass.	0.0	local	79	paragraph
+Ludlow	Massachusetts	0.0	local	12	sentence
+Boston	Ludlow	118.904019337	local	21	sentence
+West Stockbridge	Boston	190.029060515	region	19	sentence
+Springfield	West Stockbridge	69.6109292856	local	5	sentence
+West Newton	Springfield	115.381743055	local	44	paragraph
+Boston	West Newton	14.2831937915	local	9	sentence
+West Newton	Boston	14.2831937915	local	12	sentence
+Boston	West Newton	14.2831937915	local	28	paragraph
+West Stockbridge	Boston	190.029060515	region	367	document
+New York	West Stockbridge	0.0	local	3	adjacent
+Chicopee	New York	0.0	local	9	sentence
+Framingham	Chicopee	98.0282465512	local	11	sentence
+Massachusetts	Framingham	0.0	local	18	sentence
+Boston	Massachusetts	0.0	local	4	adjacent
+New York	Boston	0.0	local	51	paragraph
+Boston	New York	0.0	local	79	paragraph
+Allston	Boston	5.44559735458	local	29	paragraph
+Weston	Allston	14.6273011059	local	2	adjacent
+Boston	Weston	20.0644485421	local	11	sentence
+Boston Harbor	Boston	7.92955012797	local	1	adjacent
+Allston	Boston Harbor	13.2870593839	local	3	adjacent
+Weston	Allston	14.6273011059	local	2	adjacent
+Kentucky	Louisville	0.0	local	29	paragraph
+Atlanta	Kentucky	0.0	local	11	sentence
+Madison County	Atlanta	442.158288432	region	6	sentence
+Atlanta	Madison County	442.158288432	region	5	sentence
+Jefferson County	Atlanta	505.014445954	country	2	adjacent
+Madison County	Jefferson County	128.732575145	local	1	adjacent
+Jefferson County	Madison County	128.732575145	local	1	adjacent
+Madison County	Jefferson County	128.732575145	local	60	paragraph
+McLean County	Madison County	261.385251619	region	33	paragraph
+Louisville	McLean County	153.635508594	local	2	adjacent
+McLean County	Louisville	153.635508594	local	2	adjacent
+Montgomery County	McLean County	299.189190137	region	2	adjacent
+McLean County	Montgomery County	299.189190137	region	1	adjacent
+Jefferson County	McLean County	158.25281309	local	74	paragraph
+Kentucky	Jefferson County	0.0	local	10	sentence
+Jefferson County	Kentucky	0.0	local	42	paragraph
+Kentucky	Jefferson County	0.0	local	11	sentence
+Atlanta	Kentucky	0.0	local	29	paragraph
+Atlanta	Georgia	0.0	local	85	paragraph
+Georgia	Atlanta	0.0	local	110	paragraph
+Atlanta	Georgia	0.0	local	75	paragraph
+America	Atlanta	0.0	local	50	paragraph
+Texas	America	0.0	local	4	adjacent
+America	Texas	0.0	local	63	paragraph
+Texas	America	0.0	local	21	sentence
+Georgia	Texas	791.837551632	country	29	paragraph
+Atlanta	Georgia	0.0	local	11	sentence
+Shakopee	Jordan	10023.8502434	global	28	paragraph
+D.C.	Norman	0.0	local	2	adjacent
+Gainesville	D.C.	0.0	local	44	paragraph
+Norman	Gainesville	179.344230804	region	25	sentence
+Okla.	Norman	0.0	local	1	adjacent
+Washington D.C.	Okla.	1549.88911964	global	2	adjacent
+Norman	Washington D.C.	0.068016331439	local	1	adjacent
+Gainesville	Norman	179.344230804	region	15	sentence
+American	Gainesville	0.0	local	56	paragraph
+Americans	American	0.0	local	5	sentence
+D.C.	Americans	0.0	local	90	paragraph
+American	D.C.	0.0	local	47	paragraph
+D.C.	American	0.0	local	27	paragraph
+American	D.C.	0.0	local	48	paragraph
+U.S.	American	0.0	local	99	paragraph
+Iraq	U.S.	7838.27558017	global	17	sentence
+Norman	Iraq	0.0	local	14	sentence
+Iraq	Norman	0.0	local	3	adjacent
+Gainesville	Iraq	0.0	local	16	sentence
+Sherman	Gainesville	48.6672567538	local	5	sentence
+Norman	Sherman	191.875633524	region	60	paragraph
+Washington	Norman	0.068016331439	local	128	paragraph
+Berkeley County	Goose Creek	23.7517602322	local	32	paragraph
+S.C.	Berkeley County	0.0	local	16	sentence
+Anderson County	Palestine	11216.0008313	global	8	sentence
+Palestine	Anderson County	11216.0008313	global	7	sentence
+Anderson County	Palestine	11216.0008313	global	3	adjacent
+Palestine	Anderson County	11216.0008313	global	6	sentence
+Texas	Palestine	10968.5334577	global	159	document
+Cleveland	Ohio	0.0	local	88	paragraph
+Columbus	Cleveland	203.230629031	region	1	adjacent
+Cleveland	Columbus	203.230629031	region	1	adjacent
+Dayton	Cleveland	286.265251366	region	1	adjacent
+Cleveland	Dayton	286.265251366	region	1	adjacent
+Cincinnati	Cleveland	349.876440512	region	1	adjacent
+Cleveland	Cincinnati	349.876440512	region	1	adjacent
+Dayton	Cleveland	286.265251366	region	3	adjacent
+Ohio	Dayton	0.0	local	5	sentence
+Kettering	Ohio	0.0	local	279	document
+Ohio	Kettering	0.0	local	106	paragraph
+Columbus	Ohio	0.0	local	154	document
+Atlanta	Georgia	0.0	local	12	sentence
+Georgia	Atlanta	0.0	local	21	sentence
+Lake Lanier	Georgia	0.0	local	5	sentence
+Lake Hartwell	Lake Lanier	188.370078527	region	1	adjacent
+Georgia	Lake Hartwell	0.0	local	8	sentence
+Hartsfield	Georgia	0.0	local	15	sentence
+Georgia	Hartsfield	0.0	local	4	adjacent
+Atlanta	Georgia	0.0	local	34	paragraph
+Long Beach	Orange County	39.7164606682	local	17	sentence
+Orange County	Long Beach	39.7164606682	local	12	sentence
+Los Angeles	Orange County	58.8690530602	local	25	sentence
+Georgia	Georgian	0.0	local	17	sentence
+Batumi	Georgia	0.0	local	13	sentence
+Tbilisi	Batumi	263.016018954	region	2	adjacent
+Georgian	Tbilisi	0.0	local	698	document
+Georgia	Georgian	0.0	local	105	paragraph
+Des Moines	Mt. Pleasant	185.822414753	region	18	sentence
+Iowa City	Des Moines	173.356952187	region	9	sentence
+Mt. Pleasant	Iowa City	77.4990337907	local	11	sentence
+Iowa City	Mt. Pleasant	77.4990337907	local	1	adjacent
+Mt. Pleasant	Iowa City	77.4990337907	local	1	adjacent
+Virginia	Alexandria	0.0	local	9	sentence
+Alexandria	Virginia	0.0	local	3	adjacent
+Virginia	Alexandria	0.0	local	39	paragraph
+Alexandria	Virginia	0.0	local	18	sentence
+Ind.	Cambridge City	0.0	local	1	adjacent
+Cambridge City	Ind.	0.0	local	1	adjacent
+Ind.	Cambridge City	0.0	local	2	adjacent
+Kentucky	Laurel County	0.0	local	17	sentence
+Laurel County	Kentucky	0.0	local	8	sentence
+London	Laurel County	4.46967917436	local	7	sentence
+Laurel County	London	4.46967917436	local	193	document
+Cumberland Falls	Laurel County	37.7270192149	local	16	sentence
+Laurel County	Cumberland Falls	37.7270192149	local	17	sentence
+Cumberland Falls	Laurel County	37.7270192149	local	4	adjacent
+Kentucky	Cumberland Falls	0.0	local	30	paragraph
+Laurel County	Kentucky	0.0	local	73	paragraph
+London	Laurel County	4.46967917436	local	10	sentence
+Danbury	BANTAM	40.8776483923	local	1	adjacent
+Bantam	Danbury	40.8776483923	local	6	sentence
+New Milford	Bantam	21.7804403939	local	47	paragraph
+Mexico	New Milford	0.0	local	12	sentence
+Danbury	Mexico	0.0	local	5	sentence
+New Milford	Danbury	20.5894191675	local	8	sentence
+Litchfield	New Milford	26.3229046503	local	44	paragraph
+Butler County	West Chester	289.175541973	region	4	adjacent
+HAMILTON	Butler County	5.63629997941	local	1	adjacent
+West Chester Twp.	HAMILTON	16.6317972694	local	19	sentence
+Butler County	West Chester Twp.	20.1161840535	local	9	sentence
+Lima	Butler County	148.798917208	local	20	sentence
+Middletown	Lima	138.55739597	local	7	sentence
+Cincinnati	Middletown	39.5260398951	local	51	paragraph
+Ohio	Cincinnati	0.0	local	19	sentence
+Cincinnati	Ohio	0.0	local	2	adjacent
+Mansfield	Cincinnati	242.758082267	region	1	adjacent
+America	Mansfield	0.0	local	8	sentence
+Oxford	America	0.0	local	70	paragraph
+Elida	Oxford	149.606034238	local	10	sentence
+Rockford	Elida	39.0443026753	local	9	sentence
+Oxford	Rockford	131.381193766	local	16	sentence
+Butler	Oxford	16.6145769271	local	4	adjacent
+Clark	Butler	85.9869550931	local	2	adjacent
+Hamilton	Clark	104.742326406	local	2	adjacent
+Madison	Hamilton	121.245198917	local	2	adjacent
+Montgomery	Madison	75.3253010787	local	2	adjacent
+Preble	Montgomery	28.5737256432	local	2	adjacent
+Warren	Preble	53.3394735135	local	2	adjacent
+Palestine	U.S.	8317.33734317	global	21	sentence
+Texas	Palestine	10968.5334577	global	18	sentence
+United States	Texas	0.0	local	18	sentence
+Missouri	United States	0.0	local	2	adjacent
+New York	Missouri	946.474752159	country	1	adjacent
+Missouri	New York	946.474752159	country	1	adjacent
+North Carolina	Missouri	471.274438222	region	1	adjacent
+Virginia	North Carolina	0.387192983801	local	2	adjacent
+Palestine	Virginia	9399.1644424	global	90	paragraph
+Texas	Palestine	10968.5334577	global	2	adjacent
+Montana	Texas	947.437674757	country	34	paragraph
+Palestine	Montana	10116.0985678	global	4	adjacent
+Dallas	Palestine	11216.0008313	global	3	adjacent
+Crockett	Dallas	206.499285035	region	154	document
+Palestine	Crockett	11216.0008313	global	2	adjacent
+Houston	Palestine	11216.0008313	global	2	adjacent
+South Carolina	COLUMBIA	0.0	local	2	adjacent
+Alaska	South Carolina	4211.27185103	global	173	document
+Nevada	Alaska	1617.50743532	global	31	paragraph
+South Carolina	Nevada	2764.1789128	global	113	paragraph
+S.C.	South Carolina	0.0	local	148	paragraph
+Cambridge	Barton	168.864078162	region	9	sentence
+Chesterton	Cambridge	48.1147001929	local	1	adjacent
+Cambridge	Chesterton	48.1147001929	local	44	paragraph
+UK	Cambridge	54.4470629934	local	149	paragraph
+Cambridge	UK	54.4470629934	local	44	paragraph
+Henrico County	Henrico	0.0	local	8	sentence
+Glen Allen	Henrico County	17.8405316833	local	40	paragraph
+Saudi Arabia	Saudi	0.0	local	45	paragraph
+Saudi	Saudi Arabia	0.0	local	42	paragraph
+Wamego	Pottawatomie County	14.5937434933	local	19	sentence
+Manhattan	Wamego	23.1298387471	local	2	adjacent
+Hempfield	Westmoreland County	278.014419886	region	38	paragraph
+Jeannette	Hempfield	272.167899921	region	41	paragraph
+Westmoreland County	Jeannette	33.0124681244	local	27	paragraph
+Twickenham	Rwanda	0.0	local	29	paragraph
+South Carolina	COLUMBIA	0.0	local	8	sentence
+S.C.	South Carolina	0.0	local	10	sentence
+Oklahoma	S.C.	1013.4766221	country	25	sentence
+Conn.	FAIRFIELD	0.0	local	1	adjacent
+Fairfield	Conn.	0.0	local	90	paragraph
+Bridgeport	Fairfield	5.71427325945	local	31	paragraph
+BEIRUT	Jbeil	30.4559919648	local	3	adjacent
+Jbeil	BEIRUT	30.4559919648	local	25	sentence
+Beirut	Jbeil	30.4559919648	local	2	adjacent
+Jbeil	Beirut	30.4559919648	local	1	adjacent
+Palestinian	Israel	0.0	local	5	sentence
+Palestinians	Palestinian	0.0	local	39	paragraph
+West Bank	Palestinians	0.0	local	8	sentence
+Gaza	West Bank	0.0	local	2	adjacent
+Palestinians	Gaza	0.0	local	13	sentence
+Palestinian	Palestinians	0.0	local	1	adjacent
+Gaza Strip	Palestinian	0.0	local	7	sentence
+Palestinians	Gaza Strip	0.0	local	31	paragraph
+Palestinian	Palestinians	0.0	local	23	sentence
+West Bank	Palestinian	0.0	local	8	sentence
+Gaza	West Bank	0.0	local	5	sentence
+Palestinian	Gaza	0.0	local	10	sentence
+River Moy	Mayo County	32.2062242612	local	186	document
+Mayo County	River Moy	32.2062242612	local	56	paragraph
+Kiltimagh	Mayo County	17.3592378042	local	18	sentence
+San Diego	Manhattan	1985.46408849	global	7	sentence
+Albuquerque	San Diego	1006.07190252	country	13	sentence
+Oklahoma	Albuquerque	0.0	local	34	paragraph
+TBILISI	Georgia	0.0	local	8	sentence
+Georgia	TBILISI	0.0	local	1	adjacent
+Georgian	Georgia	0.0	local	2	adjacent
+Georgia	Georgian	0.0	local	44	paragraph
+Russia	Georgia	0.0	local	4	adjacent
+Georgia	Russia	0.0	local	50	paragraph
+Lamar County	Texas	0.0	local	8	sentence
+Texas	Lamar County	0.0	local	97	paragraph
+Lamar County	Texas	0.0	local	135	paragraph
+Alexandria	Douglas County	7.77745779614	local	31	paragraph
+Lake Vermont	Alexandria	21.7087952261	local	2	adjacent
+Brandon	Lake Vermont	21.5594963142	local	49	paragraph
+Kensington	Brandon	22.141367756	local	20	sentence
+Freeborn Lake	Kensington	6.41968437172	local	2	adjacent
+Court Square	SPRINGFIELD	0.180546365986	local	79	paragraph
+Palestinians	Palestinian	0.0	local	35	paragraph
+Palestinian	Palestinians	0.0	local	11	sentence
+Saida	Palestinian	0.0	local	19	sentence
+United States	Georgia	7183.46962637	global	14	sentence
+Gori	United States	0.0	local	19	sentence
+Georgian	Gori	0.0	local	4	adjacent
+Gori	Georgian	0.0	local	2	adjacent
+Georgian	Gori	0.0	local	7	sentence
+Town of Groton	Groton	4.09404731359	local	24	sentence
+Kentucky	Laurel County	0.0	local	29	paragraph
+Laurel County	Kentucky	0.0	local	31	paragraph
+London	Laurel County	4.46967917436	local	36	paragraph
+U.S.	London	0.0	local	351	document
+MANASSAS	Va.	0.0	local	9	sentence
+Woodbridge	MANASSAS	22.1584051369	local	1	adjacent
+Alexandria	Woodbridge	23.9959497284	local	10	sentence
+Prince William County	Alexandria	39.6507619977	local	55	paragraph
+Woodbridge	Prince William County	20.8269206163	local	104	paragraph
+Prince William	Woodbridge	20.8269206163	local	26	paragraph
+DANIELSVILLE	Madison	1.10225646395	local	5	sentence
+Madison County	DANIELSVILLE	1.10225646395	local	2	adjacent
+SEVIERVILLE	Ohio	0.0	local	9	sentence
+Tenn.	SEVIERVILLE	0.0	local	1	adjacent
+Sevierville	Tenn.	0.0	local	7	sentence
+Ohio	Sevierville	0.0	local	3	adjacent
+Sevierville	Ohio	0.0	local	22	sentence
+Swanton	Sevierville	635.69042349	country	6	sentence
+Ohio	Swanton	0.0	local	1	adjacent
+Swanton	Ohio	0.0	local	1	adjacent
+Knoxville	Swanton	624.788461893	country	36	paragraph
+Swanton	Knoxville	624.788461893	country	31	paragraph
+Toledo	Swanton	29.211271033	local	7	sentence
+Ohio	Toledo	0.0	local	2	adjacent
+New York	Los Angeles	0.0	local	320	document
+France	New York	2900.59699744	global	358	document
+Franklin County	Dublin	16.902718904	local	29	paragraph
+Dublin	Franklin County	16.902718904	local	182	document
+Columbus	Dublin	18.2111618674	local	4	adjacent
+Dublin	Columbus	18.2111618674	local	24	sentence
+Medina	Pennsylvania	0.0	local	59	paragraph
+Ohio	Medina	0.0	local	2	adjacent
+Pennsylvania	Ohio	0.0	local	147	paragraph
+Fowlerville	Pennsylvania	0.0	local	120	paragraph
+Mich.	Fowlerville	0.0	local	2	adjacent
+Hudson	Mich.	0.0	local	203	document
+Ohio	Hudson	0.0	local	2	adjacent
+Akron	Ohio	0.0	local	64	paragraph
+Ohio	Akron	0.0	local	2	adjacent
+Pennsylvania	Ohio	0.0	local	69	paragraph
+Cleveland	Pennsylvania	0.0	local	36	paragraph
+Canton	Cleveland	82.2309531433	local	93	paragraph
+Ohio	Canton	0.0	local	2	adjacent
+Cleveland	Ohio	0.0	local	46	paragraph
+Medina	Cleveland	42.5074307393	local	56	paragraph
+Ohio	Medina	0.0	local	2	adjacent
+Pennsylvania	Ohio	0.0	local	25	sentence
+Lancashire	Lancaster	30.9407272295	local	2	adjacent
+Lancaster	Lancashire	30.9407272295	local	23	sentence
+Lancashire	Lancaster	30.9407272295	local	8	sentence
+HUME	Shiloh	222.556499154	region	7	sentence
+Shiloh	HUME	222.556499154	region	8	sentence
+Kansas	Shiloh	0.0	local	5	sentence
+Illinois	Kansas	287.722781648	region	11	sentence
+Shiloh	Illinois	0.0	local	12	sentence
+Huntsville	Walker County	1.89914037325	local	11	sentence
+Walker County	Huntsville	1.89914037325	local	6	sentence
+Huntsville	Walker County	1.89914037325	local	15	sentence
+Walker County	Huntsville	1.89914037325	local	174	document
+Israeli	Czech	2266.92508669	global	8	sentence
+EU	Israeli	232.781617865	region	4	adjacent
+Czech	EU	0.0	local	13	sentence
+Israeli	Czech	2266.92508669	global	21	sentence
+Jerusalem	Israeli	0.0	local	8	sentence
+Gaza	Jerusalem	78.5073690067	local	5	sentence
+Israeli	Gaza	0.0	local	13	sentence
+Czech	Israeli	2266.92508669	global	17	sentence
+EU	Czech	0.0	local	5	sentence
+Israel	EU	232.781617865	region	12	sentence
+Europe	Israel	1099.15999119	country	2	adjacent
+Israel	Europe	1099.15999119	country	16	sentence
+Palestinians	Israel	0.0	local	24	sentence
+Israeli	Palestinians	0.0	local	14	sentence
+Egyptian	Israeli	0.0	local	5	sentence
+Israeli	Egyptian	0.0	local	9	sentence
+Palestinians	Israeli	0.0	local	2	adjacent
+Israeli	Palestinians	0.0	local	16	sentence
+Israel	Israeli	0.0	local	1	adjacent
+Prague	Israel	0.0	local	75	paragraph
+Czech Republic	Prague	0.0	local	18	sentence
+Czechs	Czech Republic	0.0	local	3	adjacent
+European Union	Czechs	0.0	local	7	sentence
+Jerusalem	European Union	0.0	local	12	sentence
+Czech Republic	Jerusalem	0.0	local	30	paragraph
+European Union	Czech Republic	0.0	local	13	sentence
+Czech Republic	European Union	0.0	local	5	sentence
+European Union	Czech Republic	0.0	local	3	adjacent
+Jerusalem	European Union	0.0	local	10	sentence
+Conn.	FAIRFIELD	0.0	local	1	adjacent
+Connecticut	Conn.	0.0	local	27	paragraph
+Fairfield	Connecticut	0.0	local	26	paragraph
+Connecticut	Fairfield	0.0	local	29	paragraph
+Henry County	Paris	3.59815891378	local	2	adjacent
+Paris	Henry County	3.59815891378	local	8	sentence
+Henry County	Paris	3.59815891378	local	1	adjacent
+WASHINGTON	Iraq	9541.64380698	global	1	adjacent
+Iraq	WASHINGTON	9541.64380698	global	14	sentence
+Pittsburgh	Iraq	0.0	local	126	paragraph
+Iraq	Pittsburgh	0.0	local	21	sentence
+Houston	Iraq	0.0	local	26	paragraph
+U.S.	Houston	0.0	local	7	sentence
+Iraq	U.S.	7838.27558017	global	3	adjacent
+Houston	Iraq	0.0	local	6	sentence
+U.S.	Houston	0.0	local	37	paragraph
+Russian	U.S.	87.2010511849	local	5	sentence
+U.S.	Russian	87.2010511849	local	2	adjacent
+Iraq	U.S.	7838.27558017	global	1	adjacent
+California	Iraq	11043.4135495	global	16	sentence
+Iraq	California	11043.4135495	global	19	sentence
+Fresno	Iraq	0.0	local	6	sentence
+Calif.	Fresno	0.0	local	2	adjacent
+Iraq	Calif.	11043.4135495	global	15	sentence
+Afghanistan	Iraq	1187.02935385	country	2	adjacent
+Iraq	Afghanistan	1187.02935385	country	39	paragraph
+Huntsville	Iraq	0.0	local	12	sentence
+Texas	Huntsville	0.0	local	2	adjacent
+Iraq	Texas	10972.3552073	global	87	paragraph
+Huntsville	Iraq	0.0	local	14	sentence
+Iraq	Huntsville	0.0	local	46	paragraph
+Afghanistan	Iraq	1187.02935385	country	17	sentence
+Iraq	Afghanistan	1187.02935385	country	11	sentence
+Afghanistan	Iraq	1187.02935385	country	19	sentence
+Iraq	Afghanistan	1187.02935385	country	2	adjacent
+Afghanistan	Iraq	1187.02935385	country	6	sentence
+Iraq	Afghanistan	1187.02935385	country	5	sentence
+Afghanistan	Iraq	1187.02935385	country	22	sentence
+Iraq	Afghanistan	1187.02935385	country	39	paragraph
+Abkhaz	Abkhazia	0.0	local	2	adjacent
+Georgian	Abkhaz	0.0	local	29	paragraph
+Tbilisi	Georgian	0.0	local	12	sentence
+Georgian	Tbilisi	0.0	local	7	sentence
+Abkhaz	Georgian	0.0	local	14	sentence
+D.C.	Alexandria	0.0	local	240	document
+New York City	D.C.	0.0	local	22	sentence
+Washington	New York City	0.068016331439	local	17	sentence
+D.C.	Washington	0.0	local	3	adjacent
+Washington	D.C.	0.0	local	2	adjacent
+Alexandria	Washington	0.068016331439	local	28	paragraph
+D.C.	Alexandria	0.0	local	139	paragraph
+Alexandria	D.C.	0.0	local	17	sentence
+D.C.	Alexandria	0.0	local	9	sentence
+Alexandria	D.C.	0.0	local	40	paragraph
+MAKHACHKALA	Dagestani	41.0498261942	local	3	adjacent
+Dagestan	MAKHACHKALA	41.0498261942	local	16	sentence
+Georgia	Dagestan	0.0	local	6	sentence
+Azerbaijan	Georgia	0.0	local	2	adjacent
+Dagestan	Azerbaijan	0.0	local	53	paragraph
+Dagestani	Dagestan	0.0	local	2	adjacent
+Russians	Dagestani	0.0	local	35	paragraph
+Dagestan	Russians	0.0	local	110	paragraph
+Dagestani	Dagestan	0.0	local	8	sentence
+Makhachkala	Dagestani	41.0498261942	local	3	adjacent
+Dagestani	Makhachkala	41.0498261942	local	44	paragraph
+Dagestan	Dagestani	0.0	local	7	sentence
+Chechnya	Dagestan	110.871534038	local	12	sentence
+Caucasus	Chechnya	0.0	local	14	sentence
+Kabardino-Balkaria	Caucasus	0.0	local	30	paragraph
+Chechnya	Kabardino-Balkaria	179.596434585	region	5	sentence
+Caucasus	Chechnya	0.0	local	9	sentence
+Lock Haven	Phila.	233.892845137	region	7	sentence
+Marston	Oxford	2.24592440884	local	174	document
+America	Marston	0.0	local	155	document
+Flint Hill	Tega Cay	12.942588242	local	5	sentence
+Tega Cay	Flint Hill	12.942588242	local	23	sentence
+Fort Mill	Tega Cay	7.78630589556	local	29	paragraph
+Tega Cay	Fort Mill	7.78630589556	local	174	document
+East Lansing	Haslett	6.87017823508	local	82	paragraph
+Pennsylvania	Lancaster	0.0	local	1	adjacent
+Lancaster	Pennsylvania	0.0	local	1	adjacent
+Pennsylvania	Lancaster	0.0	local	4	adjacent
+Grantville	Pennsylvania	0.0	local	32	paragraph
+Pennsylvania	Grantville	0.0	local	1	adjacent
+Grantville	Pennsylvania	0.0	local	1	adjacent
+Elizabethtown	Grantville	25.2589588513	local	40	paragraph
+Pennsylvania	Elizabethtown	0.0	local	2	adjacent
+Grantville	Pennsylvania	0.0	local	5	sentence
+Elizabethtown	Grantville	25.2589588513	local	4	adjacent
+Pennsylvania	Elizabethtown	0.0	local	7	sentence
+Grantville	Pennsylvania	0.0	local	7	sentence
+Elizabethtown	Grantville	25.2589588513	local	8	sentence
+McLean	Elizabethtown	144.034948873	local	32	paragraph
+Virginia	McLean	0.0	local	2	adjacent
+New York City	Virginia	0.0	local	10	sentence
+McLean	New York City	335.792541678	region	7	sentence
+Virginia	McLean	0.0	local	2	adjacent
+Hoboken	Virginia	0.0	local	14	sentence
+McLean	Hoboken	335.88338791	region	1	adjacent
+New York City	McLean	335.792541678	region	1	adjacent
+New Jersey	New York City	0.0	local	1	adjacent
+Hamilton County	Cincinnati	7.01659911313	local	50	paragraph
+Tennessee	Henry County	0.0	local	65	paragraph
+Benton County	Tennessee	0.0	local	3	adjacent
+Carroll County	Benton County	36.8957095278	local	4	adjacent
+Benton County	Carroll County	36.8957095278	local	1	adjacent
+Stewart County	Benton County	49.7447151324	local	9	sentence
+Carroll County	Stewart County	80.8030342908	local	1	adjacent
+Weakley County	Carroll County	49.5788920041	local	10	sentence
+Stewart County	Weakley County	91.9919987479	local	1	adjacent
+Tennessee	Stewart County	0.0	local	7	sentence
+Williamson County	Tennessee	0.0	local	24	sentence
+Perry County	Williamson County	91.7033751414	local	14	sentence
+Williamson County	Perry County	91.7033751414	local	1	adjacent
+French	South Charleston	0.0	local	14	sentence
+South Charleston	French	0.0	local	24	sentence
+West Virginia	South Charleston	0.0	local	143	paragraph
+South Charleston	West Virginia	0.0	local	6	sentence
+United States	South Charleston	0.0	local	14	sentence
+West Virginia	United States	0.0	local	451	document
+American	West Virginia	0.0	local	11	sentence
+German	American	5134.36828692	global	4	adjacent
+American	German	5134.36828692	global	8	sentence
+Mason County	American	0.0	local	7	sentence
+American	Mason County	0.0	local	2	adjacent
+Mason County	American	0.0	local	10	sentence
+West Virginia	Mason County	0.0	local	22	sentence
+American	West Virginia	0.0	local	1	adjacent
+Mason County	American	0.0	local	15	sentence
+Waco	Oakland	2396.3488188	global	46	paragraph
+Texas	Waco	0.0	local	1	adjacent
+Henrico County	Richmond	8.30754894481	local	38	paragraph
+Chesterfield County	Henrico County	27.7101243059	local	8	sentence
+Henrico County	Chesterfield County	27.7101243059	local	1	adjacent
+Chesterfield County	Henrico County	27.7101243059	local	14	sentence
+Henrico County	Chesterfield County	27.7101243059	local	1	adjacent
+Chesterfield County	Henrico County	27.7101243059	local	13	sentence
+W.Va.	HURRICANE	0.0	local	1	adjacent
+Putnam County	W.Va.	0.0	local	6	sentence
+Hurricane	Putnam County	15.1682253251	local	39	paragraph
+Putnam County	Hurricane	15.1682253251	local	4	adjacent
+Hurricane	Putnam County	15.1682253251	local	7	sentence
+Putnam County	Hurricane	15.1682253251	local	5	sentence
+Hurricane	Putnam County	15.1682253251	local	7	sentence
+Mount Pleasant	Titus County	8.6239080553	local	30	paragraph
+Winfield	Mount Pleasant	13.4458186286	local	34	paragraph
+Titus County	Winfield	14.0442138133	local	93	paragraph
+ISLAMABAD	Pakistan	0.0	local	9	sentence
+Pakistan	ISLAMABAD	0.0	local	1	adjacent
+Islamabad	Pakistan	0.0	local	143	paragraph
+Lahore	Islamabad	258.352264758	region	21	sentence
+Punjab	Lahore	231.345860057	region	2	adjacent
+Pakistan	Punjab	0.0	local	20	sentence
+U.S.	Russian	87.2010511849	local	29	paragraph
+Washington	U.S.	0.0	local	4	adjacent
+U.S.	Washington	0.0	local	1	adjacent
+Washington	U.S.	0.0	local	14	sentence
+Virginia	Washington	0.0	local	6	sentence
+Maryland	Virginia	0.0	local	1	adjacent
+North Carolina	Maryland	0.0	local	1	adjacent
+Virginia	North Carolina	0.387192983801	local	12	sentence
+Maryland	Virginia	0.0	local	3	adjacent
+Russian	Maryland	0.0	local	9	sentence
+California	Russian	3857.78928036	global	141	paragraph
+Virginia	California	2764.78391467	global	103	paragraph
+Richmond	Virginia	0.0	local	27	paragraph
+Virginia	Richmond	0.0	local	61	paragraph
+Edgar County	Paris	7.74564126221	local	7	sentence
+Paris	Edgar County	7.74564126221	local	36	paragraph
+Urbana	Paris	70.6340367221	local	11	sentence
+Edgar County	Urbana	62.8896157291	local	57	paragraph
+Europe	London	0.0	local	13	sentence
+North America	Europe	285.474575139	region	3	adjacent
+London	North America	0.0	local	4	adjacent
+Canada	London	0.0	local	2	adjacent
+Europe	Canada	1211.01830071	country	2	adjacent
+Canada	Europe	1211.01830071	country	4	adjacent
+London	Canada	0.0	local	34	paragraph
+U.S.	London	0.0	local	8	sentence
+Toronto	U.S.	0.0	local	3	adjacent
+U.S.	Toronto	0.0	local	1	adjacent
+Hillsboro	Hopkinton	19.7975869865	local	8	sentence
+Hopkinton	Hillsboro	19.7975869865	local	117	paragraph
+Concord	Hopkinton	11.350688401	local	8	sentence
+Los Angeles	San Fernando	31.1845551969	local	25	sentence
+San Fernando	Los Angeles	31.1845551969	local	259	document
+Ky.	Cincinnati	0.0	local	4	adjacent
+COVINGTON	Ky.	0.0	local	3	adjacent
+Ky.	COVINGTON	0.0	local	1	adjacent
+Kentucky	Ky.	0.0	local	12	sentence
+Cincinnati	Kentucky	0.0	local	16	sentence
+Kenton County	Cincinnati	24.4362390972	local	2	adjacent
+Covington	Kenton County	14.9851818414	local	3	adjacent
+Alaska	Laconia	0.0	local	95	paragraph
+Laconia	Alaska	0.0	local	6	sentence
+Alaska	Laconia	0.0	local	20	sentence
+Canadian	Steveston	0.0	local	18	sentence
+Steveston	Canadian	0.0	local	64	paragraph
+SALINA	Kansas	0.0	local	6	sentence
+Kan.	SALINA	0.0	local	1	adjacent
+Kansas	Kan.	0.0	local	8	sentence
+Ellsworth	Kansas	0.0	local	11	sentence
+Riley	Ellsworth	147.710765613	local	2	adjacent
+Salina	Riley	95.9653269192	local	64	paragraph
+Manhattan	Salina	97.7824168986	local	20	sentence
+U.S.	ST. PARIS	0.0	local	88	paragraph
+St. Paris	U.S.	0.0	local	10	sentence
+Champaign County	St. Paris	16.4673822713	local	5	sentence
+St. Paris	Champaign County	16.4673822713	local	4	adjacent
+Urbana	St. Paris	362.056817537	region	19	sentence
+Kiser Lake	Urbana	360.131604871	region	123	paragraph
+Denison	Norfolk	170.751610416	region	24	sentence
+Iowa	Denison	0.0	local	1	adjacent
+Norfolk	Iowa	0.0	local	64	paragraph
+Iowa	Norfolk	0.0	local	5	sentence
+Norfolk	Iowa	0.0	local	4	adjacent
+Kidlington	Bicester	13.0491170998	local	2	adjacent
+Bicester	Kidlington	13.0491170998	local	117	paragraph
+Wood County	West Virginia	0.0	local	15	sentence
+W. Va.	Wood County	0.0	local	1	adjacent
+Wood County	W. Va.	0.0	local	1	adjacent
+Greenwood	Wood County	149.696903662	local	12	sentence
+W. Va.	Greenwood	0.0	local	1	adjacent
+Greenwood	W. Va.	0.0	local	1	adjacent
+Meigs County	Greenwood	142.210223577	local	10	sentence
+Pomeroy	Meigs County	8.18679532984	local	21	sentence
+Meigs County	Pomeroy	8.18679532984	local	2	adjacent
+Athens	Meigs County	26.4679828571	local	40	paragraph
+Platte County	Platte Co.	0.0	local	12	sentence
+Platte	Platte County	0.0	local	49	paragraph
+Nebraska	Platte	0.0	local	13	sentence
+Sherman County	Nebraska	0.0	local	20	sentence
+Loup City	Sherman County	6.69298408392	local	3	adjacent
+Sherman County	Loup City	6.69298408392	local	1	adjacent
+Nebraska	Sherman County	0.0	local	6	sentence
+Omaha	Nebraska	0.0	local	2	adjacent
+Hitchcock	Omaha	448.594383667	region	20	sentence
+Hayes	Hitchcock	40.7077650279	local	2	adjacent
+Nebraska	Hayes	0.0	local	4	adjacent
+Hitchcock	Nebraska	0.0	local	16	sentence
+Nebraska	Hitchcock	0.0	local	8	sentence
+Hayes	Nebraska	0.0	local	4	adjacent
+Nebraska	Hayes	0.0	local	6	sentence
+Dakota	Nebraska	0.0	local	13	sentence
+Otoe	Dakota	199.523078146	region	2	adjacent
+Washington	Otoe	102.419813177	local	2	adjacent
+Nebraska	Washington	0.0	local	36	paragraph
+Washington	Nebraska	0.0	local	3	adjacent
+Nebraska	Washington	0.0	local	13	sentence
+Lincoln County	Nebraska	0.0	local	24	sentence
+North Platte	Lincoln County	8.20872835353	local	4	adjacent
+Madison County	North Platte	278.425710229	region	39	paragraph
+Lincoln County	Madison County	281.425768751	region	1	adjacent
+Douglas	Lincoln County	386.947793423	region	27	paragraph
+Sarpy	Douglas	22.3875443041	local	2	adjacent
+Lancaster	Sarpy	58.1551815875	local	2	adjacent
+Madison County	Lancaster	147.409842309	local	24	sentence
+Douglas	Madison County	137.713573913	local	19	sentence
+Nebraska	Douglas	0.0	local	11	sentence
+U.S.	Nebraska	0.0	local	61	paragraph
+Nebraska	U.S.	0.0	local	15	sentence
+Cambridge	Cambridgeshire	0.0	local	34	paragraph
+Peterborough	Cambridge	35.8787320084	local	77	paragraph
+Cambridgeshire	Peterborough	35.8787320084	local	55	paragraph
+East Cambridgeshire	Cambridgeshire	14.8872698507	local	19	sentence
+Cambridge	East Cambridgeshire	14.8872698507	local	26	paragraph
+Cambridgeshire	Cambridge	0.0	local	76	paragraph
+Huntingdon	Cambridgeshire	18.1777768731	local	17	sentence
+Cambridgeshire	Huntingdon	18.1777768731	local	5	sentence
+Sylmar	Lancaster	51.9097574648	local	54	paragraph
+Lancaster	Sylmar	51.9097574648	local	107	paragraph
+Palmdale	Lancaster	13.2969130167	local	32	paragraph
+Los Angeles	Palmdale	59.6561740647	local	90	paragraph
+Georgia	ATLANTA	0.0	local	10	sentence
+Atlanta	Georgia	0.0	local	85	paragraph
+Georgia	Atlanta	0.0	local	110	paragraph
+Atlanta	Georgia	0.0	local	75	paragraph
+America	Atlanta	0.0	local	50	paragraph
+Texas	America	0.0	local	4	adjacent
+America	Texas	0.0	local	62	paragraph
+Texas	America	0.0	local	21	sentence
+Georgia	Texas	791.837551632	country	29	paragraph
+Atlanta	Georgia	0.0	local	11	sentence
+Toronto	Ontario	0.0	local	187	document
+Ontario	Toronto	0.0	local	109	paragraph
+Southwest Middlesex	Ontario	0.0	local	73	paragraph
+TBILISI	Georgia	0.0	local	1	adjacent
+Georgia	TBILISI	0.0	local	1	adjacent
+Georgian	Georgia	0.0	local	3	adjacent
+Russia	Georgian	0.0	local	209	document
+Wisconsin	Cincinnati	0.0	local	5	sentence
+Florida	Golden Glades	0.0	local	4	adjacent
+Indiana	Richmond	0.0	local	5	sentence
+Richmond	Indiana	0.0	local	10	sentence
+Mexico	Dallas	0.0	local	9	sentence
+Arlington	Mexico	0.0	local	26	paragraph
+U.S.	Arlington	0.0	local	6	sentence
+Italian	U.S.	5509.31255	global	14	sentence
+Twin Lakes	Mahnomen	462.413532853	region	10	sentence
+Perham	Twin Lakes	377.306249205	region	9	sentence
+Otter Tail County	Perham	23.7324663243	local	2	adjacent
+Pelican Rapids	Otter Tail County	34.9913964852	local	8	sentence
+Star Lake	Pelican Rapids	21.6812561412	local	5	sentence
+Douglas County	Star Lake	71.8718153401	local	29	paragraph
+Kent	Douglas County	110.49668092	local	56	paragraph
+Minnesota	Kent	0.0	local	13	sentence
+Becker	Minnesota	0.0	local	1	adjacent
+Clay	Becker	61.3961031512	local	1	adjacent
+Becker	Clay	61.3961031512	local	1	adjacent
+Douglas	Becker	114.429274253	local	1	adjacent
+Becker	Douglas	114.429274253	local	1	adjacent
+Grant	Becker	115.616351074	local	1	adjacent
+Becker	Grant	115.616351074	local	1	adjacent
+Mahnomen	Becker	43.7977996066	local	1	adjacent
+Becker	Mahnomen	43.7977996066	local	1	adjacent
+Otter Tail	Becker	61.1538258181	local	1	adjacent
+Becker	Otter Tail	61.1538258181	local	1	adjacent
+Swift	Becker	187.120086721	region	1	adjacent
+Wilkin	Swift	125.826576021	local	2	adjacent
+Harris County	Columbus	31.3233776641	local	36	paragraph
+Nebraska	COLUMBUS	0.0	local	33	paragraph
+Lincoln	Nebraska	0.0	local	20	sentence
+Columbus	Lincoln	1163.21784592	country	276	document
+Pennsylvania	Phila.	0.0	local	16	sentence
+Miami-Dade	Coral Gables	28.9826155541	local	40	paragraph
+Illinois	Paris	0.0	local	4	adjacent
+Paris	Illinois	0.0	local	6	sentence
+Illinois	Paris	0.0	local	30	paragraph
+Paris	Illinois	0.0	local	39	paragraph
+Toronto	Dublin	503.983794726	country	87	paragraph
+Ontario	Toronto	0.0	local	2	adjacent
+Canada	Ontario	0.0	local	2	adjacent
+Toronto	Canada	0.0	local	32	paragraph
+Canada	Toronto	0.0	local	2	adjacent
+Ontario	Canada	0.0	local	3	adjacent
+Coffman Park	Ontario	0.0	local	94	paragraph
+Dublin	Coffman Park	1.92774361527	local	3	adjacent
+Coffman Park	Dublin	1.92774361527	local	2	adjacent
+Dublin	Coffman Park	1.92774361527	local	26	paragraph
+Jerome Township	Dublin	11.554479283	local	38	paragraph
+Dublin	Jerome Township	11.554479283	local	56	paragraph
+Cuyahoga Falls	Dublin	179.480767882	region	60	paragraph
+Dublin	Cuyahoga Falls	179.480767882	region	71	paragraph
+S.C.	Chapin	0.0	local	14	sentence
+Lexington County	S.C.	0.0	local	63	paragraph
+Richmond County	Columbia County	24.6848749146	local	17	sentence
+Grovetown	Richmond County	13.0289944414	local	35	paragraph
+Martinez	Grovetown	13.5957078771	local	2	adjacent
+Grovetown	Martinez	13.5957078771	local	1	adjacent
+Augusta	Grovetown	20.8935697569	local	19	sentence
+Richmond County	Augusta	16.3930402407	local	91	paragraph
+Pickerington	Oxford	175.886050735	region	84	paragraph
+Ohio	Pickerington	0.0	local	2	adjacent
+Oxford	Ohio	0.0	local	8	sentence
+Pickerington	Oxford	175.886050735	region	6	sentence
+Oxford	Pickerington	175.886050735	region	47	paragraph
+Red Mill	Clinton	9.20682202815	local	42	paragraph
+Clinton	Red Mill	9.20682202815	local	23	sentence
+Boone County	Lebanon	9852.99278791	global	22	sentence
+Lebanon	Boone County	9852.99278791	global	6	sentence
+Boone County	Lebanon	9852.99278791	global	82	paragraph
+Lebanon	Boone County	9852.99278791	global	3	adjacent
+Boone County	Lebanon	9852.99278791	global	4	adjacent
+Lebanon	Boone County	9852.99278791	global	6	sentence
+Boone County	Lebanon	9852.99278791	global	4	adjacent
+Russian	St. Petersburg	0.0	local	4	adjacent
+St. Petersburg	Russian	0.0	local	80	paragraph
+Neches	Neches River	0.0	local	10	sentence
+Athens	Neches	312.831934354	region	6	sentence
+Texas	Athens	0.0	local	13	sentence
+Neches	Texas	0.0	local	6	sentence
+Henderson County	Neches	311.150453403	region	6	sentence
+Tyler	Henderson County	52.8906047546	local	9	sentence
+Gulf of Mexico	Tyler	965.166895533	country	3	adjacent
+Beaumont	Gulf of Mexico	693.954201335	country	2	adjacent
+Neches	Beaumont	27.0613852109	local	2	adjacent
+Texas	Neches	0.0	local	90	paragraph
+Neches	Texas	0.0	local	2	adjacent
+Texas	Neches	0.0	local	14	sentence
+Neches	Texas	0.0	local	12	sentence
+Neches River	Neches	0.0	local	1	adjacent
+U.S.	Neches River	0.0	local	44	paragraph
+Neches River	U.S.	0.0	local	10	sentence
+Anderson	Neches River	268.252135004	region	2	adjacent
+Cherokee	Anderson	44.3343800417	local	2	adjacent
+Texas	Cherokee	0.0	local	27	paragraph
+Dallas	Texas	0.0	local	8	sentence
+Anderson	Dallas	151.676514561	local	8	sentence
+U.S.	Anderson	0.0	local	8	sentence
+Texas	U.S.	0.0	local	39	paragraph
+Dallas	Texas	0.0	local	1	adjacent
+U.S.	Dallas	0.0	local	8	sentence
+Neches River	U.S.	0.0	local	5	sentence
+Texas	Neches River	0.0	local	28	paragraph
+Athens	Texas	0.0	local	15	sentence
+Illinois	DeKalb	0.0	local	42	paragraph
+DeKalb	Illinois	0.0	local	149	paragraph
+Ohio	WASHINGTON	332.597725688	region	239	document
+Connecticut	Ohio	570.352382417	country	304	document
+New York	Connecticut	0.0	local	158	document
+Montana	New York	1971.85785187	global	191	document
+Iowa	Montana	614.463411631	country	21	sentence
+New York	Iowa	859.166171365	country	17	sentence
+Montana	New York	1971.85785187	global	144	paragraph
+Zionsville	Boone County	20.750142337	local	10	sentence
+Boone	Zionsville	20.750142337	local	25	sentence
+U.S.	Oakland	0.0	local	1	adjacent
+N.J.	U.S.	0.0	local	14	sentence
+Pleasanton	N.J.	0.0	local	153	document
+Iraq	Pleasanton	0.0	local	54	paragraph
+Lafayette	Iraq	0.0	local	89	paragraph
+California	Lafayette	0.0	local	6	sentence
+Lafayette	California	0.0	local	50	paragraph
+U.S.	Lafayette	0.0	local	50	paragraph
+California	U.S.	0.0	local	47	paragraph
+Sacramento	California	0.0	local	107	paragraph
+U.S.	Sacramento	0.0	local	28	paragraph
+California	U.S.	0.0	local	11	sentence
+Fort Worth	Tarrant County	4.9770358383	local	18	sentence
+Tarrant County	Fort Worth	4.9770358383	local	1	adjacent
+Texas	Tarrant County	0.0	local	34	paragraph
+Tarrant County	Texas	0.0	local	145	paragraph
+Mount Pleasant	Texas	0.0	local	32	paragraph
+Canada	Mount Pleasant	0.0	local	19	sentence
+Sault Ste. Marie	Canada	0.0	local	2	adjacent
+Ontario	Sault Ste. Marie	0.0	local	2	adjacent
+Sault Ste. Marie	Ontario	0.0	local	10	sentence
+Michigan	Sault Ste. Marie	0.0	local	7	sentence
+Sault Ste. Marie	Michigan	0.0	local	1	adjacent
+Michigan	Sault Ste. Marie	0.0	local	4	adjacent
+Houston	Michigan	0.0	local	5	sentence
+Ontario	Houston	0.0	local	1	adjacent
+Michigan	Ontario	0.0	local	6	sentence
+Houston	Michigan	0.0	local	3	adjacent
+Texas	Houston	0.0	local	1	adjacent
+Canadian	Texas	1346.07999909	country	14	sentence
+Texas	Canadian	1346.07999909	country	17	sentence
+Canadian	Texas	1346.07999909	country	14	sentence
+Toronto	Canadian	0.0	local	34	paragraph
+Montreal	Toronto	500.183366123	country	12	sentence
+Toronto	Montreal	500.183366123	country	12	sentence
+Canada	Toronto	0.0	local	13	sentence
+Mount Pleasant	Canada	0.0	local	51	paragraph
+Sulphur Springs	Mount Pleasant	59.0736994207	local	14	sentence
+Greenville	Sulphur Springs	47.5585239929	local	2	adjacent
+Dallas	Greenville	76.0702582401	local	5	sentence
+Sulphur Springs	Dallas	119.405138987	local	40	paragraph
+Texas	Sulphur Springs	0.0	local	21	sentence
+Middle East	Egypt	0.835835255646	local	15	sentence
+Egypt	Middle East	0.835835255646	local	1	adjacent
+Egyptian	Egypt	0.0	local	32	paragraph
+Israeli	Egyptian	0.0	local	1	adjacent
+Middle East	Israeli	0.0	local	36	paragraph
+Iraq	Middle East	0.0	local	25	sentence
+Kuwait	Iraq	0.0	local	3	adjacent
+Egypt	Kuwait	1130.11555197	country	1	adjacent
+Kuwait	Egypt	1130.11555197	country	2	adjacent
+Egypt	Kuwait	1130.11555197	country	4	adjacent
+Palestinian	Egypt	0.0	local	76	paragraph
+Israel	Palestinian	0.0	local	8	sentence
+US	Israel	8270.07495447	global	5	sentence
+Israel	US	8270.07495447	global	8	sentence
+West Bank	Israel	0.0	local	9	sentence
+Jerusalem	West Bank	0.0	local	2	adjacent
+US	Jerusalem	0.0	local	8	sentence
+Palestinian	US	8317.33734317	global	22	sentence
+Jerusalem	Palestinian	0.0	local	9	sentence
+Egypt	Jerusalem	0.0	local	21	sentence
+Iraq	Egypt	470.21842792	region	3	adjacent
+Palestinian	Iraq	318.075007543	region	13	sentence
+US	Palestinian	8317.33734317	global	7	sentence
+Iran	US	7531.78724991	global	8	sentence
+Egyptian	Iran	1090.32699605	country	11	sentence
+US	Egyptian	7715.94225409	global	5	sentence
+American	US	0.0	local	6	sentence
+Egypt	American	7715.94225409	global	6	sentence
+Egyptian	Egypt	0.0	local	11	sentence
+Iraq	Egyptian	470.21842792	region	3	adjacent
+Egyptian	Iraq	470.21842792	region	5	sentence
+Egypt	Egyptian	0.0	local	4	adjacent
+Washington	Egypt	8802.51670999	global	4	adjacent
+US	Washington	0.0	local	4	adjacent
+Israeli	US	8270.07495447	global	39	paragraph
+Egypt	Israeli	0.0	local	2	adjacent
+Israeli	Egypt	0.0	local	9	sentence
+American	Israeli	8270.07495447	global	9	sentence
+Iraq	American	7838.27558017	global	18	sentence
+Iranian	Iraq	0.0	local	15	sentence
+Washington	Iranian	9459.27625302	global	8	sentence
+Egyptian	Washington	8802.51670999	global	1	adjacent
+US	Egyptian	7715.94225409	global	6	sentence
+Egyptian	US	7715.94225409	global	11	sentence
+Americans	Egyptian	7715.94225409	global	22	sentence
+Egyptian	Americans	7715.94225409	global	2	adjacent
+US	Egyptian	7715.94225409	global	23	sentence
+Egyptian	US	7715.94225409	global	3	adjacent
+Washington	Egyptian	8802.51670999	global	9	sentence
+Cairo	Washington	0.068016331439	local	2	adjacent
+Iranian	Cairo	0.0	local	20	sentence
+Minn.	Belgrade	0.0	local	1	adjacent
+BELGRADE	Minn.	0.0	local	4	adjacent
+Minn.	BELGRADE	0.0	local	1	adjacent
+Belgrade	Minn.	0.0	local	19	sentence
+Minnesota	Belgrade	0.0	local	3	adjacent
+U.S.	Butler County	0.0	local	34	paragraph
+Ohio	U.S.	0.0	local	8	sentence
+American	Ohio	0.0	local	9	sentence
+Ohio	American	0.0	local	6	sentence
+Americans	Ohio	0.0	local	25	sentence
+Butler County	Americans	0.0	local	23	sentence
+Hamilton	Butler County	5.63629997941	local	58	paragraph
+Middletown	Hamilton	19.013882744	local	2	adjacent
+Butler County	Middletown	16.1783817047	local	3	adjacent
+Ohio	Butler County	0.0	local	11	sentence
+Hamilton	Ohio	0.0	local	6	sentence
+U.S.	Hamilton	0.0	local	2	adjacent
+Middletown	U.S.	0.0	local	7	sentence
+Ohio	Middletown	0.0	local	64	paragraph
+Allegheny County	Crafton	21.7023269456	local	81	paragraph
+Atlanta	Allegheny County	851.566987765	country	21	sentence
+Ind.	JEFFERSONVILLE	0.0	local	1	adjacent
+Evansville	Ind.	0.0	local	15	sentence
+Jeffersonville	Evansville	162.958681766	region	4	adjacent
+American	Jeffersonville	0.0	local	26	paragraph
+Louisville	American	0.0	local	7	sentence
+Ky.	Louisville	0.0	local	1	adjacent
+Jeffersonville	Ky.	0.0	local	8	sentence
+Normandy	Jeffersonville	6646.00699441	global	43	paragraph
+Europe	Normandy	0.0	local	6	sentence
+Urals	Yekaterinburg	351.847908941	region	30	paragraph
+Pervouralsk	Urals	344.720326658	region	3	adjacent
+Pottawatomie County	Pott Co.	0.0	local	9	sentence
+Manhattan	Pottawatomie County	28.7215691142	local	76	paragraph
+Leavenworth	Manhattan	132.96116904	local	27	paragraph
+Shawnee	Leavenworth	66.5820172152	local	2	adjacent
+Manhattan	Shawnee	71.1646692518	local	17	sentence
+Kane County	Manhattan	754.12606917	country	31	paragraph
+Ill.	Kane County	0.0	local	2	adjacent
+Jefferson County	Ill.	0.0	local	5	sentence
+Kane County	Jefferson County	1441.38913698	country	1	adjacent
+Colo.	Kane County	0.0	local	2	adjacent
+St. George	Colo.	0.0	local	8	sentence
+Ill.	St. George	0.0	local	1	adjacent
+Wamego	Ill.	0.0	local	12	sentence
+Ill.	Wamego	0.0	local	3	adjacent
+Jefferson County	Ill.	0.0	local	8	sentence
+Henry County	Paris	3.59815891378	local	52	paragraph
+Paris	Henry County	3.59815891378	local	20	sentence
+Whitlock	Paris	8.11503739174	local	181	document
+Henry County	Whitlock	5.51371382245	local	7	sentence
+Whitlock	Henry County	5.51371382245	local	18	sentence
+Paris	Whitlock	8.11503739174	local	20	sentence
+Georgia	Tbilisi	0.0	local	277	document
+Dunwoody	Clayton County	45.8827447297	local	81	paragraph
+Clayton County	Dunwoody	45.8827447297	local	72	paragraph
+Lovejoy	Clayton County	11.8220465629	local	32	paragraph
+Jonesboro	Lovejoy	10.1448884794	local	2	adjacent
+Lovejoy	Jonesboro	10.1448884794	local	225	document
+Ohio	Lovejoy	0.0	local	6	sentence
+Georgia	Ohio	386.618650029	region	49	paragraph
+Nigeria	Georgia	8768.52670108	global	23	sentence
+Decatur	DeKalb	6.43334833167	local	26	paragraph
+DeKalb County	Decatur	6.43334833167	local	9	sentence
+North Druid Hills	DeKalb County	10.4471666047	local	17	sentence
+DeKalb	North Druid Hills	10.4471666047	local	13	sentence
+North Druid Hills	DeKalb	10.4471666047	local	15	sentence
+Decatur	North Druid Hills	4.91739830159	local	85	paragraph
+Butler County	New Miami	3.06956057824	local	57	paragraph
+New Miami	Butler County	3.06956057824	local	16	sentence
+Butler County	New Miami	3.06956057824	local	3	adjacent
+Hamilton	Butler County	5.63629997941	local	152	document
+Henrico County	Glen Allen	17.8405316833	local	5	sentence
+Glen Allen	Henrico County	17.8405316833	local	44	paragraph
+Guernsey County	Byesville	9.07814795273	local	54	paragraph
+Cambridge	Guernsey County	6.4931852707	local	122	paragraph
+Pleasant City	Cambridge	14.6278756439	local	1	adjacent
+Lore City	Pleasant City	11.6723395423	local	2	adjacent
+Pleasant City	Lore City	11.6723395423	local	1	adjacent
+Cambridge	Pleasant City	14.6278756439	local	38	paragraph
+Levy County	Chiefland	22.9556876886	local	62	paragraph
+Florida	Levy County	0.0	local	7	sentence
+Chiefland	Florida	0.0	local	57	paragraph
+Cross City	Chiefland	31.1970089743	local	2	adjacent
+Alexandria	America	0.0	local	8	sentence
+Denver	Alexandria	2403.34584036	global	72	paragraph
+Indianapolis	Denver	1610.48644498	global	2	adjacent
+Louisville	Indianapolis	171.607955629	region	2	adjacent
+Ky.	Louisville	0.0	local	2	adjacent
+New Haven	Ky.	0.0	local	2	adjacent
+Conn.	New Haven	0.0	local	2	adjacent
+Sioux Falls	Conn.	0.0	local	2	adjacent
+S.D.	Sioux Falls	0.0	local	2	adjacent
+Ky.	S.D.	868.179725869	country	1	adjacent
+Surprise	Ky.	0.0	local	2	adjacent
+Denver	Surprise	943.154791022	country	1	adjacent
+Ariz.	Denver	0.0	local	1	adjacent
+Indianapolis	Ariz.	0.0	local	1	adjacent
+Alexandria	Indianapolis	792.957026772	country	38	paragraph
+Indianapolis	Alexandria	792.957026772	country	3	adjacent
+Louisville	Indianapolis	171.607955629	region	1	adjacent
+Indianapolis	Louisville	171.607955629	region	1	adjacent
+New Haven	Indianapolis	1132.64047028	country	1	adjacent
+Alexandria	New Haven	447.972458983	region	1	adjacent
+Sioux Falls	Alexandria	1726.41349517	global	1	adjacent
+Indiana	Alton	0.0	local	9	sentence
+Vanderburgh	Indiana	0.0	local	8	sentence
+Ind.	Vanderburgh	0.0	local	2	adjacent
+Evansville	Ind.	0.0	local	13	sentence
+Madison County	Evansville	225.854228652	region	87	paragraph
+Alton	Madison County	25.4711738488	local	13	sentence
+Madison County	Alton	25.4711738488	local	7	sentence
+Alton	Madison County	25.4711738488	local	2	adjacent
+Illinois	Alton	0.0	local	13	sentence
+Vanderburgh County	Illinois	0.0	local	103	paragraph
+Godfrey	Vanderburgh County	249.470009201	region	7	sentence
+Indiana	Boone County	0.0	local	37	paragraph
+Boone County	Indiana	0.0	local	6	sentence
+Hamilton	Boone County	39.30661643	local	27	paragraph
+Hendricks	Hamilton	54.4243459525	local	5	sentence
+Marion	Hendricks	31.7928928554	local	5	sentence
+Montgomery County	Marion	68.5392603282	local	5	sentence
+Hamilton	Montgomery County	73.8970309232	local	1	adjacent
+Clinton	Hamilton	50.0489506491	local	2	adjacent
+Hamilton	Clinton	50.0489506491	local	1	adjacent
+Boone County	Hamilton	39.30661643	local	4	adjacent
+Montgomery County	Boone County	34.5967095669	local	1	adjacent
+Marion	Montgomery County	68.5392603282	local	2	adjacent
+Clinton	Marion	64.3462919216	local	5	sentence
+Montgomery County	Clinton	40.7456738974	local	2	adjacent
+Clinton	Montgomery County	40.7456738974	local	7	sentence
+Boone County	Clinton	25.9043875774	local	11	sentence
+Indiana	Boone County	0.0	local	8	sentence
+Boone County	Indiana	0.0	local	9	sentence
+Indiana	Boone County	0.0	local	38	paragraph
+Illinois	Indiana	0.0	local	16	sentence
+Ohio	Illinois	226.794664898	region	13	sentence
+Indiana	Ohio	0.0	local	1	adjacent
+Kentucky	Indiana	0.0	local	10	sentence
+Indiana	Kentucky	0.0	local	1	adjacent
+Michigan	Indiana	3.69542009232	local	9	sentence
+Indiana	Michigan	3.69542009232	local	1	adjacent
+Georgia	Kentucky	175.467290478	region	4	adjacent
+Athens	Georgia	0.0	local	16	sentence
+Kansas City	Independence	14.1420369561	local	9	sentence
+Jackson County	Kansas City	21.8111816418	local	9	sentence
+Independence	Jackson County	10.0085555027	local	4	adjacent
+Kansas City	Independence	14.1420369561	local	56	paragraph
+New York	Toronto	0.0	local	58	paragraph
+Ontario	New York	0.0	local	378	document
+MINNEAPOLIS	Worthington	239.746316621	region	4	adjacent
+Worthington	MINNEAPOLIS	239.746316621	region	27	paragraph
+U.S.	Worthington	0.0	local	3	adjacent
+Worthington	U.S.	0.0	local	74	paragraph
+Santa Clara County	Gilroy	30.8769585056	local	16	sentence
+U.S.	Santa Clara County	0.0	local	6	sentence
+Gilroy	U.S.	0.0	local	24	sentence
+San Jose	Gilroy	47.0540659284	local	7	sentence
+Clarke County	Georgia	0.0	local	74	paragraph
+Oconee County	Clarke County	13.7354377701	local	19	sentence
+Georgia	Oconee County	0.0	local	32	paragraph
+Jackson	Georgia	0.0	local	38	paragraph
+Barrow	Jackson	21.6474785738	local	2	adjacent
+Barrow County	Barrow	0.0	local	73	paragraph
+Clarke	Barrow County	31.0336687743	local	48	paragraph
+Oconee	Clarke	13.7354377701	local	2	adjacent
+Barrow	Oconee	31.0389330078	local	9	sentence
+Jackson	Barrow	21.6474785738	local	2	adjacent
+Madison	Jackson	32.2932501355	local	2	adjacent
+Georgia	Madison	0.0	local	46	paragraph
+Washington	Georgia	688.275259755	country	138	paragraph
+Georgia	Washington	688.275259755	country	35	paragraph
+Ohio	BOWLING GREEN	0.0	local	1	adjacent
+Bowling Green	Ohio	0.0	local	7	sentence
+Ohio	Bowling Green	0.0	local	62	paragraph
+Texas	Paris	0.0	local	15	sentence
+Paris	Texas	0.0	local	40	paragraph
+Texas	Paris	0.0	local	139	paragraph
+Paris	Texas	0.0	local	6	sentence
+Dallas	Paris	151.924382675	local	19	sentence
+Paris	Dallas	151.924382675	local	8	sentence
+Georgia	Ocilla	0.0	local	17	sentence
+Fitzgerald	Georgia	0.0	local	5	sentence
+Georgia	Fitzgerald	0.0	local	79	paragraph
+Gainesville	Georgia	0.0	local	4	adjacent
+Duluth	Gainesville	44.0953715924	local	2	adjacent
+United States	Duluth	0.0	local	18	sentence
+Gainesville	United States	0.0	local	16	sentence
+United States	Gainesville	0.0	local	14	sentence
+Harrisburg	United States	0.0	local	38	paragraph
+Pa.	Harrisburg	0.0	local	2	adjacent
+Harrisburg	Pa.	0.0	local	4	adjacent
+Gainesville	Harrisburg	904.130024408	country	41	paragraph
+Georgia	Gainesville	0.0	local	65	paragraph
+Gainesville	Georgia	0.0	local	7	sentence
+Georgia	Gainesville	0.0	local	65	paragraph
+Greene County	Springfield	7.33687471836	local	7	sentence
+Springfield	Greene County	7.33687471836	local	6	sentence
+Greene County	Springfield	7.33687471836	local	1	adjacent
+St. Louis	Greene County	315.530236733	region	131	paragraph
+U.S.	St. Louis	0.0	local	34	paragraph
+St. Louis	U.S.	0.0	local	26	paragraph
+Springfield	St. Louis	314.41176669	region	44	paragraph
+St. Louis	Springfield	314.41176669	region	15	sentence
+U.S.	St. Louis	0.0	local	18	sentence
+Alexandria	Virginia	0.0	local	141	paragraph
+Richmond	Madison County	1.67336958417	local	31	paragraph
+Berea	Richmond	19.8899128106	local	13	sentence
+Irvine	Berea	32.0097244575	local	73	paragraph
+Waco	Irvine	15.7212613634	local	11	sentence
+Kentucky	Waco	0.0	local	8	sentence
+West Columbia	W. Columbia	0.0	local	29	paragraph
+Lexington County	West Columbia	23.3030607177	local	1	adjacent
+Columbia	Lexington County	26.9180085169	local	24	sentence
+Gaston	Columbia	21.2627764271	local	14	sentence
+Columbia	Gaston	21.2627764271	local	19	sentence
+United States	Jordan	8321.85701045	global	29	paragraph
+Jordan	United States	8321.85701045	global	89	paragraph
+Tennessee	LAWRENCEBURG	0.0	local	10	sentence
+Lawrenceburg	Tennessee	0.0	local	40	paragraph
+Williamson County	Lawrenceburg	82.9417565868	local	99	paragraph
+Tennessee	Williamson County	0.0	local	7	sentence
+Williamson County	Tennessee	0.0	local	22	sentence
+Lawrenceburg	Williamson County	82.9417565868	local	39	paragraph
+Shelbyville	Lawrenceburg	83.8492235877	local	5	sentence
+Tennessee	Shelbyville	0.0	local	26	paragraph
+Williamson County	Tennessee	0.0	local	26	paragraph
+West Virginia	Kanawha County	0.0	local	34	paragraph
+California	West Virginia	2850.16056956	global	66	paragraph
+Massachusetts	California	3624.61874995	global	8	sentence
+Hardy	Massachusetts	0.0	local	156	document
+West Virginia	Hardy	0.0	local	20	sentence
+McDowell	West Virginia	0.0	local	19	sentence
+Hardy	McDowell	308.443954821	region	9	sentence
+McDowell	Hardy	308.443954821	region	15	sentence
+Monongalia	McDowell	290.032049558	region	20	sentence
+London	Erie	99.7339115263	local	1	adjacent
+Erie	London	99.7339115263	local	15	sentence
+Sarnia	Erie	193.334949548	region	60	paragraph
+London	Sarnia	93.8355167006	local	5	sentence
+Sarnia	London	93.8355167006	local	8	sentence
+Erie	Sarnia	193.334949548	region	36	paragraph
+London	Erie	99.7339115263	local	49	paragraph
+Erie	London	99.7339115263	local	5	sentence
+London	Erie	99.7339115263	local	10	sentence
+Brampton	London	142.111158913	local	30	paragraph
+Erie	Brampton	89.3569911361	local	22	sentence
+W.Va.	CHARLESTON	0.0	local	1	adjacent
+Mo.	KANSAS CITY	0.0	local	1	adjacent
+Kansas	Mo.	0.0	local	7	sentence
+Hutchinson	Kansas	0.0	local	9	sentence
+Marion County	Hutchinson	77.9468945402	local	38	paragraph
+Riley County	Marion County	110.724354104	local	52	paragraph
+Kansas	Riley County	0.0	local	125	paragraph
+Kansas City	Kansas	0.0	local	1	adjacent
+Anderson County	Kansas City	117.222672292	local	15	sentence
+Kansas City	Anderson County	117.222672292	local	10	sentence
+Kansas	Kansas City	0.0	local	10	sentence
+Anderson County	Kansas	0.0	local	1	adjacent
+Kansas	Anderson County	0.0	local	15	sentence
+Pratt	Kansas	0.0	local	7	sentence
+Dodge City	Pratt	113.476211722	local	40	paragraph
+Kansas	Dodge City	0.0	local	27	paragraph
+Dodge City	Kansas	0.0	local	25	sentence
+Kansas	Dodge City	0.0	local	2	adjacent
+U.S.	Kansas	0.0	local	17	sentence
+Garden City	U.S.	0.0	local	5	sentence
+U.S.	Garden City	0.0	local	6	sentence
+Dodge City	U.S.	0.0	local	4	adjacent
+Garden City	Dodge City	79.146192181	local	1	adjacent
+Pratt County	Garden City	191.730944675	region	19	sentence
+Hutchinson	Pratt County	84.1668188604	local	13	sentence
+U.S.	Hutchinson	0.0	local	7	sentence
+Harvey	U.S.	0.0	local	8	sentence
+Harper	Harvey	110.424570835	local	2	adjacent
+Kingman	Harper	40.9383312966	local	2	adjacent
+U.S.	Kingman	0.0	local	8	sentence
+Kansas	U.S.	0.0	local	18	sentence
+U.S.	Kansas	0.0	local	6	sentence
+Dodge City	U.S.	0.0	local	12	sentence
+Great Bend	Dodge City	129.176970591	local	2	adjacent
+Harvey	Great Bend	121.705464928	local	1	adjacent
+Hutchinson	Harvey	43.5661042904	local	1	adjacent
+Harvey	Hutchinson	43.5661042904	local	1	adjacent
+Kingman	Harvey	81.7211296391	local	1	adjacent
+Harvey	Kingman	81.7211296391	local	1	adjacent
+Larned	Harvey	146.736329247	local	1	adjacent
+Harvey	Larned	146.736329247	local	1	adjacent
+Pratt County	Harvey	122.733197081	local	1	adjacent
+Wichita	Pratt County	123.265220954	local	3	adjacent
+Pratt	Wichita	123.64158792	local	5	sentence
+Harvey	Pratt	123.303521354	local	3	adjacent
+Arkansas	ROANOKE	0.0	local	3	adjacent
+Virginia	Arkansas	546.273936963	country	7	sentence
+Roanoke	Virginia	0.0	local	6	sentence
+Arizona	Roanoke	0.0	local	33	paragraph
+Virginia	Arizona	2258.54833738	global	53	paragraph
+McLean	Virginia	0.0	local	18	sentence
+Alexandria	McLean	18.3067600946	local	8	sentence
+Bath County	Alexandria	248.416046481	region	8	sentence
+Big Creek	Henry County	15.5413871879	local	16	sentence
+Washington County	Big Creek	56.8356351605	local	112	paragraph
+Georgia	Gainesville	0.0	local	32	paragraph
+Batesburg-Leesville	Lexington County	21.9937395137	local	11	sentence
+Swansea	Batesburg-Leesville	44.9242798622	local	11	sentence
+Batesburg-Leesville	Swansea	44.9242798622	local	7	sentence
+Lexington	Batesburg-Leesville	28.9394808533	local	6	sentence
+Lexington County	Lexington	10.7746992746	local	2	adjacent
+Texas	Mount Pleasant	0.0	local	6	sentence
+Mount Pleasant	Texas	0.0	local	66	paragraph
+Henderson County	CORSICANA	61.0511544653	local	1	adjacent
+Navarro County	Henderson County	62.0325425699	local	25	sentence
+Gun Barrel City	Navarro County	43.3550525845	local	13	sentence
+Kaufman County	Gun Barrel City	32.6008735694	local	153	document
+U.S.	Kaufman County	0.0	local	89	paragraph
+Kaufman County	U.S.	0.0	local	41	paragraph
+Navarro County	Kaufman County	62.9651127783	local	19	sentence
+Kaufman County	Navarro County	62.9651127783	local	1	adjacent
+Corsicana	Kaufman County	58.1744549435	local	8	sentence
+Navarro County	Corsicana	5.01569744144	local	35	paragraph
+Corsicana	Navarro County	5.01569744144	local	36	paragraph
+Boscawen	New Hampshire	0.0	local	5	sentence
+Manchester	Boscawen	37.9791303002	local	11	sentence
+Afghanistan	Manchester	0.0	local	6	sentence
+American	Afghanistan	7221.84732546	global	41	paragraph
+Helmand	American	0.0	local	66	paragraph
+Afghanistan	Helmand	0.0	local	4	adjacent
+Pennsylvania	Afghanistan	10345.5461757	global	13	sentence
+Afghanistan	Pennsylvania	10345.5461757	global	7	sentence
+Iraq	Afghanistan	1187.02935385	country	12	sentence
+N.C.	Iraq	9665.44426395	global	54	paragraph
+New Hampshire	N.C.	748.737859498	country	40	paragraph
+Iraq	New Hampshire	8707.13268096	global	7	sentence
+Afghanistan	Iraq	1187.02935385	country	2	adjacent
+N.C.	Afghanistan	10877.3123776	global	1	adjacent
+U.S.	N.C.	0.0	local	11	sentence
+Afghanistan	U.S.	7221.84732546	global	43	paragraph
+Manchester	Afghanistan	0.0	local	35	paragraph
+Dallas	Paris	151.924382675	local	5	sentence
+Paris	Dallas	151.924382675	local	22	sentence
+Dallas	Paris	151.924382675	local	11	sentence
+Paris	Dallas	151.924382675	local	21	sentence
+S.C.	Columbia	0.0	local	258	document
+Columbia	S.C.	0.0	local	118	paragraph
+Chowchilla	L.A.	386.581460892	region	32	paragraph
+Calif.	Chowchilla	0.0	local	1	adjacent
+Chowchilla	Calif.	0.0	local	2	adjacent
+Minnesota	Chowchilla	0.0	local	11	sentence
+California	Minnesota	1824.14955599	global	15	sentence
+Chowchilla	California	0.0	local	5	sentence
+California	Chowchilla	0.0	local	47	paragraph
+Los Angeles	California	0.0	local	12	sentence
+Boulder City	Henderson	15.1272682276	local	1	adjacent
+Henderson	Boulder City	15.1272682276	local	58	paragraph
+Boulder City	Henderson	15.1272682276	local	30	paragraph
+U.S.	Boulder City	0.0	local	20	sentence
+Boulder City	U.S.	0.0	local	25	sentence
+Henderson	Boulder City	15.1272682276	local	2	adjacent
+St. Marys	St. Marys River	5.02092075922	local	1	adjacent
+St. Marys River	St. Marys	5.02092075922	local	4	adjacent
+St. Marys	St. Marys River	0.0	local	20	sentence
+St. Marys River	St. Marys	0.0	local	32	paragraph
+Camden	St. Marys River	30.0714624895	local	52	paragraph
+Charlton	Camden	46.4567931363	local	2	adjacent
+Georgia	Charlton	0.0	local	3	adjacent
+Nassau	Georgia	0.0	local	2	adjacent
+Baker	Nassau	59.1998051126	local	2	adjacent
+Florida	Baker	0.0	local	3	adjacent
+Charlton County	Florida	0.0	local	53	paragraph
+Kansas	Riley County	0.0	local	19	sentence
+Riley County	Kansas	0.0	local	51	paragraph
+San Jose	Santa Clara County	16.2938342577	local	52	paragraph
+Texas	Gainesville	0.0	local	27	paragraph
+Florida	Texas	565.83989383	country	2	adjacent
+Texas	Florida	565.83989383	country	142	paragraph
+Vietnam	Texas	12737.7910899	global	27	paragraph
+Texas	Vietnam	12737.7910899	global	9	sentence
+Vietnam	Texas	12737.7910899	global	30	paragraph
+Aleutian Islands	Vietnam	0.0	local	7	sentence
+Italy	Aleutian Islands	0.0	local	10	sentence
+Aleutian Islands	Italy	0.0	local	1	adjacent
+Russia	Aleutian Islands	0.0	local	4	adjacent
+Aleutian Islands	Russia	0.0	local	12	sentence
+Russia	Aleutian Islands	0.0	local	15	sentence
+U.S.	Russia	87.2010511849	local	7	sentence
+Aleutian Islands	U.S.	0.0	local	4	adjacent
+U.S.	Aleutian Islands	0.0	local	2	adjacent
+China	U.S.	3530.13528535	global	5	sentence
+Canada	China	4744.60217957	global	2	adjacent
+Britian	Canada	0.0	local	2	adjacent
+Russia	Britian	0.0	local	5	sentence
+China	Russia	0.0	local	13	sentence
+Japan	China	409.798937761	region	6	sentence
+American	Japan	3006.77073849	global	3	adjacent
+Chinese	American	3530.13528535	global	5	sentence
+U.S.	Chinese	3530.13528535	global	17	sentence
+Chinese	U.S.	3530.13528535	global	7	sentence
+Japan	Chinese	409.798937761	region	21	sentence
+China	Japan	409.798937761	region	14	sentence
+Texan	China	9019.8902484	global	4	adjacent
+Chinese	Texan	9019.8902484	global	3	adjacent
+Texan	Chinese	9019.8902484	global	12	sentence
+Lindsay	Texan	0.0	local	101	paragraph
+Thackerville	Lindsay	18.9673068397	local	5	sentence
+Okla.	Thackerville	0.0	local	2	adjacent
+Thackerville	Okla.	0.0	local	89	paragraph
+Paris	Crestwood	227.696121961	region	45	paragraph
+South Carolina	Greer	0.0	local	1	adjacent
+Greer	South Carolina	0.0	local	55	paragraph
+Lake Robinson	Greer	199.426518758	region	10	sentence
+Lake Cunningham	Lake Robinson	203.669149119	region	1	adjacent
+Lake Robinson	Lake Cunningham	203.669149119	region	1	adjacent
+Lake Cunningham	Lake Robinson	203.669149119	region	8	sentence
+Greenville	Lake Cunningham	19.2369509826	local	9	sentence
+Spartanburg	Greenville	43.5754037872	local	1	adjacent
+Greer	Spartanburg	26.9845284949	local	5	sentence
+Greer Station	Greer	0.0	local	1	adjacent
+Greer	Greer Station	0.0	local	1	adjacent
+Spartanburg	Greer	26.9845284949	local	3	adjacent
+Greer Station	Spartanburg	26.9845284949	local	11	sentence
+Greer	Greer Station	0.0	local	73	paragraph
+Greenville	Greer	17.9989345356	local	40	paragraph
+Spartanburg	Greenville	43.5754037872	local	2	adjacent
+Greer	Spartanburg	26.9845284949	local	6	sentence
+Greene County	Logan	36.6209470788	local	34	paragraph
+Rogersville	Greene County	30.9795743448	local	12	sentence
+Springfield	Rogersville	421.24138329	region	2	adjacent
+Webster County	Springfield	397.640051972	region	9	sentence
+Rogersville	Webster County	23.6076197864	local	4	adjacent
+Logan	Rogersville	51.1120772271	local	5	sentence
+Rogersville	Logan	51.1120772271	local	1	adjacent
+Greene County	Rogersville	30.9795743448	local	9	sentence
+Logan	Greene County	36.6209470788	local	1	adjacent
+Rogersville	Logan	51.1120772271	local	28	paragraph
+Logan	Rogersville	51.1120772271	local	4	adjacent
+Rogersville	Logan	51.1120772271	local	7	sentence
+Logan	Rogersville	51.1120772271	local	7	sentence
+Rogersville	Logan	51.1120772271	local	9	sentence
+Robbinsdale	Jordan	10023.8502434	global	10	sentence
+Minnesota	Alexandria	0.0	local	83	paragraph
+U.S.	Minnesota	0.0	local	2	adjacent
+Minnesota	U.S.	0.0	local	4	adjacent
+U.S.	Minnesota	0.0	local	5	sentence
+Minnesotans	U.S.	0.0	local	61	paragraph
+HAMILTON	Butler County	5.63629997941	local	10	sentence
+Butler County	HAMILTON	5.63629997941	local	16	sentence
+Ontario	Chatham	0.0	local	14	sentence
+Muskoka	Ontario	0.0	local	17	sentence
+Oxford	Bicester	17.994425143	local	12	sentence
+Philadelphia	U.S.	0.0	local	90	paragraph
+Penacook	Epsom	22.6895271961	local	48	paragraph
+Ohio	Springfield	0.0	local	1	adjacent
+Springfield	Ohio	0.0	local	48	paragraph
+U.S.	Springfield	0.0	local	92	paragraph
+Ohio	U.S.	0.0	local	5	sentence
+D.C.	Ohio	332.597725688	region	21	sentence
+U.S.	D.C.	0.0	local	11	sentence
+D.C.	U.S.	0.0	local	37	paragraph
+Hawaii	D.C.	0.0	local	74	paragraph
+Florida	Hawaii	0.0	local	4	adjacent
+Dublin	Irish	0.0	local	6	sentence
+North Side	North Shore	1.21454820088	local	38	paragraph
+Licking County	Newark	8.89213490791	local	302	document
+Newark	Licking County	8.89213490791	local	20	sentence
+Nashville	Columbia	65.1783496377	local	11	sentence
+Columbia	Nashville	65.1783496377	local	17	sentence
+Sacramento	UNION CITY	118.719051643	local	116	paragraph
+Fremont	Sacramento	122.643669284	local	270	document
+Newark	Fremont	4.9576049851	local	27	paragraph
+Fla.	ORLANDO	0.0	local	1	adjacent
+Orlando	Fla.	0.0	local	73	paragraph
+Fla.	Orlando	0.0	local	1	adjacent
+Orlando	Fla.	0.0	local	1	adjacent
+Fla.	Orlando	0.0	local	11	sentence
+Orlando	Fla.	0.0	local	2	adjacent
+Charles City County	Richmond	40.561183732	local	34	paragraph
+Richmond	Charles City County	40.561183732	local	36	paragraph
+Virginia	Richmond	0.0	local	44	paragraph
+Charles City	Virginia	0.0	local	8	sentence
+James River	Charles City	71.5355155063	local	22	sentence
+Richmond	James River	112.934703794	local	10	sentence
+James River	Richmond	112.934703794	local	8	sentence
+Charles City	James River	71.5355155063	local	22	sentence
+Richmond	Charles City	41.4637494015	local	7	sentence
+Charles City	Richmond	41.4637494015	local	4	adjacent
+Richmond	Charles City	41.4637494015	local	22	sentence
+Indiantown	Lebanon	9204.347375	global	1	adjacent
+Washington	U.S.	0.0	local	20	sentence
+Jerusalem	Washington	0.068016331439	local	16	sentence
+New York	Jerusalem	0.0	local	3	adjacent
+Afghanistan	New York	9978.79673987	global	146	paragraph
+Pakistan	Afghanistan	0.0	local	2	adjacent
+Afghanistan	Pakistan	0.0	local	34	paragraph
+Northern Ireland	Afghanistan	5422.23593922	global	29	paragraph
+Russia	MOSCOW	0.0	local	2	adjacent
+Moscow	Russia	0.0	local	14	sentence
+Russia	Moscow	0.0	local	33	paragraph
+Moscow	Russia	0.0	local	15	sentence
+Russia	Moscow	0.0	local	29	paragraph
+Nelson	Alexandria	8.80677417238	local	4	adjacent
+Douglas County	Nelson	15.2411159253	local	15	sentence
+St. Cloud	Douglas County	108.424973094	local	6	sentence
+Anderson County	Palestine	11216.0008313	global	16	sentence
+Palestine	Anderson County	11216.0008313	global	10	sentence
+U.S.	Palestine	8317.33734317	global	19	sentence
+Palestine	U.S.	8317.33734317	global	8	sentence
+Anderson County	Palestine	11216.0008313	global	4	adjacent
+Freestone County	Anderson County	58.2956681089	local	6	sentence
+Anderson County	Freestone County	58.2956681089	local	1	adjacent
+Palestine	Anderson County	11216.0008313	global	23	sentence
+Freestone County	Palestine	11216.0008313	global	10	sentence
+U.S.	Freestone County	0.0	local	46	paragraph
+Fairfield	U.S.	0.0	local	4	adjacent
+Freestone County	Fairfield	10.0122970544	local	9	sentence
+U.S.	Freestone County	0.0	local	8	sentence
+Texas	U.S.	0.0	local	36	paragraph
+Freestone County	Texas	0.0	local	63	paragraph
+Anderson County	Freestone County	58.2956681089	local	10	sentence
+Freestone County	Anderson County	58.2956681089	local	1	adjacent
+Anderson County	Freestone County	58.2956681089	local	1	adjacent
+Peruvian	Lancaster	0.0	local	195	document
+Vancouver	Richmond	3307.06347418	global	13	sentence
+Richmond	Vancouver	3307.06347418	global	108	paragraph
+Canada	Canadians	0.0	local	137	paragraph
+Toronto	Canada	0.0	local	4	adjacent
+Canada	Toronto	0.0	local	32	paragraph
+Toronto	Canada	0.0	local	232	document
+Tokyo	Toronto	10364.5391414	global	12	sentence
+London	Tokyo	9584.74865836	global	11	sentence
+Tokyo	London	9584.74865836	global	1	adjacent
+Toronto	Tokyo	10364.5391414	global	7	sentence
+Canada	Toronto	0.0	local	17	sentence
+U.S.	Canada	0.0	local	22	sentence
+China	U.S.	3530.13528535	global	2	adjacent
+London	China	0.0	local	32	paragraph
+Toronto	London	5727.77531601	global	4	adjacent
+U.S.	Raytown	0.0	local	88	paragraph
+Raytown	U.S.	0.0	local	166	document
+Missouri	Raytown	0.0	local	90	paragraph
+New Zealand	Newark	0.0	local	4	adjacent
+NEWARK	New Zealand	0.0	local	10	sentence
+New Zealand	NEWARK	0.0	local	18	sentence
+United States	New Zealand	6783.80149642	global	38	paragraph
+New Hampshire	United States	0.0	local	8	sentence
+Minnesota	New Hampshire	1412.93315716	country	2	adjacent
+New Hampshire	Minnesota	1412.93315716	country	8	sentence
+New Zealand	New Hampshire	14053.7692129	global	1	adjacent
+New Hampshire	New Zealand	14053.7692129	global	3	adjacent
+New Zealand	New Hampshire	14053.7692129	global	27	paragraph
+Wairoa	New Zealand	0.0	local	1	adjacent
+New Zealand	Wairoa	0.0	local	1	adjacent
+Maori	New Zealand	2767.07152306	global	2	adjacent
+New Zealand	Maori	2767.07152306	global	1	adjacent
+American	New Zealand	6783.80149642	global	3	adjacent
+New Zealand	American	6783.80149642	global	84	paragraph
+North Island	New Zealand	0.0	local	40	paragraph
+New Zealand	North Island	0.0	local	1	adjacent
+South Island	New Zealand	0.0	local	5	sentence
+North Island	South Island	611.565540066	country	1	adjacent
+New Zealand	North Island	0.0	local	1	adjacent
+Columbus	Chattahoochee River	194.638796218	region	84	paragraph
+Phenix City	Columbus	1.65725871215	local	40	paragraph
+Alabama	Phenix City	0.0	local	9	sentence
+Georgia	Alabama	0.0	local	7	sentence
+Alabama	Georgia	0.0	local	2	adjacent
+Columbus	Alabama	0.0	local	14	sentence
+Georgia	Columbus	0.0	local	18	sentence
+Phenix City	Georgia	0.0	local	4	adjacent
+HARTFORD	Connecticut	0.0	local	7	sentence
+Connecticut	HARTFORD	0.0	local	2	adjacent
+New Jersey	Connecticut	19.9427751325	local	192	document
+Connecticut	New Jersey	19.9427751325	local	24	sentence
+U.S.	Connecticut	0.0	local	15	sentence
+Hartford	U.S.	0.0	local	19	sentence
+Connecticut	Hartford	0.0	local	16	sentence
+U.S.	Connecticut	0.0	local	4	adjacent
+Connecticut	U.S.	0.0	local	8	sentence
+U.S.	Connecticut	0.0	local	7	sentence
+Connecticut	U.S.	0.0	local	60	paragraph
+Africa	Connecticut	4851.88454951	global	20	sentence
+Caribbean	Africa	3436.06419677	global	3	adjacent
+America	Caribbean	86.9703837778	local	2	adjacent
+Connecticut	America	0.0	local	6	sentence
+America	Connecticut	0.0	local	21	sentence
+Caribbean	America	86.9703837778	local	6	sentence
+Africa	Caribbean	3436.06419677	global	14	sentence
+Madison County	Richmond	1.67336958417	local	124	paragraph
+Richmond	Madison County	1.67336958417	local	29	paragraph
+Louisiana	Richmond	0.0	local	220	document
+La.	Louisiana	0.0	local	28	paragraph
+Louisiana	La.	0.0	local	49	paragraph
+Richmond	Louisiana	0.0	local	39	paragraph
+Polish	Delta	0.0	local	16	sentence
+Vancouver	Polish	0.0	local	12	sentence
+Delta	Vancouver	18.6947515919	local	56	paragraph
+Vancouver	Delta	18.6947515919	local	221	document
+SOUTH CHARLESTON	S.C.	352.977823911	region	1	adjacent
+W.Va.	SOUTH CHARLESTON	0.0	local	1	adjacent
+South Charleston	W.Va.	0.0	local	12	sentence
+West Virginia	South Charleston	0.0	local	39	paragraph
+Virginia Beach	West Virginia	0.0	local	14	sentence
+Va.	Virginia Beach	0.0	local	2	adjacent
+Cedar Grove	Va.	0.0	local	3	adjacent
+Cabell County	Cedar Grove	75.6370744513	local	17	sentence
+Bluefield	Cabell County	157.665783341	local	2	adjacent
+Va.	Bluefield	0.0	local	19	sentence
+St. Albans	Va.	0.0	local	70	paragraph
+Kanawha City	St. Albans	23.325901408	local	2	adjacent
+South Charleston	Kanawha City	11.5157458582	local	16	sentence
+Shawnee Park	South Charleston	5.34812851991	local	5	sentence
+Institute	Shawnee Park	0.819350238049	local	3	adjacent
+South Charleston	Institute	5.99532388132	local	8	sentence
+St. Albans	South Charleston	12.0897151798	local	15	sentence
+Institute	St. Albans	6.18989514669	local	19	sentence
+South Charleston	Institute	5.99532388132	local	9	sentence
+West Virginia	South Charleston	0.0	local	130	paragraph
+South Charleston	West Virginia	0.0	local	165	document
+Lakeville	Chesterland	116.825934997	local	5	sentence
+Chesterland	Lakeville	116.825934997	local	1	adjacent
+Lakeville	Chesterland	116.825934997	local	3	adjacent
+Ohio	Lakeville	0.0	local	4	adjacent
+U.S.	Ohio	0.0	local	22	sentence
+American	U.S.	0.0	local	73	paragraph
+Connecticut	Harwinton	0.0	local	23	sentence
+Harwinton	Connecticut	0.0	local	16	sentence
+Litchfield	Harwinton	11.0434085398	local	6	sentence
+Burlington	Litchfield	18.80469382	local	5	sentence
+Stamford	Burlington	92.8786857211	local	5	sentence
+Kanawha City	Charleston	5.41873326629	local	15	sentence
+Bronx County	Kanawha City	714.095885647	country	194	document
+N.Y	Bronx County	0.0	local	2	adjacent
+Bronx County	N.Y	0.0	local	20	sentence
+N.Y	Bronx County	0.0	local	17	sentence
+Washington	Ohioans	332.597725688	region	24	sentence
+Ohio	Washington	332.597725688	region	382	document
+Middletown	Ohio	0.0	local	16	sentence
+Swansea	Lexington	29.8675330389	local	186	document
+China	Egypt	3663.42571408	global	34	paragraph
+Philippines	China	652.874965934	country	3	adjacent
+Georgian	South Ossetia	0.0	local	13	sentence
+South Ossetian	Georgian	0.0	local	2	adjacent
+South Ossetia	South Ossetian	0.0	local	25	sentence
+Tbilisi	South Ossetia	94.0944486286	local	24	sentence
+South Ossetian	Tbilisi	94.0944486286	local	3	adjacent
+Georgian	South Ossetian	0.0	local	15	sentence
+Russian	Georgian	0.0	local	34	paragraph
+Georgian	Russian	0.0	local	9	sentence
+South Ossetians	Georgian	0.0	local	6	sentence
+Georgian	South Ossetians	0.0	local	13	sentence
+Tbilisi	Georgian	0.0	local	9	sentence
+South Ossetians	Tbilisi	94.0944486286	local	5	sentence
+Georgian	South Ossetians	0.0	local	5	sentence
+Nuli	Georgian	0.0	local	3	adjacent
+Avnevi	Nuli	2.5198134963	local	2	adjacent
+Georgian	Avnevi	0.0	local	1	adjacent
+South Ossetian	Georgian	0.0	local	16	sentence
+Georgian	South Ossetian	0.0	local	5	sentence
+South Ossetian	Georgian	0.0	local	18	sentence
+Georgian	South Ossetian	0.0	local	7	sentence
+Prisi	Georgian	0.0	local	3	adjacent
+Georgian	Prisi	0.0	local	17	sentence
+Prisi	Georgian	0.0	local	7	sentence
+Tamarasheni	Prisi	3.92232712457	local	2	adjacent
+Tbilisi	Tamarasheni	89.799300893	local	13	sentence
+Georgian	Tbilisi	0.0	local	10	sentence
+South Ossetian	Georgian	0.0	local	30	paragraph
+Caucasus	South Ossetian	0.0	local	9	sentence
+Georgian	Caucasus	0.0	local	14	sentence
+South Ossetian	Georgian	0.0	local	33	paragraph
+Georgian	South Ossetian	0.0	local	4	adjacent
+Gori	Georgian	0.0	local	3	adjacent
+Georgian	Gori	0.0	local	16	sentence
+Caucasus	Georgian	0.0	local	24	sentence
+Gori	Caucasus	0.0	local	7	sentence
+Russian	Gori	0.0	local	3	adjacent
+South Ossetia	Russian	0.0	local	4	adjacent
+Georgian	South Ossetia	0.0	local	11	sentence
+Moscow	Georgian	0.0	local	5	sentence
+Russian	Moscow	0.0	local	36	paragraph
+Russian Federation	Russian	0.0	local	1	adjacent
+Russian	Russian Federation	0.0	local	19	sentence
+Russian Federation	Russian	0.0	local	1	adjacent
+Russian	Russian Federation	0.0	local	17	sentence
+Moscow	Russian	0.0	local	13	sentence
+Georgian	Moscow	0.0	local	14	sentence
+Russian Federation	Georgian	0.0	local	19	sentence
+Russia	Russian Federation	0.0	local	1	adjacent
+Russian Federation	Russia	0.0	local	13	sentence
+Russian	Russian Federation	0.0	local	1	adjacent
+Russian Federation	Russian	0.0	local	4	adjacent
+Russia	Russian Federation	0.0	local	13	sentence
+Russian Federation	Russia	0.0	local	9	sentence
+Russia	Russian Federation	0.0	local	3	adjacent
+Russian Federation	Russia	0.0	local	1	adjacent
+Georgian	Russian Federation	0.0	local	24	sentence
+Russian Federation	Georgian	0.0	local	2	adjacent
+Russia	Russian Federation	0.0	local	1	adjacent
+Russian Federation	Russia	0.0	local	1	adjacent
+Tbilisi	Russian Federation	0.0	local	9	sentence
+Georgian	Tbilisi	0.0	local	6	sentence
+Russia	Georgian	0.0	local	1	adjacent
+South Ossetian	Russia	0.0	local	28	paragraph
+Russian	South Ossetian	0.0	local	19	sentence
+Georgian	Russian	0.0	local	18	sentence
+South Ossetian	Georgian	0.0	local	7	sentence
+Tbilisi	South Ossetian	94.0944486286	local	38	paragraph
+South Ossetian	Tbilisi	94.0944486286	local	9	sentence
+Russian	South Ossetian	0.0	local	23	sentence
+North Ossetian	Russian	0.0	local	2	adjacent
+South Ossetian	North Ossetian	76.8446038666	local	1	adjacent
+Georgian	South Ossetian	0.0	local	2	adjacent
+South Ossetia	Georgian	0.0	local	44	paragraph
+Georgian	South Ossetia	0.0	local	2	adjacent
+Russia	Georgian	0.0	local	5	sentence
+South Ossetia	Russia	0.0	local	9	sentence
+Georgian	South Ossetia	0.0	local	3	adjacent
+US	Georgian	7183.46962637	global	11	sentence
+Russian	US	87.2010511849	local	9	sentence
+Kanawha County	East Bank	16.7477839645	local	1	adjacent
+East Bank	Kanawha County	16.7477839645	local	19	sentence
+Kanawha County	East Bank	16.7477839645	local	88	paragraph
+East Bank	Kanawha County	16.7477839645	local	19	sentence
+Kanawha County	East Bank	16.7477839645	local	38	paragraph
+East Bank	Kanawha County	16.7477839645	local	7	sentence
+CHARLESTON	W.Va.	0.0	local	8	sentence
+W.Va.	CHARLESTON	0.0	local	1	adjacent
+West Virginia	W.Va.	0.0	local	9	sentence
+Princeton	West Virginia	0.0	local	39	paragraph
+Mercer County	Princeton	3.95865812785	local	72	paragraph
+West Virginia	Mercer County	0.0	local	4	adjacent
+Mercer County	West Virginia	0.0	local	7	sentence
+U.S.	Mercer County	0.0	local	5	sentence
+Mercer County	U.S.	0.0	local	9	sentence
+W. Va.	Mercer County	0.0	local	3	adjacent
+CHARLESTON	W. Va.	0.0	local	173	document
+W.Va.	CHARLESTON	0.0	local	2	adjacent
+West Virginia	W.Va.	0.0	local	9	sentence
+Britain	France	37.7405256544	local	30	paragraph
+France	Britain	37.7405256544	local	3	adjacent
+Britain	France	37.7405256544	local	7	sentence
+France	Britain	37.7405256544	local	6	sentence
+Auschwitz	France	0.0	local	12	sentence
+Calais	Auschwitz	1236.0448593	country	36	paragraph
+Britain	Calais	54.4470629934	local	27	paragraph
+Calais	Britain	54.4470629934	local	1	adjacent
+Britain	Calais	54.4470629934	local	28	paragraph
+Calais	Britain	54.4470629934	local	8	sentence
+Britain	Calais	54.4470629934	local	9	sentence
+Caddo	Lindsay	104.135305407	local	9	sentence
+Okla.	Caddo	0.0	local	1	adjacent
+Cooke County	Okla.	0.0	local	13	sentence
+Lindsay	Cooke County	0.605356966541	local	555	document
+Cooke County	Lindsay	0.605356966541	local	8	sentence
+Chicacao	Paris	2430.01157004	global	28	paragraph
+Guatemala	Chicacao	0.0	local	1	adjacent
+Nashville	Guatemala	0.0	local	47	paragraph
+Honduras	Nashville	0.0	local	71	paragraph
+El Salvador	Honduras	0.0	local	2	adjacent
+Canada	El Salvador	0.0	local	2	adjacent
+Guatemala	Canada	2716.03767343	global	2	adjacent
+United States	Guatemala	1108.02550349	country	7	sentence
+Dallas	Santa Clara	2341.72366441	global	22	sentence
+Rhode Island	Dallas	0.0	local	26	paragraph
+U.S.	Rhode Island	0.0	local	40	paragraph
+Rhode Island	U.S.	0.0	local	24	sentence
+Massachusetts	Rhode Island	0.0	local	32	paragraph
+U.S.	Massachusetts	0.0	local	19	sentence
+Santa Clara	U.S.	0.0	local	115	paragraph
+MAINEVILLE	Ohio	0.0	local	3	adjacent
+Ohio	MAINEVILLE	0.0	local	1	adjacent
+Warren County	Ohio	0.0	local	23	sentence
+Hamilton Township	Warren County	12.7606442357	local	1	adjacent
+Cincinnati	Hamilton Township	28.0089053164	local	2	adjacent
+Warren County	Cincinnati	39.1788186017	local	71	paragraph
+Sunrise	Florida	0.0	local	115	paragraph
+Florida	Sunrise	0.0	local	203	document
+Philadelphia	Florida	0.0	local	29	paragraph
+Florida	Philadelphia	0.0	local	112	paragraph
+Tampa	Florida	0.0	local	28	paragraph
+Orlando	Tampa	124.51601916	local	2	adjacent
+Jacksonville	Orlando	200.641428965	region	2	adjacent
+Tallahassee	Jacksonville	252.570403856	region	2	adjacent
+Pensacola	Tallahassee	282.072630392	region	2	adjacent
+Panama City	Pensacola	152.561083463	local	2	adjacent
+Gainesville	Panama City	326.98236681	region	2	adjacent
+Orlando	Gainesville	153.947206162	local	56	paragraph
+Olmsted County	Rochester	2.8270518373	local	13	sentence
+Rochester	Olmsted County	2.8270518373	local	48	paragraph
+Gwinnett County	Buford	19.3863385208	local	3	adjacent
+Buford	Gwinnett County	19.3863385208	local	20	sentence
+Gwinnett	Buford	19.3863385208	local	12	sentence
+Gwinnett County	Gwinnett	0.0	local	64	paragraph
+COLUMBUS	Ohio	0.0	local	10	sentence
+Ohio	COLUMBUS	0.0	local	1	adjacent
+Columbus	Ohio	0.0	local	21	sentence
+Ohio	Columbus	0.0	local	1	adjacent
+Northbrook	Schaumburg	23.502703898	local	305	document
+Kishwaukee River	Kish River	0.0	local	10	sentence
+Wisconsin	Kishwaukee River	0.0	local	8	sentence
+DeKalb	Wisconsin	0.0	local	7	sentence
+Hopkins Park	DeKalb	2.19773450024	local	20	sentence
+DeKalb	Hopkins Park	2.19773450024	local	2	adjacent
+DeKalb County	DeKalb	990.687518598	country	1	adjacent
+West Allis	DeKalb County	1079.82941346	country	17	sentence
+Wis.	West Allis	0.0	local	2	adjacent
+West Allis	Wis.	0.0	local	2	adjacent
+Hopkins Park	West Allis	133.16392608	local	52	paragraph
+DeKalb	Hopkins Park	2.19773450024	local	61	paragraph
+New Londoners	New London	0.0	local	14	sentence
+Mt. Pleasant	New Londoners	13.9355204311	local	94	paragraph
+New London	Mt. Pleasant	13.9355204311	local	108	paragraph
+Winfield	New London	22.0583516392	local	11	sentence
+New London	Winfield	22.0583516392	local	57	paragraph
+Alachua County	Newberry	27.3382369324	local	11	sentence
+Hardeetown	Chiefland	1.87847896579	local	62	paragraph
+Chiefland	Hardeetown	1.87847896579	local	3	adjacent
+Trenton	Chiefland	15.8661142207	local	10	sentence
+Gainesville	Trenton	47.9111042127	local	61	paragraph
+Chiefland	Gainesville	55.4170654031	local	24	sentence
+Levy County	Chiefland	22.9556876886	local	24	sentence
+Columbus	RICHLAND	13.0469936606	local	19	sentence
+Colfax County	Columbus	28.2315811171	local	7	sentence
+Richland	Colfax County	18.1062657155	local	18	sentence
+St. Kitts and Nevis	Red Sea	10625.4672293	global	20	sentence
+Red Sea	St. Kitts and Nevis	10625.4672293	global	8	sentence
+Miami Beach	Miami-Dade	44.7964675834	local	9	sentence
+Friedensburg	Pine Grove	13.5898457397	local	9	sentence
+Pa.	Friedensburg	0.0	local	2	adjacent
+Santa Clara County	Santa Clara Valley	6.61609938367	local	56	paragraph
+Los Altos	Santa Clara County	35.0003864187	local	2	adjacent
+Gilroy	Los Altos	64.2090426247	local	1	adjacent
+Santa Clara County	Gilroy	30.8769585056	local	9	sentence
+San Jose	Santa Clara County	16.2938342577	local	21	sentence
+Sunnyvale	San Jose	12.9113104055	local	7	sentence
+Morgan Hill	Sunnyvale	42.9888383168	local	2	adjacent
+San Jose	Morgan Hill	31.5412159853	local	18	sentence
+Santa Clara County	San Jose	16.2938342577	local	14	sentence
+San Jose	Santa Clara County	16.2938342577	local	38	paragraph
+DeKalb	DeKalb County	0.0	local	33	paragraph
+Rapides Parish	Alexandria	16.422759564	local	24	sentence
+Ontario	London	0.0	local	8	sentence
+East Zorra-Tavistock	Ontario	0.0	local	166	document
+Oxford	East Zorra-Tavistock	12.9649584079	local	2	adjacent
+Bright	Oxford	394.789094373	region	14	sentence
+Plattsville	Bright	387.598618764	region	3	adjacent
+Woodstock	Plattsville	21.4545638769	local	11	sentence
+East Zorra-Tavistock	Woodstock	14.6266630591	local	6	sentence
+Plattsville	East Zorra-Tavistock	18.4393788248	local	4	adjacent
+Oxford	Plattsville	25.54856259	local	2	adjacent
+Plattsville	Oxford	25.54856259	local	3	adjacent
+East Zorra-Tavistock	Plattsville	18.4393788248	local	8	sentence
+Plattsville	East Zorra-Tavistock	18.4393788248	local	10	sentence
+Hickson	Plattsville	16.6245172097	local	169	document
+Ireland	Nigerian	4375.37776933	global	27	paragraph
+Sligo	Ireland	0.0	local	38	paragraph
+Nigeria	Sligo	0.0	local	49	paragraph
+Sligo	Nigeria	0.0	local	16	sentence
+Lagos	Sligo	5408.79349933	global	182	document
+Sligo	Lagos	5408.79349933	global	49	paragraph
+Nigeria	Sligo	0.0	local	46	paragraph
+Irish	Nigeria	4375.37776933	global	44	paragraph
+Nigeria	Irish	4375.37776933	global	12	sentence
+Irish	Nigeria	4375.37776933	global	15	sentence
+Nigeria	Irish	4375.37776933	global	11	sentence
+Georgia	XENIA	0.0	local	14	sentence
+Greene County	Georgia	0.0	local	35	paragraph
+Yellow Springs	Greene County	13.7020370407	local	21	sentence
+Greene County	Yellow Springs	13.7020370407	local	50	paragraph
+Arizona	Greene County	0.0	local	55	paragraph
+California	Arizona	0.0	local	2	adjacent
+Columbus	California	0.0	local	35	paragraph
+Yellow Springs	Columbus	77.8864474281	local	2	adjacent
+California	Yellow Springs	0.0	local	1	adjacent
+Canal Winchester	California	0.0	local	22	sentence
+Ohio	Canal Winchester	0.0	local	2	adjacent
+Columbus	Ohio	0.0	local	2	adjacent
+Canal Winchester	Columbus	21.1807055797	local	9	sentence
+Atlanta	Canal Winchester	690.824978147	country	13	sentence
+Greene County	Atlanta	659.994689358	country	29	paragraph
+Atlanta	Greene County	659.994689358	country	22	sentence
+Florida	Atlanta	0.0	local	2	adjacent
+N.L.	ST. JOHN'S	0.0	local	2	adjacent
+North Atlantic	N.L.	0.0	local	12	sentence
+Newfoundland and Labrador	North Atlantic	0.0	local	11	sentence
+Iranian	Cyprus	0.0	local	2	adjacent
+EU	Iranian	896.668566714	country	5	sentence
+Syria	EU	109.936866958	local	2	adjacent
+Iran	Syria	186.262149731	region	15	sentence
+Palestinian	Iran	934.274529918	country	2	adjacent
+Gaza	Palestinian	0.0	local	1	adjacent
+European	Gaza	0.0	local	1	adjacent
+Cypriot	European	0.0	local	6	sentence
+Iranian	Cypriot	0.0	local	1	adjacent
+Cypriot	Iranian	0.0	local	7	sentence
+Limassol	Cypriot	25.2174167823	local	3	adjacent
+US	Limassol	0.0	local	5	sentence
+Syria	US	7858.07138388	global	17	sentence
+Port Said	Syria	0.0	local	6	sentence
+Egypt	Port Said	0.0	local	2	adjacent
+Port Said	Egypt	0.0	local	1	adjacent
+Cyprus	Port Said	417.533671231	region	8	sentence
+Port Said	Cyprus	417.533671231	region	1	adjacent
+Cypriot	Port Said	417.533671231	region	7	sentence
+Iranian	Cypriot	0.0	local	10	sentence
+Cyprus	Iranian	0.0	local	28	paragraph
+Syrians	Cyprus	0.0	local	6	sentence
+Latakia	Syrians	0.0	local	3	adjacent
+Cypriot	Latakia	259.6772434	region	2	adjacent
+Syrian	Cypriot	0.0	local	25	sentence
+Cypriot	Syrian	0.0	local	5	sentence
+Cyprus	Cypriot	0.0	local	3	adjacent
+Syrian	Cyprus	0.0	local	14	sentence
+Greek	Syrian	0.0	local	13	sentence
+Europe	Greek	0.0	local	6	sentence
+European Union	Europe	0.0	local	4	adjacent
+Cyprus	European Union	0.0	local	3	adjacent
+Botley	Oxford	92.9562724765	local	65	paragraph
+Cowley	Botley	89.0716974914	local	112	paragraph
+Botley	Cowley	89.0716974914	local	159	document
+Kentucky	Blue Grass	0.0	local	7	sentence
+Blue Grass	Kentucky	0.0	local	62	paragraph
+Washington	Blue Grass	0.068016331439	local	39	paragraph
+Florida	Washington	985.041029701	country	107	paragraph
+Vermont	Florida	0.0	local	9	sentence
+Washington	Ohio	332.597725688	region	203	document
+D.C.	Washington	0.0	local	2	adjacent
+Washington	D.C.	0.0	local	6	sentence
+D.C.	Washington	0.0	local	2	adjacent
+Washington	D.C.	0.0	local	19	sentence
+D.C.	Washington	0.0	local	2	adjacent
+Washington	D.C.	0.0	local	13	sentence
+Ohio	Washington	332.597725688	region	67	paragraph
+Columbus	Ohio	0.0	local	82	paragraph
+Ohio	Columbus	0.0	local	147	paragraph
+Columbus	Ohio	0.0	local	37	paragraph
+Arkansas	Columbus	0.0	local	2	adjacent
+Minnesota	Arkansas	775.668877897	country	87	paragraph
+Ohio	Minnesota	565.6094967	country	36	paragraph
+BAIKONUR	Russian	0.0	local	8	sentence
+Kazakhstan	BAIKONUR	0.0	local	1	adjacent
+Russian	Kazakhstan	0.0	local	7	sentence
+U.S	Russian	87.2010511849	local	3	adjacent
+Russian	U.S	87.2010511849	local	16	sentence
+Baikonur	Russian	0.0	local	8	sentence
+Kazakhstan	Baikonur	0.0	local	14	sentence
+Russian	Kazakhstan	0.0	local	23	sentence
+American	Russian	87.2010511849	local	5	sentence
+Swedish	American	0.0	local	82	paragraph
+Russian	Swedish	0.0	local	113	paragraph
+U.S.	Russian	87.2010511849	local	3	adjacent
+American	Toronto	0.0	local	71	paragraph
+Calgary	American	0.0	local	39	paragraph
+Edmonton	Calgary	281.335515375	region	155	document
+American	Edmonton	0.0	local	74	paragraph
+Edmonton	American	0.0	local	16	sentence
+American	Edmonton	0.0	local	59	paragraph
+Milwaukee	Des Plaines	111.710786599	local	9	sentence
+Chicago	Milwaukee	133.739163959	local	8	sentence
+Kenyan	Chicago	0.0	local	7	sentence
+Pewaukee	Kenyan	0.0	local	7	sentence
+U.S.	Pewaukee	0.0	local	9	sentence
+Kenyan	U.S.	10541.2920302	global	22	sentence
+U.S.	Kenyan	10541.2920302	global	5	sentence
+Chicago	U.S.	0.0	local	31	paragraph
+Bolingbrook	Chicago	38.6306002436	local	2	adjacent
+Ill.	Bolingbrook	0.0	local	2	adjacent
+Pewaukee	Ill.	0.0	local	12	sentence
+Kenya	Pewaukee	0.0	local	25	sentence
+W.Va.	CHARLESTON	0.0	local	1	adjacent
+Lewisburg	W.Va.	0.0	local	2	adjacent
+Oregon	Lewisburg	0.0	local	130	paragraph
+Virginia	Oregon	2907.89364449	global	2	adjacent
+W. Va.	Virginia	0.0	local	7	sentence
+U.S.	W. Va.	0.0	local	20	sentence
+W. Va.	U.S.	0.0	local	6	sentence
+U.S.	W. Va.	0.0	local	7	sentence
+Americans	U.S.	0.0	local	79	paragraph
+West Virginia	Americans	0.0	local	5	sentence
+Canaan Valley	West Virginia	0.0	local	30	paragraph
+Greenbrier	Canaan Valley	158.360520064	local	3	adjacent
+Pocahontas County	Greenbrier	52.7886331198	local	1	adjacent
+Canaan Valley	Pocahontas County	105.989023488	local	2	adjacent
+Anthony Creek	Canaan Valley	159.687406601	local	8	sentence
+Lewisburg	Anthony Creek	14.4992079988	local	10	sentence
+Canaan Valley	Lewisburg	173.635089312	region	16	sentence
+Williams	Canaan Valley	127.34090342	local	5	sentence
+Cranberry	Williams	12.9213259403	local	2	adjacent
+Anthony Creek	Cranberry	51.8161981479	local	14	sentence
+Lewisburg	Anthony Creek	14.4992079988	local	2	adjacent
+Virginia	Lewisburg	0.0	local	90	paragraph
+Mount Hood	Virginia	0.0	local	12	sentence
+Virginia	Mount Hood	0.0	local	1	adjacent
+Oregon	Virginia	2907.89364449	global	4	adjacent
+Pictured Rocks National Lakeshore	Oregon	0.0	local	4	adjacent
+Michigan	Pictured Rocks National Lakeshore	0.0	local	2	adjacent
+Utah	Michigan	1618.00787364	global	3	adjacent
+Virginia	Utah	2242.96145165	global	1	adjacent
+Zion National Park	Virginia	0.0	local	1	adjacent
+Rocky Mountain National Park	Zion National Park	720.754456325	country	3	adjacent
+Zion National Park	Rocky Mountain National Park	720.754456325	country	2	adjacent
+Colorado	Zion National Park	0.0	local	2	adjacent
+Henry County	Paris	3.59815891378	local	2	adjacent
+Paris	Henry County	3.59815891378	local	170	document
+Henry County	Paris	3.59815891378	local	339	document
+Paris	Henry County	3.59815891378	local	159	document
+Henry County	Paris	3.59815891378	local	1	adjacent
+Paris	Henry County	3.59815891378	local	8	sentence
+Henry County	Paris	3.59815891378	local	1	adjacent
+Meadow Grove	Columbus	73.1703453388	local	8	sentence
+Platte County	Meadow Grove	57.1122739476	local	38	paragraph
+Meadow Grove	Platte County	57.1122739476	local	277	document
+Platte County	Meadow Grove	57.1122739476	local	50	paragraph
+Meadow Grove	Platte County	57.1122739476	local	29	paragraph
+Norfolk	Meadow Grove	26.2437159646	local	8	sentence
+Platte County	Norfolk	53.4129245245	local	60	paragraph
+Meadow Grove	Platte County	57.1122739476	local	5	sentence
+Norfolk	Meadow Grove	26.2437159646	local	29	paragraph
+Meadow Grove	Norfolk	26.2437159646	local	2	adjacent
+Norfolk	Meadow Grove	26.2437159646	local	38	paragraph
+Columbus	Norfolk	66.6081666413	local	12	sentence
+Meadow Grove	Columbus	73.1703453388	local	57	paragraph
+Platte County	Meadow Grove	57.1122739476	local	43	paragraph
+York	Lancaster	112.928992799	local	9	sentence
+Cockerham	York	113.790885902	local	38	paragraph
+Lancaster	Cockerham	10.9051375406	local	46	paragraph
+Georgia	Russia	0.0	local	9	sentence
+Russia	Georgia	0.0	local	29	paragraph
+Georgia	Russia	0.0	local	8	sentence
+Paris	Georgia	0.0	local	48	paragraph
+Tbilisi	Paris	3375.6416601	global	14	sentence
+France	Tbilisi	0.0	local	19	sentence
+Georgia	France	2469.31183912	global	9	sentence
+Russia	Georgia	0.0	local	152	document
+Georgia	Russia	0.0	local	6	sentence
+Georgian	Georgia	0.0	local	11	sentence
+Russia	Georgian	0.0	local	9	sentence
+Georgian	Russia	0.0	local	5	sentence
+Russia	Georgian	0.0	local	53	paragraph
+Georgian	Russia	0.0	local	7	sentence
+Feltham	Hounslow	4.43274294396	local	61	paragraph
+Kingston	Feltham	71.1326263456	local	29	paragraph
+Kentucky	Laurel County	0.0	local	19	sentence
+Lake Cumberland	Kentucky	0.0	local	88	paragraph
+Columbus	Hagerstown	102.344364097	local	22	sentence
+New Castle	Columbus	93.6350541913	local	17	sentence
+Ramsey	St. Paul	9.90977824568	local	35	paragraph
+St. Paul	Ramsey	9.90977824568	local	38	paragraph
+Nebraska	Iowa	0.0	local	24	sentence
+Iowa	Nebraska	0.0	local	2	adjacent
+Omaha	Iowa	0.0	local	42	paragraph
+Chicago	Rolling Meadows	39.7757280607	local	1	adjacent
+Franklin County	Ohio	0.0	local	70	paragraph
+Akron	Franklin County	177.26871602	region	25	sentence
+Ohio	Akron	0.0	local	90	paragraph
+Syria	Lebanon	0.0	local	4	adjacent
+Lebanese	Syria	0.0	local	2	adjacent
+Syria	Lebanese	0.0	local	12	sentence
+Lebanon	Syria	0.0	local	35	paragraph
+Syria	Lebanon	0.0	local	2	adjacent
+Lebanon	Syria	0.0	local	23	sentence
+Syrian	Lebanon	0.0	local	18	sentence
+Lebanon	Syrian	0.0	local	3	adjacent
+Syria	Lebanon	0.0	local	25	sentence
+Lebanon	Syria	0.0	local	6	sentence
+Butler County	Hamilton	5.63629997941	local	17	sentence
+Omaha	COLUMBUS	121.232567697	local	35	paragraph
+Anderson	Charleston	316.713741748	region	18	sentence
+Ravenel	Anderson	294.663599882	region	23	sentence
+Charleston	Ravenel	29.9443422007	local	274	document
+Florence	Charleston	158.138937234	local	20	sentence
+Charleston	Florence	158.138937234	local	99	paragraph
+Charleston County	Charleston	3.50807463718	local	1	adjacent
+Lexington	West Columbia	15.045998226	local	33	paragraph
+South Carolina	Lexington	0.0	local	1	adjacent
+West Columbia	South Carolina	0.0	local	14	sentence
+Lexington	West Columbia	15.045998226	local	8	sentence
+West Columbia	Lexington	15.045998226	local	31	paragraph
+Lexington County	West Columbia	23.3030607177	local	50	paragraph
+Edgar County	Paris	7.74564126221	local	131	paragraph
+Paris	Edgar County	7.74564126221	local	173	document
+Edgar County	Paris	7.74564126221	local	29	paragraph
+England	Banbridge	0.0	local	95	paragraph
+Banbridge	England	0.0	local	138	paragraph
+Kansas City	Cass County	56.275109597	local	224	document
+Kan.	Kansas City	0.0	local	2	adjacent
+Kansas City	Kan.	0.0	local	16	sentence
+Kan.	Kansas City	0.0	local	1	adjacent
+Kansas City	Kan.	0.0	local	1	adjacent
+Wyandotte County	Kansas City	7.73677892734	local	5	sentence
+Kansas City	Wyandotte County	7.73677892734	local	6	sentence
+Wyandotte County	Kansas City	7.73677892734	local	3	adjacent
+Kan.	Wyandotte County	0.0	local	5	sentence
+Kansas City	Kan.	0.0	local	19	sentence
+Kan.	Kansas City	0.0	local	1	adjacent
+Kansas City	Kan.	0.0	local	1	adjacent
+Kan.	Kansas City	0.0	local	2	adjacent
+Kansas City	Kan.	0.0	local	30	paragraph
+Roanoke Park	Kansas City	6.15156709082	local	8	sentence
+Kansas City	Roanoke Park	6.15156709082	local	2	adjacent
+Kan.	Kansas City	0.0	local	1	adjacent
+Kansas City	Kan.	0.0	local	4	adjacent
+Kan.	Kansas City	0.0	local	1	adjacent
+Kansas City	Kan.	0.0	local	1	adjacent
+Kan.	Kansas City	0.0	local	2	adjacent
+Blue Springs	Kan.	0.0	local	17	sentence
+Kan.	Blue Springs	0.0	local	15	sentence
+Jackson County	Kan.	0.0	local	10	sentence
+Kansas City	Jackson County	26.3273625966	local	23	sentence
+Kan.	Kansas City	0.0	local	3	adjacent
+Blue Springs	Kan.	0.0	local	15	sentence
+Atlas Mountains	Florida	0.0	local	14	sentence
+Africa	Atlas Mountains	0.0	local	7	sentence
+Morocco	Africa	0.0	local	2	adjacent
+Tunisia	Morocco	815.123738767	country	1	adjacent
+Morocco	Tunisia	815.123738767	country	6	sentence
+Kentucky	Morocco	6376.96550896	global	50	paragraph
+Laurel County	Kentucky	0.0	local	19	sentence
+London	Laurel County	4.46967917436	local	65	paragraph
+Laurel County	London	4.46967917436	local	68	paragraph
