@@ -3,12 +3,20 @@ import sys
 import json
 from collections import defaultdict
 import math
+import psycopg2
 
 try:
 	os.environ['OBSPATH']
 except:
 	print "ERROR: OBSPATH environment variable is not set"
 	sys.exit()
+try:
+	os.environ['DB_CONN']
+except:
+	#Looks like "dbname=topodb user=postgres host='localhost' port='5433' password='grant'"
+	print "ERROR: DB_CONN string is not set"
+	sys.exit()
+
 
 class lang_model:
 
@@ -118,15 +126,21 @@ for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin
 
 import ParseLGL
 
+conn = psycopg2.connect(os.environ['DB_CONN'])
+cur = conn.cursor()
+
+
 
 LGL_Dir = "/home/grant/devel/TopCluster/LGL/articles/dev_classicxml"
+cor = 0
+total = 0
 for f in os.listdir(LGL_Dir):
 	print f
 	wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(LGL_Dir, f))
 	topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=4)
 	#print topo_context_dict
 	for t in topo_context_dict:
-		print topo_context_dict[t]['entry']
+		#print topo_context_dict[t]['entry']
 		geo_logprobs = {}
 		for c in topo_context_dict[t]['context']:
 			if '|' in c:
@@ -136,4 +150,20 @@ for f in os.listdir(LGL_Dir):
 						geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
 		problist = geo_logprobs.items()
 		problist.sort(key=lambda x: x[1])
-		print problist
+		#print problist
+		region_name = problist[-1][0].replace('_', ' ')
+		region_prob = problist[-1][-1]
+		lat = float(topo_context_dict[t]['entry'][1]['lat'])
+		lon = float(topo_context_dict[t]['entry'][1]['long'])
+		#print region_name
+		SQL_ACC = "SELECT ST_DWITHIN(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog, 1000) from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+		#print SQL_ACC
+		cur.execute(SQL_ACC, (region_name, ))
+		returns = cur.fetchall()
+		if returns[0][0] == True:
+			cor += 1
+		total += 1
+		if total % 50 == 0:
+			print cor, "/", total
+
+print cor, "/", total
