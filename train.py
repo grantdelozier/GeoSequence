@@ -115,55 +115,58 @@ class lang_model:
 				probdict[geocat] = interp_prob'''
 		return probdict
 
+
+def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
+
+	import ParseLGL
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cor = 0
+	total = 0
+	for f in os.listdir(directory):
+		print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=4)
+		#print topo_context_dict
+		for t in topo_context_dict:
+			#print topo_context_dict[t]['entry']
+			geo_logprobs = {}
+			for c in topo_context_dict[t]['context']:
+				if '|' in c:
+					plist = LM.bigram_prob(c)
+					for region in plist:
+						if plist[region] > 0.0:
+							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
+			problist = geo_logprobs.items()
+			problist.sort(key=lambda x: x[1])
+			#print problist
+			region_name = problist[-1][0].replace('_', ' ')
+			region_prob = problist[-1][-1]
+			lat = float(topo_context_dict[t]['entry'][1]['lat'])
+			lon = float(topo_context_dict[t]['entry'][1]['long'])
+			#print region_name
+			SQL_ACC = "SELECT ST_DWITHIN(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog, 1000) from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+			#print SQL_ACC
+			cur.execute(SQL_ACC, (region_name, ))
+			returns = cur.fetchall()
+			if returns[0][0] == True:
+				cor += 1
+			total += 1
+			if total % 50 == 0:
+				print cor, "/", total
+
+	print cor, "/", total
+
+
 LM = lang_model()
 LM.load()
-for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin']:
+test_LGL(LM)
+
+'''for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin']:
 	plist =  LM.bigram_prob(bg).items()
 	plist.sort(key=lambda x: x[1])
 	print bg
 	print plist
-	print "========="
-
-import ParseLGL
-
-conn = psycopg2.connect(os.environ['DB_CONN'])
-cur = conn.cursor()
-
-
-
-LGL_Dir = "/home/grant/devel/TopCluster/LGL/articles/dev_classicxml"
-cor = 0
-total = 0
-for f in os.listdir(LGL_Dir):
-	print f
-	wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(LGL_Dir, f))
-	topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=4)
-	#print topo_context_dict
-	for t in topo_context_dict:
-		#print topo_context_dict[t]['entry']
-		geo_logprobs = {}
-		for c in topo_context_dict[t]['context']:
-			if '|' in c:
-				plist = LM.bigram_prob(c)
-				for region in plist:
-					if plist[region] > 0.0:
-						geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
-		problist = geo_logprobs.items()
-		problist.sort(key=lambda x: x[1])
-		#print problist
-		region_name = problist[-1][0].replace('_', ' ')
-		region_prob = problist[-1][-1]
-		lat = float(topo_context_dict[t]['entry'][1]['lat'])
-		lon = float(topo_context_dict[t]['entry'][1]['long'])
-		#print region_name
-		SQL_ACC = "SELECT ST_DWITHIN(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog, 1000) from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
-		#print SQL_ACC
-		cur.execute(SQL_ACC, (region_name, ))
-		returns = cur.fetchall()
-		if returns[0][0] == True:
-			cor += 1
-		total += 1
-		if total % 50 == 0:
-			print cor, "/", total
-
-print cor, "/", total
+	print "========="'''
