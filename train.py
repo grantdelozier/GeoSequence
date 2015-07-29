@@ -35,7 +35,7 @@ class lang_model:
 			print "Loading", f
 			print m, "/", len(os.listdir(direct))
 			m += 1
-			if m < 25:
+			if m < 300:
 				fp = os.path.join(direct, f)
 				geocat = f.split('_uni_bigram')[0]
 				self.obs_counts[geocat] = {}
