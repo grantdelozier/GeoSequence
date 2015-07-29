@@ -120,6 +120,10 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 
 	import ParseLGL
 
+	out_test = "test_output.txt"
+
+	ot = open(out_test, 'wb')
+
 	conn = psycopg2.connect(os.environ['DB_CONN'])
 	cur = conn.cursor()
 
@@ -132,13 +136,14 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 		#print topo_context_dict
 		for t in topo_context_dict:
 			print "===="
+			ot.write("====\n")
 			#print topo_context_dict[t]['entry']
 			geo_logprobs = {}
 			for c in topo_context_dict[t]['context']:
 				if '|' in c:
 					plist = LM.bigram_prob(c)
-					print c, plist
 					for region in plist:
+						ot.write(region + u':' + unicode(plist[region]))
 						if plist[region] > 0.0:
 							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
 			problist = geo_logprobs.items()
@@ -154,8 +159,10 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			cur.execute(SQL_ACC, (region_name, ))
 			returns = cur.fetchall()
 			
-			print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
-			print problist
+			#print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
+			#print problist
+			ot.write(unicode(u'|'.join([returns[0], topo_context_dict[t], region_name, region_prob])))
+			ot.write(unicode(problist))
 			#if returns[0][0] == True:
 			#	cor += 1
 			total += 1
