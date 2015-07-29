@@ -144,6 +144,7 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 					plist = LM.bigram_prob(c)
 					for region in plist:
 						ot.write(region + u':' + unicode(plist[region]))
+						ot.write('\n')
 						if plist[region] > 0.0:
 							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
 			problist = geo_logprobs.items()
@@ -162,7 +163,9 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			#print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
 			#print problist
 			ot.write(unicode([returns[0], topo_context_dict[t], region_name, region_prob]))
+			ot.write('\n')
 			ot.write(unicode(problist))
+			ot.write('\n')
 			#if returns[0][0] == True:
 			#	cor += 1
 			total += 1
