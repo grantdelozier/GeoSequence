@@ -116,7 +116,7 @@ class lang_model:
 		return probdict
 
 
-def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
+def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml"):
 
 	import ParseLGL
 
@@ -147,22 +147,23 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			lat = float(topo_context_dict[t]['entry'][1]['lat'])
 			lon = float(topo_context_dict[t]['entry'][1]['long'])
 			#print region_name
-			SQL_ACC = "SELECT ST_DWITHIN(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog, 1000) from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+			SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
 			#print SQL_ACC
 			cur.execute(SQL_ACC, (region_name, ))
 			returns = cur.fetchall()
-			if returns[0][0] == True:
-				cor += 1
+			print returns[0], topo_context_dict[t], region_name, region_prob
+			#if returns[0][0] == True:
+			#	cor += 1
 			total += 1
-			if total % 50 == 0:
-				print cor, "/", total
+			#if total % 50 == 0:
+			#	print cor, "/", total
 
 	print cor, "/", total
 
 
-LM = lang_model()
-LM.load()
-test_LGL(LM)
+#LM = lang_model()
+#LM.load()
+#test_LGL(LM)
 
 '''for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin']:
 	plist =  LM.bigram_prob(bg).items()
