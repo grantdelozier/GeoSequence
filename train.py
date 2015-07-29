@@ -76,9 +76,9 @@ class lang_model:
 	def get_counts(self, gram):
 		counts = {}
 		for geocat in self.obs_counts:
-			counts[geocat] = self.obs_counts[geocat].get(gram)
+			counts[geocat] = self.obs_counts[geocat].get(gram, 0.0)
 		return counts
-		
+
 	#generate probability given bigram
 	def bigram_prob(self, bigram, smoothing="simple-interp", lamb=.6):
 		probdict = {}
