@@ -115,6 +115,7 @@ class lang_model:
 				probdict[geocat] = interp_prob'''
 		return probdict
 
+import io
 
 def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml"):
 
@@ -122,7 +123,7 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 
 	out_test = "test_output.txt"
 
-	ot = open(out_test, 'wb')
+	ot = io.open(out_test, 'w', encoding='utf-8')
 
 	conn = psycopg2.connect(os.environ['DB_CONN'])
 	cur = conn.cursor()
@@ -146,7 +147,7 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 						try:
 							ot.write(unicode(c) + u' ' + region + u':' + unicode(plist[region]))
 						except:
-							ot.write(c.encode('utf-16') + u' ' + region + u':' + unicode(plist[region]))			
+							ot.write(c.encode('utf-8') + u' ' + region + u':' + unicode(plist[region]))			
 						if plist[region] > 0.0:
 							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
 			ot.write('\n')
