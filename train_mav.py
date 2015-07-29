@@ -143,10 +143,10 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 				if '|' in c:
 					plist = LM.bigram_prob(c)
 					for region in plist:
-						ot.write(region + u':' + unicode(plist[region]))
-						ot.write('\n')
+						ot.write(unicode(c) + u' ' + region + u':' + unicode(plist[region]))			
 						if plist[region] > 0.0:
 							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
+			ot.write('\n')
 			problist = geo_logprobs.items()
 			problist.sort(key=lambda x: x[1])
 			#print problist
