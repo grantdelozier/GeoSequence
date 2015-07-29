@@ -74,7 +74,7 @@ class lang_model:
 		pass
 
 	#generate probability given bigram
-	def bigram_prob(self, bigram, smoothing="simple-interp", lamb=.6):
+	def bigram_prob(self, bigram, smoothing="simple-interp", lamb=.5):
 		probdict = {}
 		if smoothing=='kneser-ney':
 			firstword = bigram.split('|')[0]
@@ -131,11 +131,13 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=4)
 		#print topo_context_dict
 		for t in topo_context_dict:
+			print "===="
 			#print topo_context_dict[t]['entry']
 			geo_logprobs = {}
 			for c in topo_context_dict[t]['context']:
 				if '|' in c:
 					plist = LM.bigram_prob(c)
+					print c, plist
 					for region in plist:
 						if plist[region] > 0.0:
 							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
@@ -151,7 +153,9 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			#print SQL_ACC
 			cur.execute(SQL_ACC, (region_name, ))
 			returns = cur.fetchall()
+			
 			print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
+			print problist
 			#if returns[0][0] == True:
 			#	cor += 1
 			total += 1
