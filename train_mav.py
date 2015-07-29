@@ -167,9 +167,9 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			#print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
 			#print problist
 			ot.write(unicode([returns[0], topo_context_dict[t], region_name, region_prob]))
-			ot.write('\n')
+			ot.write(u'\n')
 			ot.write(unicode(problist))
-			ot.write('\n')
+			ot.write(u'\n')
 			#if returns[0][0] == True:
 			#	cor += 1
 			total += 1
