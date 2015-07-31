@@ -73,7 +73,32 @@ class lang_model:
 	def unigram_prob(smoothing="kneser-ney"):
 		pass
 
-	#generate probability given bigram
+	#generate probability of word in region assuming each geog has independent distribution
+	def bigram_prob_indep(self, bigram, smoothing="simple-interp", lamb=.5):
+		probdict = {}
+		elif smoothing=='simple-interp':
+			firstword = bigram.split('|')[0]
+			secondword = bigram.split('|')[1]
+			for geocat in self.obs_counts:
+
+				#Add in some absolute discounting
+				bi_discount = self.obs_counts[geocat]['$BI_TOTAL$'] / self.obs_counts[geocat]['$BI_TYPES$']
+				uni_discount = self.obs_counts[geocat]['$UNI_TOTAL$'] / self.obs_counts[geocat]['$UNI_TYPES$']
+				print "============="
+				print "bi_discount", bi_discount
+				print "uni_discount", uni_discount
+
+				uni_prob_first = (max(self.obs_counts[geocat].get(firstword, 0.0) - uni_discount, 0.0) / self.obs_counts[geocat]['$UNI_TOTAL$'])
+				uni_prob_second = (max(self.obs_counts[geocat].get(secondword, 0.0) - uni_discount, 0.0) / self.obs_counts[geocat]['$UNI_TOTAL$'])
+				#bi_discount = 2.0
+				bi_prob = max(self.obs_counts[geocat].get(bigram, 0.0)-bi_discount, 0.0) / self.obs_counts[geocat].get(firstword, 0.0)
+				print geocat, bi_prob, uni_prob_first, uni_prob_second
+				print "bigram-count: ", self.obs_counts[geocat].get(bigram, 0.0), "unigram-first:", self.obs_counts[geocat].get(firstword, 0.0), "unigram-total:", self.obs_counts[geocat]['$UNI_TOTAL$']
+				interp_prob = lamb * bi_prob + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
+				probdict[geocat] = interp_prob
+		return probdict
+
+	#generate probability given bigram. assumes all geographies are in same distribution
 	def bigram_prob(self, bigram, smoothing="simple-interp", lamb=.5):
 		probdict = {}
 		if smoothing=='kneser-ney':
@@ -133,7 +158,7 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 	for f in os.listdir(directory):
 		print f
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
-		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=4)
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		#print topo_context_dict
 		for t in topo_context_dict:
 			print "===="
@@ -142,7 +167,7 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			geo_logprobs = {}
 			for c in topo_context_dict[t]['context']:
 				if '|' in c:
-					plist = LM.bigram_prob(c)
+					plist = LM.bigram_prob_indep(c)
 					for region in plist:
 						try:
 							ot.write(unicode(c) + u' ' + unicode(region) + u':' + unicode(plist[region]))
