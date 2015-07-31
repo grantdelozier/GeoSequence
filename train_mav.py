@@ -76,7 +76,7 @@ class lang_model:
 	#generate probability of word in region assuming each geog has independent distribution
 	def bigram_prob_indep(self, bigram, smoothing="simple-interp", lamb=.5):
 		probdict = {}
-		elif smoothing=='simple-interp':
+		if smoothing=='simple-interp':
 			firstword = bigram.split('|')[0]
 			secondword = bigram.split('|')[1]
 			for geocat in self.obs_counts:
