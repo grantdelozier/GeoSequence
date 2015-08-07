@@ -19,6 +19,7 @@ except:
 
 class transition_model:
 	trans_counts = {}
+	custom_regions = []
 
 	def __init__(self):
 		self.trans_counts = {}
@@ -37,12 +38,41 @@ class transition_model:
 			m += 1
 			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
 
-			transition_dict = featurize_transition(wordref, toporef, domain, cur)
-			print transition_dict
+			self.trans_counts = featurize_transition(wordref, toporef, domain, cur, self.trans_counts)
+			#print self.trans_counts
 			#print toporef
 			#print len(wordref)
 
+		print self.trans_counts
 		conn.close()
+
+		self.load_custom_regions()
+
+	def load_custom_regions(self):
+		conn = psycopg2.connect(os.environ['DB_CONN'])
+		cur = conn.cursor()
+
+		SQL = "SELECT p1.region_name from customgrid as p1;"
+		cur.execute(SQL)
+		returns = cur.fetchall()
+		for name in returns:
+			self.custom_regions.append(name[0])
+
+	def binomial_prob_dict(self):
+		p_dict = {}
+		for k in sorted(self.trans_counts.keys()):
+			p_dict[k] = {}
+			for r in self.custom_regions:
+				p_dict[k][r] = self.binomial_prob(k, r)
+		return p_dict
+
+	def binomial_prob(self, prev_region, current_region):
+		cur_region_n = self.trans_counts[prev_region].get(current_region, 1.0)
+		prev_total = 0.0
+		for r in self.custom_regions:
+			prev_total += self.trans_counts[prev_region].get(r, 1.0)
+		prob = cur_region_n / float(prev_total)
+		return prob
 
 class lang_model:
 
@@ -192,11 +222,10 @@ def getRegion(lat, lon, cur):
 	return results[0][0]
 
 
-def featurize_transition(wordref, toporef, domain, cur):
+def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 	j = 0
 	Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
 	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
-	transition_dict = {}
 	prev_region = '#START#'
 	for i in sorted(toporef.keys()):
 		j += 1
@@ -215,47 +244,50 @@ def featurize_transition(wordref, toporef, domain, cur):
 			prev_lat = last_topo[1]['lat']
 			prev_wid = last_topo[-1]
 			prev_docid = last_topo[-2]
-			if last_topo[0].lower() != toporef[i][0].lower():
-				print last_topo[0], "->", toporef[i][0]
-				#SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-				SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
-				cur.execute(SQL, (prev_wid, prev_docid, i, docid))
+			
+			#print last_topo[0], "->", toporef[i][0]
+			#SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
+			SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
+			cur.execute(SQL, (prev_wid, prev_docid, i, docid))
+			results = cur.fetchall()
+			if len(results) > 0:
+				#print "1st", results
+				pass
+			else:			
+				SQL = "SELECT ST_DISTANCE(p1.polygeog2, ST_GeographyFromText('SRID=4326;POINT(%s %s)')) from lgl_dev_classic as p1 where p1.polygeog2 is not null and p1.wid = %s and p1.docid = %s;" % (prev_lon, prev_lat, '%s', '%s')
+				cur.execute(SQL, (prev_wid, prev_docid))
 				results = cur.fetchall()
 				if len(results) > 0:
-					print "1st", results
-				else:			
-					SQL = "SELECT ST_DISTANCE(p1.polygeog2, ST_GeographyFromText('SRID=4326;POINT(%s %s)')) from lgl_dev_classic as p1 where p1.polygeog2 is not null and p1.wid = %s and p1.docid = %s;" % (prev_lon, prev_lat, '%s', '%s')
-					cur.execute(SQL, (prev_wid, prev_docid))
+					#print "2nd", results
+					pass
+				else:
+					SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.polygeog2) from lgl_dev_classic as p2 where p2.polygeog2 is not null and p2.wid = %s and p2.docid = %s;" % (lon, lat, '%s', '%s')
+					cur.execute(SQL, (i, docid))
 					results = cur.fetchall()
 					if len(results) > 0:
-						print "2nd", results
-					else:
-						SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.polygeog2) from lgl_dev_classic as p2 where p2.polygeog2 is not null and p2.wid = %s and p2.docid = %s;" % (lon, lat, '%s', '%s')
-						cur.execute(SQL, (i, docid))
+						#print "3rd", results
+						pass
+					else: 
+						SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
+						cur.execute(SQL)
 						results = cur.fetchall()
-						if len(results) > 0:
-							print "3rd", results
-						else: 
-							SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-							cur.execute(SQL)
-							results = cur.fetchall()
 
 
-				dist_transition = results[0][0]/1000.0
-				token_dist = i - last_topo[-1]
-				print "Transition Dist:", dist_transition
-				print "Token Dist:", token_dist 
-				distbin = get_distbin(Dist_Bins, dist_transition)
-				print "Dist Bin:", distbin
-				tokebin = get_tokenbin(Token_Bins, token_dist)
-				print "Token Bin:", tokebin
+			dist_transition = results[0][0]/1000.0
+			token_dist = i - last_topo[-1]
+			#print "Transition Dist:", dist_transition
+			#print "Token Dist:", token_dist 
+			distbin = get_distbin(Dist_Bins, dist_transition)
+			#print "Dist Bin:", distbin
+			tokebin = get_tokenbin(Token_Bins, token_dist)
+			#print "Token Bin:", tokebin
 
-				
-				current_region = getRegion(lat, lon, cur)
+			
+			current_region = getRegion(lat, lon, cur)
 
-				if prev_region not in transition_dict:
-					transition_dict[prev_region] = {}
-				transition_dict[prev_region][current_region] = (transition_dict[prev_region].get(current_region, 0) + 1)  
+			if prev_region not in transition_dict:
+				transition_dict[prev_region] = {}
+			transition_dict[prev_region][current_region] = (transition_dict[prev_region].get(current_region, 0) + 1)  
 
 			
 
@@ -337,9 +369,18 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 #LM.load()
 #test_LGL(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 
-TM = transition_model()
+'''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
-
+prob = TM.binomial_prob('southwest united states', 'southeast united states')
+print prob
+prob = TM.binomial_prob('southeast united states', 'southwest united states')
+prob = TM.binomial_prob('southwest united states', 'southwest united states')
+print prob
+print prob
+prob_dict = TM.binomial_prob_dict()
+print prob_dict
+for start_region in prob_dict:
+	print "region sum:", sum([y for x,y in prob_dict[start_region].items()])'''
 
 '''for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin']:
 	plist =  LM.bigram_prob(bg).items()
