@@ -199,6 +199,47 @@ class lang_model:
 
 import io
 
+#states = TM.custom_regions
+#obs = list of observations
+#start_p = one tier dict of transiton probs from #START# to first state
+#trans_p = two tiered dict with probs from prev state to next state
+#emit_p = one tiered dict with probs of each state at each obs
+def viterbi(obs, states, start_p, trans_p, emit_p):
+    V = [{}]
+    path = {}
+    
+    # Initialize base cases (t == 0)
+    for y in states:
+        V[0][y] = start_p[y] * emit_p[y][obs[0]]
+        path[y] = [y]
+    
+    # Run Viterbi for t > 0
+    for t in range(1, len(obs)):
+        V.append({})
+        newpath = {}
+
+        for y in states:
+            (prob, state) = max((V[t-1][y0] * trans_p[y0][y] * emit_p[y][obs[t]], y0) for y0 in states)
+            V[t][y] = prob
+            newpath[y] = path[state] + [y]
+
+        # Don't need to remember the old paths
+        path = newpath
+    n = 0           # if only one element is observed max is sought in the initialization values
+    if len(obs) != 1:
+        n = t
+    print_dptable(V)
+    (prob, state) = max((V[n][y], y) for y in states)
+    return (prob, path[state])
+
+def print_dptable(V):
+    s = "    " + " ".join(("%7d" % i) for i in range(len(V))) + "\n"
+    for y in V[0]:
+        s += "%.5s: " % y
+        s += " ".join("%.7s" % ("%f" % v[y]) for v in V)
+        s += "\n"
+    print(s)
+
 def get_distbin(Dist_Bins, dist_transition):
 	for b in Dist_Bins:
 		if dist_transition <= Dist_Bins[b][1] and dist_transition >= Dist_Bins[b][0]:
