@@ -189,7 +189,7 @@ class lang_model:
 					bi_prob =  self.obs_counts[geocat].get(bigram, 0.0) / self.obs_counts['global'].get(bigram, 1.0)
 					interp_prob = lamb * bi_prob + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
 					probdict[geocat] = interp_prob
-		elif smoothing=='simple-inter-laplace':
+		elif smoothing=="simple-interp-laplace":
 			firstword = bigram.split('|')[0]
 			secondword = bigram.split('|')[1]
 			for geocat in self.custom_regions:
@@ -444,7 +444,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 			ot.write(u'\n')
 			problist = geo_logprobs.items()
 			problist.sort(key=lambda x: x[1])
-			print problist
+			#print problist
 			region_name = problist[-1][0]
 			region_prob = problist[-1][-1]
 			lat = float(topo_context_dict[t]['entry'][1]['lat'])
