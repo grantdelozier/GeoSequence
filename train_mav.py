@@ -444,7 +444,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 			ot.write(u'\n')
 			problist = geo_logprobs.items()
 			problist.sort(key=lambda x: x[1])
-			#print problist
+			print problist
 			region_name = problist[-1][0]
 			region_prob = problist[-1][-1]
 			lat = float(topo_context_dict[t]['entry'][1]['lat'])
