@@ -252,11 +252,11 @@ def viterbi(obs, states, TM, LM):
         emission_dict = get_emission_dict(LM, obs[t])
 
         for y in states:
-            print emission_dict[y]
-            print math.log(emission_dict[y])
-            for j in states:
-                print TM.binomial_prob(y0, y)
-                print math.log(TM.binomial_prob(y0, y))
+            #print emission_dict[y]
+            #print math.log(emission_dict[y])
+            #for j in states:
+            #    print TM.binomial_prob(j, y)
+            #    print math.log(TM.binomial_prob(j, y))
             (prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + math.log(emission_dict[y]), y0) for y0 in states)
             V[t][y] = prob
             newpath[y] = path[state] + [y]
