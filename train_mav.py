@@ -199,27 +199,39 @@ class lang_model:
 
 import io
 
+def get_emission_dict(LM, context_list):
+	emission_dict = {}
+	for c in context_list:
+		if '|' in c:
+			plist = LM.bigram_prob(c)
+			for region in plist:
+				emission_dict[region] = emission_dict.get(region, 0.0) + math.log(plist[region])
+
+	return emission_dict
+
+
 #states = TM.custom_regions
 #obs = list of observations
-#start_p = one tier dict of transiton probs from #START# to first state
-#trans_p = two tiered dict with probs from prev state to next state
-#emit_p = one tiered dict with probs of each state at each obs
-def viterbi(obs, states, start_p, trans_p, emit_p):
+#TM = Transition Model
+#LM = Language Model
+def viterbi(obs, states, TM, LM):
     V = [{}]
     path = {}
     
     # Initialize base cases (t == 0)
+    emission_dict = get_emission_dict(LM, obs[0])
     for y in states:
-        V[0][y] = start_p[y] * emit_p[y][obs[0]]
+        V[0][y] = math.log(TM.binomial_prob('#START#', y)) + emission_dict[y]
         path[y] = [y]
     
     # Run Viterbi for t > 0
     for t in range(1, len(obs)):
         V.append({})
         newpath = {}
+        emission_dict = get_emission_dict(LM, obs[t])
 
         for y in states:
-            (prob, state) = max((V[t-1][y0] * trans_p[y0][y] * emit_p[y][obs[t]], y0) for y0 in states)
+            (prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + math.log(emission_dict[y]), y0) for y0 in states)
             V[t][y] = prob
             newpath[y] = path[state] + [y]
 
@@ -342,7 +354,39 @@ def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 	transition_dict[prev_region][current_region] = (transition_dict[prev_region].get(current_region, 0) + 1)
 	return transition_dict 
 
-def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml"):
+#topo_context_dict[t] = {'entry':toporef[t], 'context':d}
+
+def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
+
+	import ParseLGL
+
+	out_test = "test_output.txt"
+
+	ot = io.open(out_test, 'w', encoding='utf-8')
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cor = 0
+	total = 0
+	obs_sequence = []
+	for f in os.listdir(directory):
+		print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		ordered_tkeys = sorted(topo_context_dict.keys())
+		print "Is order correct?", ordered_tkeys
+		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
+		print "==="
+		print "obs"
+		print obs
+		print "==="
+		states = TM.custom_regions
+		prob, prob_path = viterbi(obs, states, TM, LM)
+		print "prob path", prob_path
+
+
+def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1"):
 
 	import ParseLGL
 
@@ -367,7 +411,7 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			geo_logprobs = {}
 			for c in topo_context_dict[t]['context']:
 				if '|' in c:
-					plist = LM.bigram_prob_indep(c)
+					plist = LM.bigram_prob(c)
 					for region in plist:
 						try:
 							ot.write(unicode(c) + u' ' + unicode(region) + u':' + unicode(plist[region]))
@@ -395,8 +439,8 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 			ot.write(u'\n')
 			ot.write(unicode(problist))
 			ot.write(u'\n')
-			#if returns[0][0] == True:
-			#	cor += 1
+			if returns[0][0] == True:
+				cor += 1
 			total += 1
 			#if total % 50 == 0:
 			#	print cor, "/", total
@@ -406,9 +450,12 @@ def test_LGL(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_classi
 	print cor, "/", total
 
 
-#LM = lang_model()
-#LM.load()
-#test_LGL(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
+LM = lang_model()
+LM.load()
+test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
+TM = transition_model()
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
+test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
