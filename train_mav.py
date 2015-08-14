@@ -444,15 +444,19 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 			prob, prob_path = viterbi(obs, states, TM, LM)
 			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
 			print "prob path", zipped_preds
-			try:
-				ot.write(unicode(zipped_preds))
-				ot.write('\n')
-			except:
-				print "error writing"
+
 			for pred in zipped_preds:
 				pred_region = pred[0]
 				lat = float(pred[1][1]['lat'])
 				lon = float(pred[1][1]['long'])
+				try:
+					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon))
+					ot.write(u'\n')
+				except:
+					print "=========="
+					print "error writing"
+					print pred
+
 				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
 				#print SQL_ACC
 				cur.execute(SQL_ACC, (pred_region, ))
@@ -538,7 +542,7 @@ LM.load()
 TM = transition_model()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
 #test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
-test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
+test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
