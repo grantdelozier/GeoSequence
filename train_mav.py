@@ -297,7 +297,7 @@ def viterbi(obs, states, TM, LM):
     n = 0           # if only one element is observed max is sought in the initialization values
     if len(obs) != 1:
         n = t
-    print_dptable(V)
+    #print_dptable(V)
     (prob, state) = max((V[n][y], y) for y in states)
     return (prob, path[state])
 
@@ -418,7 +418,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 
 	import ParseLGL
 
-	out_test = "test_output2.txt"
+	out_test = "test_output3.txt"
 
 	ot = io.open(out_test, 'w', encoding='utf-8')
 
@@ -449,13 +449,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 				pred_region = pred[0]
 				lat = float(pred[1][1]['lat'])
 				lon = float(pred[1][1]['long'])
-				try:
-					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon))
-					ot.write(u'\n')
-				except:
-					print "=========="
-					print "error writing"
-					print pred
+
 
 				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
 				#print SQL_ACC
@@ -464,6 +458,14 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 				if returns[0][0] < 161.0:
 					cor += 1
 				total += 1
+
+				try:
+					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
+					ot.write(u'\n')
+				except:
+					print "=========="
+					print "error writing"
+					print pred
 
 	print cor, "/", total
 	print float(cor)/float(total)
@@ -540,9 +542,9 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
-#test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
-test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit2")
+test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit2")
+test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit2")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
