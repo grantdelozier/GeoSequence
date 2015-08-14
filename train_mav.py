@@ -4,6 +4,8 @@ import json
 from collections import defaultdict
 import math
 import psycopg2
+import io
+
 
 try:
 	os.environ['OBSPATH']
@@ -225,7 +227,6 @@ class lang_model:
 				probdict[geocat] = interp_prob'''
 		return probdict
 
-import io
 
 def get_emission_dict(LM, context_list):
 	emission_dict = {}
@@ -233,7 +234,12 @@ def get_emission_dict(LM, context_list):
 		if '|' in c:
 			plist = LM.bigram_prob(c)
 			for region in plist:
-				emission_dict[region] = emission_dict.get(region, 0.0) + math.log(plist[region])
+				if plist[region] < 0.0 or plist[region] > 1.0:
+					print "This shit is broken as fuck"
+					print region, plist[region]
+					sys.exit()
+				else:
+					emission_dict[region] = emission_dict.get(region, 0.0) + math.log(plist[region])
 
 	return emission_dict
 
