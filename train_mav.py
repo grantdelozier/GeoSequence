@@ -126,7 +126,7 @@ class lang_model:
 							bi_total += rdict[k]
 							if rdict[k] < 0.0:
 								print "Shit is fucked up"
-								print geocat, k
+								print geocat, k, rdict[k]
 								sys.exit()
 							#second_word = k.split('|')[1]
 							#first_word = k.split('|')[0]
@@ -440,8 +440,29 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 		print obs
 		print "==="
 		states = TM.custom_regions
-		prob, prob_path = viterbi(obs, states, TM, LM)
-		print "prob path", zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
+		if len(obs) > 0:
+			prob, prob_path = viterbi(obs, states, TM, LM)
+			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
+			print "prob path", zipped_preds
+			ot.write(str(zipped_preds))
+			ot.write('\n')
+			for pred in zipped_preds:
+				pred_region = pred[0]
+				lat = float(pred[1][1]['lat'])
+				lon = float(pred[1][1]['long'])
+				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+				#print SQL_ACC
+				cur.execute(SQL_ACC, (region_name, ))
+				returns = cur.fetchall()
+				if returns[0][0] < 161.0:
+					cor += 1
+				total += 1
+
+	print cor, "/", total
+	print float(cor)/float(total)
+
+	ot.close()
+	conn.close()
 
 
 def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1"):
