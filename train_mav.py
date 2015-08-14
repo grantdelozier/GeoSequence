@@ -300,7 +300,7 @@ def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 			
 			#print last_topo[0], "->", toporef[i][0]
 			#SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-			SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
+			'''SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
 			cur.execute(SQL, (prev_wid, prev_docid, i, docid))
 			results = cur.fetchall()
 			if len(results) > 0:
@@ -334,6 +334,7 @@ def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 			#print "Dist Bin:", distbin
 			tokebin = get_tokenbin(Token_Bins, token_dist)
 			#print "Token Bin:", tokebin
+			'''
 
 			
 			current_region = getRegion(lat, lon, cur)
@@ -405,7 +406,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		#print topo_context_dict
 		for t in topo_context_dict:
-			print "===="
+			#print "===="
 			ot.write(u"====\n")
 			#print topo_context_dict[t]['entry']
 			geo_logprobs = {}
