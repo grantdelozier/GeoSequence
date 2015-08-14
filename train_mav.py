@@ -66,18 +66,18 @@ class transition_model:
 				p_dict[k][r] = self.binomial_prob(k, r)
 		return p_dict
 
-	#La place smoothing
-	def binomial_prob(self, prev_region, current_region):
+	#Additive smoothing
+	def binomial_prob(self, prev_region, current_region, additive_smoothing=3.0):
 		if prev_region not in self.trans_counts:
-			cur_region_n = 1.0
+			cur_region_n = additive_smoothing
 		else:
-			cur_region_n = self.trans_counts[prev_region].get(current_region, 0.0) + 1.0
+			cur_region_n = self.trans_counts[prev_region].get(current_region, 0.0) + additive_smoothing
 		prev_total = 0.0
 		for r in self.custom_regions:
 			if prev_region in self.trans_counts:
-				prev_total += (self.trans_counts[prev_region].get(r, 0.0) + 1.0)
+				prev_total += (self.trans_counts[prev_region].get(r, 0.0) + additive_smoothing)
 			else:
-				prev_total += 1.0
+				prev_total += additive_smoothing
 		prob = cur_region_n / float(prev_total)
 		return prob
 
@@ -487,10 +487,10 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 LM = lang_model()
 LM.load()
 
-#TM = transition_model()
-#TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
+TM = transition_model()
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
 #test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
-#test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
+test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
@@ -505,9 +505,11 @@ print prob_dict
 for start_region in prob_dict:
 	print "region sum:", sum([y for x,y in prob_dict[start_region].items()])'''
 
+'''
 for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin', 'Iraqi|Officials', 'in|Baghdad']:
 	plist =  LM.bigram_prob(bg).items()
 	plist.sort(key=lambda x: x[1])
 	print bg
 	print plist
 	print "========="
+'''
