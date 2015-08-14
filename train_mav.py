@@ -77,6 +77,7 @@ class transition_model:
 class lang_model:
 
 	obs_counts = {}
+	custom_regions = []
 
 	def __init__(self):
 		self.obs_counts = {}
@@ -122,7 +123,17 @@ class lang_model:
 					self.obs_counts[geocat]['$UNI_TYPES$'] = uni_types
 					self.obs_counts[geocat]['$BI_TYPES$'] = bi_types
 					self.obs_counts[geocat]['$BI_TOTAL$'] = bi_total
+		self.load_custom_regions()
 
+	def load_custom_regions(self):
+		conn = psycopg2.connect(os.environ['DB_CONN'])
+		cur = conn.cursor()
+
+		SQL = "SELECT p1.region_name from customgrid as p1;"
+		cur.execute(SQL)
+		returns = cur.fetchall()
+		for name in returns:
+			self.custom_regions.append(name[0])
 
 
 	#generate probability given unigram
@@ -156,7 +167,7 @@ class lang_model:
 		return probdict
 
 	#generate probability given bigram. assumes all geographies are in same distribution
-	def bigram_prob(self, bigram, smoothing="simple-interp", lamb=.5):
+	def bigram_prob(self, bigram, smoothing="simple-interp-laplace", lamb=.5):
 		probdict = {}
 		if smoothing=='kneser-ney':
 			firstword = bigram.split('|')[0]
@@ -178,6 +189,16 @@ class lang_model:
 					bi_prob =  self.obs_counts[geocat].get(bigram, 0.0) / self.obs_counts['global'].get(bigram, 1.0)
 					interp_prob = lamb * bi_prob + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
 					probdict[geocat] = interp_prob
+		elif smoothing=='simple-inter-laplace':
+			firstword = bigram.split('|')[0]
+			secondword = bigram.split('|')[1]
+			for geocat in self.custom_regions:
+				if geocat != 'global':
+					uni_prob_first = self.obs_counts[geocat].get(firstword, 1.0) / float(max( self.obs_counts['global'].get(firstword, 1.0), len(self.custom_regions)))
+					uni_prob_second = self.obs_counts[geocat].get(secondword, 1.0) / float(max(self.obs_counts['global'].get(secondword, 1.0), len(self.custom_regions)))
+					bi_prob =  self.obs_counts[geocat].get(bigram, 1.0) / float(max(self.obs_counts['global'].get(bigram, 1.0), len(self.custom_regions)) )
+					interp_prob = lamb * bi_prob + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
+					probdict[geocat] = interp_prob								
 			'''for geocat in self.obs_counts:
 
 				#Add in some absolute discounting
@@ -199,7 +220,7 @@ class lang_model:
 
 import io
 
-def get_emission_dict(LM, context_list):
+def get_emission_dict(LM, context_list, states):
 	emission_dict = {}
 	for c in context_list:
 		if '|' in c:
