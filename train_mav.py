@@ -259,11 +259,11 @@ def viterbi(obs, states, TM, LM):
         emission_dict = get_emission_dict(LM, obs[t])
 
         for y in states:
-            #print emission_dict[y]
-            #print math.log(emission_dict[y])
-            #for j in states:
-            #    print TM.binomial_prob(j, y)
-            #    print math.log(TM.binomial_prob(j, y))
+            print emission_dict[y]
+            print math.log(emission_dict[y])
+            for j in states:
+                print TM.binomial_prob(j, y)
+                print math.log(TM.binomial_prob(j, y))
             (prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + math.log(emission_dict[y]), y0) for y0 in states)
             V[t][y] = prob
             newpath[y] = path[state] + [y]
@@ -409,7 +409,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		ordered_tkeys = sorted(topo_context_dict.keys())
-		print "Is order correct?", ordered_tkeys
+		#print "Is order correct?", ordered_tkeys
 		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
 		print "==="
 		print "obs"
@@ -417,7 +417,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 		print "==="
 		states = TM.custom_regions
 		prob, prob_path = viterbi(obs, states, TM, LM)
-		print "prob path", prob_path
+		print "prob path", zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
 
 
 def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1"):
@@ -486,10 +486,11 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 
 LM = lang_model()
 LM.load()
-TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
-test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
-test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
+
+#TM = transition_model()
+#TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
+#test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
+#test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
@@ -504,7 +505,7 @@ print prob_dict
 for start_region in prob_dict:
 	print "region sum:", sum([y for x,y in prob_dict[start_region].items()])'''
 
-'''for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin']:
+for bg in ['New|York', 'United|States', 'United|Kingdom', 'Texas|State', 'Austin|#MARK#', 'in|Austin', 'Iraqi|Officials', 'in|Baghdad']:
 	plist =  LM.bigram_prob(bg).items()
 	plist.sort(key=lambda x: x[1])
 	print bg
