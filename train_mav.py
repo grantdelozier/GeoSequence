@@ -124,6 +124,10 @@ class lang_model:
 						else:
 							bi_types += 1
 							bi_total += rdict[k]
+							if rdict[k] < 0.0:
+								print "Shit is fucked up"
+								print geocat, k
+								sys.exit()
 							#second_word = k.split('|')[1]
 							#first_word = k.split('|')[0]
 							#self.obs_counts[geocat]['$SECOND_WORD$|'+second_word] = self.obs_counts[geocat].get('$SECOND_WORD$|'+second_word, 0) + rdict[k]
