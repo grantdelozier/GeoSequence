@@ -444,8 +444,11 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 			prob, prob_path = viterbi(obs, states, TM, LM)
 			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
 			print "prob path", zipped_preds
-			ot.write(str(zipped_preds))
-			ot.write('\n')
+			try:
+				ot.write(unicode(zipped_preds))
+				ot.write('\n')
+			except:
+				print "error writing"
 			for pred in zipped_preds:
 				pred_region = pred[0]
 				lat = float(pred[1][1]['lat'])
