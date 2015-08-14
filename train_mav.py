@@ -203,11 +203,18 @@ class lang_model:
 			secondword = bigram.split('|')[1]
 			for geocat in self.custom_regions:
 				if geocat != 'global':
-					uni_prob_first = (self.obs_counts[geocat].get(firstword, 0.0) + 1.0) / float(self.obs_counts['global'].get(firstword, 0.0) + len(self.custom_regions))
-					uni_prob_second = (self.obs_counts[geocat].get(secondword, 0.0) + 1.0) / float(self.obs_counts['global'].get(secondword, 0.0) + len(self.custom_regions))
-					bi_prob =  (self.obs_counts[geocat].get(bigram, 0.0) + 1.0) / float(self.obs_counts['global'].get(bigram, 0.0) + len(self.custom_regions))
-					interp_prob = lamb * bi_prob + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
-					probdict[geocat] = interp_prob								
+					uni_prob_first = (self.obs_counts[geocat].get(firstword, 0.0) + 1.0) / float(self.obs_counts['global'].get(firstword, 0.0) + (len(self.custom_regions)-1.0))
+					uni_prob_second = (self.obs_counts[geocat].get(secondword, 0.0) + 1.0) / float(self.obs_counts['global'].get(secondword, 0.0) + (len(self.custom_regions)-1.0))
+					bi_prob =  (self.obs_counts[geocat].get(bigram, 0.0) + 1.0) / float(self.obs_counts['global'].get(bigram, 0.0) + (len(self.custom_regions)-1.0))
+					interp_prob = (lamb * bi_prob) + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
+					probdict[geocat] = interp_prob
+					if interp_prob < 0.0 or interp_prob > 1.0:
+						print "Shit is fucked up"
+						print "uni first:", uni_prob_first
+						print "uni second:", uni_prob_second
+						print "bigram: ", bi_prob
+						print "interp: ", interp_prob
+						sys.exit()								
 			'''for geocat in self.obs_counts:
 
 				#Add in some absolute discounting
