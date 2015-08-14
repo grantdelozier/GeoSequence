@@ -252,6 +252,11 @@ def viterbi(obs, states, TM, LM):
         emission_dict = get_emission_dict(LM, obs[t])
 
         for y in states:
+        	print emission_dict[y]
+        	print math.log(emission_dict[y])
+        	for j in states:
+        		print TM.binomial_prob(y0, y)
+        		print math.log(TM.binomial_prob(y0, y))
             (prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + math.log(emission_dict[y]), y0) for y0 in states)
             V[t][y] = prob
             newpath[y] = path[state] + [y]
@@ -474,9 +479,9 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 
 LM = lang_model()
 LM.load()
-test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 TM = transition_model()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
+test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_classicxml")
 
 '''TM = transition_model()
