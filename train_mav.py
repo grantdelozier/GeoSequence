@@ -455,7 +455,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 				lon = float(pred[1][1]['long'])
 				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
 				#print SQL_ACC
-				cur.execute(SQL_ACC, (region_name, ))
+				cur.execute(SQL_ACC, (pred_region, ))
 				returns = cur.fetchall()
 				if returns[0][0] < 161.0:
 					cor += 1
