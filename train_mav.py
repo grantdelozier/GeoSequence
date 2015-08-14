@@ -210,10 +210,17 @@ class lang_model:
 					probdict[geocat] = interp_prob
 					if interp_prob < 0.0 or interp_prob > 1.0:
 						print "Shit is fucked up"
-						print "uni first:", uni_prob_first
-						print "uni second:", uni_prob_second
+						print bigram
 						print "bigram: ", bi_prob
 						print "interp: ", interp_prob
+						numerator = (self.obs_counts[geocat].get(bigram, 0.0) + 1.0)
+						denom = float(self.obs_counts['global'].get(bigram, 0.0) + (len(self.custom_regions)-1.0))
+						denom_part1 = self.obs_counts['global'].get(bigram, 0.0)
+						denom_part2 = (len(self.custom_regions)-1.0)
+						print numerator
+						print denom
+						print denom_part1
+						print denom_part2
 						sys.exit()								
 			'''for geocat in self.obs_counts:
 
