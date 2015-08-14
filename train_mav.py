@@ -66,11 +66,18 @@ class transition_model:
 				p_dict[k][r] = self.binomial_prob(k, r)
 		return p_dict
 
+	#La place smoothing
 	def binomial_prob(self, prev_region, current_region):
-		cur_region_n = self.trans_counts[prev_region].get(current_region, 1.0)
+		if prev_region not in self.trans_counts:
+			cur_region_n = 1.0
+		else:
+			cur_region_n = self.trans_counts[prev_region].get(current_region, 0.0) + 1.0
 		prev_total = 0.0
 		for r in self.custom_regions:
-			prev_total += self.trans_counts[prev_region].get(r, 1.0)
+			if prev_region in self.trans_counts:
+				prev_total += (self.trans_counts[prev_region].get(r, 0.0) + 1.0)
+			else:
+				prev_total += 1.0
 		prob = cur_region_n / float(prev_total)
 		return prob
 
