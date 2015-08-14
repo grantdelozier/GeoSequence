@@ -233,7 +233,7 @@ def get_emission_dict(LM, context_list):
 		if '|' in c:
 			plist = LM.bigram_prob(c)
 			for region in plist:
-				emission_dict[region] = emission_dict.get(region, 0.0) + plist[region]
+				emission_dict[region] = emission_dict.get(region, 0.0) + math.log(plist[region])
 
 	return emission_dict
 
@@ -259,12 +259,12 @@ def viterbi(obs, states, TM, LM):
         emission_dict = get_emission_dict(LM, obs[t])
 
         for y in states:
-            print emission_dict[y]
-            print math.log(emission_dict[y])
-            for j in states:
-                print TM.binomial_prob(j, y)
-                print math.log(TM.binomial_prob(j, y))
-            (prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + math.log(emission_dict[y]), y0) for y0 in states)
+            #print emission_dict[y]
+            #print math.log(emission_dict[y])
+            #for j in states:
+            #    print TM.binomial_prob(j, y)
+            #    print math.log(TM.binomial_prob(j, y))
+            (prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
             V[t][y] = prob
             newpath[y] = path[state] + [y]
 
