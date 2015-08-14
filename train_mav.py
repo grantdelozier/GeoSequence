@@ -361,7 +361,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 
 	import ParseLGL
 
-	out_test = "test_output.txt"
+	out_test = "test_output2.txt"
 
 	ot = io.open(out_test, 'w', encoding='utf-8')
 
@@ -440,7 +440,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 			ot.write(u'\n')
 			ot.write(unicode(problist))
 			ot.write(u'\n')
-			if returns[0][0] == True:
+			if returns[0][0] < 100:
 				cor += 1
 			total += 1
 			#if total % 50 == 0:
