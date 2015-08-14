@@ -226,7 +226,7 @@ def get_emission_dict(LM, context_list):
 		if '|' in c:
 			plist = LM.bigram_prob(c)
 			for region in plist:
-				emission_dict[region] = emission_dict.get(region, 0.0) + math.log(plist[region])
+				emission_dict[region] = emission_dict.get(region, 0.0) + plist[region]
 
 	return emission_dict
 
