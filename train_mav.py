@@ -220,7 +220,7 @@ class lang_model:
 
 import io
 
-def get_emission_dict(LM, context_list, states):
+def get_emission_dict(LM, context_list):
 	emission_dict = {}
 	for c in context_list:
 		if '|' in c:
