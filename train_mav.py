@@ -94,7 +94,7 @@ class lang_model:
 			m += 1
 			if m < 300:
 				fp = os.path.join(direct, f)
-				geocat = f.split('_uni_bigram')[0]
+				geocat = f.split('_uni_bigram')[0].replace('_', ' ')
 				self.obs_counts[geocat] = {}
 				uni_total = 0.0
 				bi_types = 0
@@ -194,9 +194,9 @@ class lang_model:
 			secondword = bigram.split('|')[1]
 			for geocat in self.custom_regions:
 				if geocat != 'global':
-					uni_prob_first = self.obs_counts[geocat].get(firstword, 1.0) / float(max( self.obs_counts['global'].get(firstword, 1.0), len(self.custom_regions)))
-					uni_prob_second = self.obs_counts[geocat].get(secondword, 1.0) / float(max(self.obs_counts['global'].get(secondword, 1.0), len(self.custom_regions)))
-					bi_prob =  self.obs_counts[geocat].get(bigram, 1.0) / float(max(self.obs_counts['global'].get(bigram, 1.0), len(self.custom_regions)) )
+					uni_prob_first = (self.obs_counts[geocat].get(firstword, 0.0) + 1.0) / float(self.obs_counts['global'].get(firstword, 0.0) + len(self.custom_regions))
+					uni_prob_second = (self.obs_counts[geocat].get(secondword, 0.0) + 1.0) / float(self.obs_counts['global'].get(secondword, 0.0) + len(self.custom_regions))
+					bi_prob =  (self.obs_counts[geocat].get(bigram, 0.0) + 1.0) / float(self.obs_counts['global'].get(bigram, 0.0) + len(self.custom_regions))
 					interp_prob = lamb * bi_prob + (((1.0 - lamb)/2.0) * uni_prob_first) + (((1.0 - lamb)/2.0) * uni_prob_second)
 					probdict[geocat] = interp_prob								
 			'''for geocat in self.obs_counts:
@@ -445,7 +445,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 			problist = geo_logprobs.items()
 			problist.sort(key=lambda x: x[1])
 			#print problist
-			region_name = problist[-1][0].replace('_', ' ')
+			region_name = problist[-1][0]
 			region_prob = problist[-1][-1]
 			lat = float(topo_context_dict[t]['entry'][1]['lat'])
 			lon = float(topo_context_dict[t]['entry'][1]['long'])
