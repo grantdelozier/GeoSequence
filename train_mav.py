@@ -45,7 +45,7 @@ class transition_model:
 			#print toporef
 			#print len(wordref)
 
-		print self.trans_counts
+		#print self.trans_counts
 		conn.close()
 
 		self.load_custom_regions()
@@ -165,9 +165,6 @@ class lang_model:
 					#Add in some absolute discounting
 					bi_discount = self.obs_counts[geocat]['$BI_TOTAL$'] / self.obs_counts[geocat]['$BI_TYPES$']
 					uni_discount = self.obs_counts[geocat]['$UNI_TOTAL$'] / self.obs_counts[geocat]['$UNI_TYPES$']
-					print "============="
-					print "bi_discount", bi_discount
-					print "uni_discount", uni_discount
 
 					uni_prob_first = (max(self.obs_counts[geocat].get(firstword, 0.0) - uni_discount, 0.0) / self.obs_counts[geocat]['$UNI_TOTAL$'])
 					uni_prob_second = (max(self.obs_counts[geocat].get(secondword, 0.0) - uni_discount, 0.0) / self.obs_counts[geocat]['$UNI_TOTAL$'])
@@ -429,21 +426,20 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 	total = 0
 	obs_sequence = []
 	for f in os.listdir(directory):
-		print f
+		#print f
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		ordered_tkeys = sorted(topo_context_dict.keys())
-		#print "Is order correct?", ordered_tkeys
 		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
-		print "==="
-		print "obs"
-		print obs
-		print "==="
+		#print "==="
+		#print "obs"
+		#print obs
+		#print "==="
 		states = TM.custom_regions
 		if len(obs) > 0:
 			prob, prob_path = viterbi(obs, states, TM, LM)
 			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
-			print "prob path", zipped_preds
+			#print "prob path", zipped_preds
 
 			for pred in zipped_preds:
 				pred_region = pred[0]
@@ -467,6 +463,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 					print "error writing"
 					print pred
 
+	print "VITERBI ACC:"
 	print cor, "/", total
 	print float(cor)/float(total)
 
@@ -488,7 +485,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 	cor = 0
 	total = 0
 	for f in os.listdir(directory):
-		print f
+		#print f
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		#print topo_context_dict
@@ -535,6 +532,7 @@ def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev
 
 	ot.close()
 
+	print "PURE LM ACC:"
 	print cor, "/", total
 
 
@@ -542,9 +540,9 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
-test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4")
-test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit3")
+test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3")
+test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
