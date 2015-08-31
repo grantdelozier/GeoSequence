@@ -540,9 +540,9 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
-test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1")
-test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit5")
+test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
+test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
