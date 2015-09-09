@@ -411,7 +411,7 @@ def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 
 #topo_context_dict[t] = {'entry':toporef[t], 'context':d}
 
-def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
+def test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 
 	import ParseLGL
 
@@ -471,7 +471,7 @@ def test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/article
 	conn.close()
 
 
-def test_LGL_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1"):
+def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1"):
 
 	import ParseLGL
 
@@ -540,9 +540,9 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit5")
-test_LGL_pureLM(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
-test_LGL_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
+TM.load("/work/02608/grantdel/corpora/trconllf/dev_trainsplit1")
+test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
+test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
