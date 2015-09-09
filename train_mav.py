@@ -531,18 +531,20 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 			#	print cor, "/", total
 
 	ot.close()
+	conn.close()
 
 	print "PURE LM ACC:"
 	print cor, "/", total
+	print float(cor)/float(total)
 
 
 LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/trconllf/dev_trainsplit1")
-test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
-test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
+TM.load("/work/02608/grantdel/corpora/trconllf/dev_trainsplit2")
+test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit2")
+test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit2")
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
