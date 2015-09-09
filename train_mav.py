@@ -524,7 +524,7 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 			ot.write(u'\n')
 			ot.write(unicode(problist))
 			ot.write(u'\n')
-			if returns[0][0] < 100:
+			if returns[0][0] < 161.0:
 				cor += 1
 			total += 1
 			#if total % 50 == 0:
