@@ -453,6 +453,7 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 				if returns[0][0] < 161.0:
 					cor += 1
 				total += 1
+				print "viterbi poly total: ", total
 
 				try:
 					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
@@ -583,6 +584,7 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 			if returns[0][0] < 161.0:
 				cor += 1
 			total += 1
+			print "pure LM poly total: ", total
 
 	ot.close()
 	conn.close()
