@@ -446,7 +446,7 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 				lon = float(pred[1][1]['long'])
 
 
-				SQL_ACC = "SELECT ST_DWithin(pq.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
+				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
 				#print SQL_ACC
 				cur.execute(SQL_ACC, (pred_region, ))
 				returns = cur.fetchall()
@@ -572,7 +572,7 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 			lon = float(topo_context_dict[t]['entry'][1]['long'])
 			#print region_name
 			#SQL_ACC = "SELECT ST_Distance(p1.polygeog2, p2.geog)/1000.0 from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
-			SQL_ACC = "SELECT ST_DWithin(pq.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
+			SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
 			#print SQL_ACC
 			cur.execute(SQL_ACC, (region_name, ))
 			returns = cur.fetchall()
