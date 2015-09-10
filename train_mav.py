@@ -411,6 +411,64 @@ def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 
 #topo_context_dict[t] = {'entry':toporef[t], 'context':d}
 
+def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name = "lgl_dev_classic"):
+	import ParseLGL
+
+	out_test = "test_output3.txt"
+
+	ot = io.open(out_test, 'w', encoding='utf-8')
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cor = 0
+	total = 0
+	obs_sequence = []
+	for f in os.listdir(directory):
+		#print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		ordered_tkeys = sorted(topo_context_dict.keys())
+		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
+		#print "==="
+		#print "obs"
+		#print obs
+		#print "==="
+		states = TM.custom_regions
+		if len(obs) > 0:
+			prob, prob_path = viterbi(obs, states, TM, LM)
+			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
+			#print "prob path", zipped_preds
+
+			for pred in zipped_preds:
+				pred_region = pred[0]
+				lat = float(pred[1][1]['lat'])
+				lon = float(pred[1][1]['long'])
+
+
+				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+				#print SQL_ACC
+				cur.execute(SQL_ACC, (pred_region, ))
+				returns = cur.fetchall()
+				if returns[0][0] < 161.0:
+					cor += 1
+				total += 1
+
+				try:
+					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
+					ot.write(u'\n')
+				except:
+					print "=========="
+					print "error writing"
+					print pred
+
+	print "VITERBI ACC POLY:"
+	print cor, "/", total
+	print float(cor)/float(total)
+
+	ot.close()
+	conn.close()
+
 def test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 
 	import ParseLGL
@@ -470,6 +528,68 @@ def test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/de
 	ot.close()
 	conn.close()
 
+def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1", poly_table_name="lgl_dev_classic"):
+	import ParseLGL
+
+	out_test = "test_output_poly.txt"
+
+	ot = io.open(out_test, 'w', encoding='utf-8')
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()	
+
+	cor = 0
+	total = 0
+
+	for f in os.listdir(directory):
+		#print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		#print topo_context_dict
+		for t in topo_context_dict:
+			#print "===="
+			ot.write(u"====\n")
+			geo_logprobs = {}
+			for c in topo_context_dict[t]['context']:
+				if '|' in c:
+					plist = LM.bigram_prob(c)
+					for region in plist:
+						try:
+							ot.write(unicode(c) + u' ' + unicode(region) + u':' + unicode(plist[region]))
+						except:
+							ot.write(c.encode('utf-8') + u' ' + unicode(region) + u':' + unicode(plist[region]))			
+						if plist[region] > 0.0:
+							geo_logprobs[region] = geo_logprobs.get(region, 0.0) + math.log(plist[region])
+			ot.write(u'\n')
+			problist = geo_logprobs.items()
+			problist.sort(key=lambda x: x[1])
+
+			region_name = problist[-1][0]
+			region_prob = problist[-1][-1]
+			lat = float(topo_context_dict[t]['entry'][1]['lat'])
+			lon = float(topo_context_dict[t]['entry'][1]['long'])
+			#print region_name
+			SQL_ACC = "SELECT ST_Distance(p1.polygeog2, p2.geog)/1000.0 from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
+			#print SQL_ACC
+			cur.execute(SQL_ACC, (region_name, ))
+			returns = cur.fetchall()
+			
+			#print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
+			#print problist
+			ot.write(unicode([returns[0], topo_context_dict[t], region_name, region_prob]))
+			ot.write(u'\n')
+			ot.write(unicode(problist))
+			ot.write(u'\n')
+			if returns[0][0] < 161.0:
+				cor += 1
+			total += 1
+
+	ot.close()
+	conn.close()
+
+	print "PURE LM ACC POLY:"
+	print cor, "/", total
+	print float(cor)/float(total)
 
 def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_testsplit1"):
 
@@ -542,9 +662,14 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/trconllf/dev_trainsplit5")
-test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
+#test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
+#test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
+
+test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name="lgl_dev_classic")
+test_viterbi_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name="lgl_dev_classic")
+
+
 
 '''TM = transition_model()
 TM.load(direct="/home/grant/devel/TopCluster/LGL/articles/dev_classicxml")
