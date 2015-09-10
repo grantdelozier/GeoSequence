@@ -547,6 +547,10 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 		#print f
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		did = toporef[-2]
+		wid = toporef[-1]
+		print "did: ", did
+		print "wid: ", wid
 		#print topo_context_dict
 		for t in topo_context_dict:
 			#print "===="
@@ -572,7 +576,7 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 			lon = float(topo_context_dict[t]['entry'][1]['long'])
 			#print region_name
 			#SQL_ACC = "SELECT ST_Distance(p1.polygeog2, p2.geog)/1000.0 from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
-			SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s;" % (poly_table_name, '%s')
+			SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s;" % (poly_table_name, '%s', '%s')
 			#print SQL_ACC
 			cur.execute(SQL_ACC, (region_name, ))
 			returns = cur.fetchall()
