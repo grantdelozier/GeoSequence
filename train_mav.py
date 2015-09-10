@@ -430,10 +430,6 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		ordered_tkeys = sorted(topo_context_dict.keys())
 		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
-		did = toporef[-2]
-		wid = toporef[-1]
-		print "did: ", did
-		print "wid: ", wid
 		#print "==="
 		#print "obs"
 		#print obs
@@ -448,6 +444,11 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 				pred_region = pred[0]
 				lat = float(pred[1][1]['lat'])
 				lon = float(pred[1][1]['long'])
+
+				did = pred[1][-2]
+				wid = pred[1][-1]
+				print "did: ", did
+				print "wid: ", wid
 
 				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s and p1.wid = %s;" % (poly_table_name, '%s', '%s', '%s')				#print SQL_ACC
 				cur.execute(SQL_ACC, (region_name, did, wid))
@@ -549,12 +550,14 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 		#print f
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
-		did = toporef[-2]
-		wid = toporef[-1]
-		print "did: ", did
-		print "wid: ", wid
+
 		#print topo_context_dict
 		for t in topo_context_dict:
+
+			did = toporef[t][-2]
+			wid = toporef[t][-1]
+			print "did: ", did
+			print "wid: ", wid
 			#print "===="
 			ot.write(u"====\n")
 			geo_logprobs = {}
