@@ -454,7 +454,15 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 				cur.execute(SQL_ACC, (region_name, did, wid))
 				returns = cur.fetchall()
 				print returns
-				if returns[0][0] == True:
+				if returns[0][0] == None:
+					SQL_POINT = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+					#print SQL_ACC
+					cur.execute(SQL_POINT, (pred_region, ))
+					returns = cur.fetchall()
+					if returns[0][0] < 160.0:
+						cor += 1
+						print "backed off to point acc and found CORRECT"
+				elif returns[0][0] == True:
 					cor += 1
 				total += 1
 				print "viterbi poly total: ", total
@@ -586,16 +594,26 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 			cur.execute(SQL_ACC, (region_name, did, wid))
 			returns = cur.fetchall()
 			
+			if returns[0][0] == None:
+				SQL_POINT = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+				#print SQL_ACC
+				cur.execute(SQL_POINT, (region_name, ))
+				returns = cur.fetchall()
+				if returns[0][0] < 160.0:
+					cor += 1
+					print "backed off to point acc and found CORRECT"
+			elif returns[0][0] == True:
+				cor += 1
+			total += 1
+
 			#print returns[0], '|', topo_context_dict[t], '|',  region_name, '|', region_prob
 			#print problist
 			ot.write(unicode([returns[0], topo_context_dict[t], region_name, region_prob]))
 			ot.write(u'\n')
 			ot.write(unicode(problist))
 			ot.write(u'\n')
-			print returns
-			if returns[0][0] == True:
-				cor += 1
-			total += 1
+			#print returns
+
 			print "pure LM poly total: ", total
 
 	ot.close()
