@@ -453,7 +453,7 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s and p1.wid = %s;" % (poly_table_name, '%s', '%s', '%s')				#print SQL_ACC
 				cur.execute(SQL_ACC, (pred_region, did, wid))
 				returns = cur.fetchall()
-				print returns
+				#print returns
 				if returns[0][0] == None:
 					SQL_POINT = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
 					#print SQL_ACC
@@ -461,11 +461,11 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 					returns = cur.fetchall()
 					if returns[0][0] < 160.0:
 						cor += 1
-						print "backed off to point acc and found CORRECT"
+						#print "backed off to point acc and found CORRECT"
 				elif returns[0][0] == True:
 					cor += 1
 				total += 1
-				print "viterbi poly total: ", total
+				#print "viterbi poly total: ", total
 
 				try:
 					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
@@ -601,7 +601,7 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 				returns = cur.fetchall()
 				if returns[0][0] < 160.0:
 					cor += 1
-					print "backed off to point acc and found CORRECT"
+					#print "backed off to point acc and found CORRECT"
 			elif returns[0][0] == True:
 				cor += 1
 			total += 1
@@ -614,7 +614,7 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 			ot.write(u'\n')
 			#print returns
 
-			print "pure LM poly total: ", total
+			#print "pure LM poly total: ", total
 
 	ot.close()
 	conn.close()
@@ -695,12 +695,12 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit2")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit3")
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 
-test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit2", poly_table_name="lgl_dev_classic")
-test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit2", poly_table_name="lgl_dev_classic")
+test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3", poly_table_name="lgl_dev_classic")
+test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3", poly_table_name="lgl_dev_classic")
 
 
 
