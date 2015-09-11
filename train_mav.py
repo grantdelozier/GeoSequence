@@ -447,8 +447,8 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 
 				did = pred[1][-2]
 				wid = pred[1][-1]
-				print "did: ", did
-				print "wid: ", wid
+				#print "did: ", did
+				#print "wid: ", wid
 
 				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s and p1.wid = %s;" % (poly_table_name, '%s', '%s', '%s')				#print SQL_ACC
 				cur.execute(SQL_ACC, (pred_region, did, wid))
@@ -564,8 +564,8 @@ def test_pureLM_poly(LM, directory="/home/grant/devel/TopCluster/LGL/articles/de
 
 			did = toporef[t][-2]
 			wid = toporef[t][-1]
-			print "did: ", did
-			print "wid: ", wid
+			#print "did: ", did
+			#print "wid: ", wid
 			#print "===="
 			ot.write(u"====\n")
 			geo_logprobs = {}
@@ -695,12 +695,12 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit3")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 
-test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3", poly_table_name="lgl_dev_classic")
-test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3", poly_table_name="lgl_dev_classic")
+test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
+test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 
 
 
