@@ -681,6 +681,7 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 			total += 1
 			#if total % 50 == 0:
 			#	print cor, "/", total
+			print "viterbi poly total: ", total
 
 	ot.close()
 	conn.close()
@@ -698,7 +699,7 @@ TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 
-test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name="lgl_dev_classic")
+#test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name="lgl_dev_classic")
 test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name="lgl_dev_classic")
 
 
