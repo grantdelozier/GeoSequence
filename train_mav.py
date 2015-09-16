@@ -19,6 +19,26 @@ except:
 	print "ERROR: DB_CONN string is not set"
 	sys.exit()
 
+class transition_model_discrim:
+	trans_counts = {}
+	custom_regions = []
+
+	def __init__(self):
+		self.trans_counts = {}
+
+	def load(self, direct):
+		import ParseLGL
+		conn = psycopg2.connect(os.environ['DB_CONN'])
+
+		cur = conn.cursor()
+		m = 0
+		for xml_infile in os.listdir(direct):
+			
+			print xml_infile
+			m += 1
+			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
+			self.trans_counts = featurize_transition_discrim(wordref, toporef, domain, cur, self.trans_counts)
+
 class transition_model:
 	trans_counts = {}
 	custom_regions = []
@@ -40,7 +60,7 @@ class transition_model:
 			m += 1
 			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
 
-			self.trans_counts = featurize_transition(wordref, toporef, domain, cur, self.trans_counts)
+			self.trans_counts = featurize_transition_gen(wordref, toporef, domain, cur, self.trans_counts)
 			#print self.trans_counts
 			#print toporef
 			#print len(wordref)
@@ -82,6 +102,8 @@ class transition_model:
 				prev_total += additive_smoothing
 		prob = cur_region_n / float(prev_total)
 		return prob
+
+
 
 class lang_model:
 
@@ -318,6 +340,29 @@ def get_tokenbin(Dist_Bins, dist_transition):
 			return b
 	return 'document'
 
+def getRegionBin(current_region, prev_region, cur):
+	if current_region == prev_region:
+		return 'SAME'
+	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 161000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
+	cur.execute(SQL_Dist, (current_region, prev_region))
+	results = cur.fetchall()
+	if results[0][0] == True:
+		return "LOCAL/ADJACENT"
+	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 1500000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
+	cur.execute(SQL_Dist, (current_region, prev_region))
+	results = cur.fetchall()
+	if results[0][0] == True:
+		return "COUNTRY"
+	return "CONTINENT/GLOBAL"
+
+#RETURN COUNTRY if toponym is a name or alt name of a country
+def isCountryName(toponym):
+	if toponym in country_names:
+		return 'COUNTRY'
+	else:
+		return 'NOT-COUNTRY'
+
+
 #Get region given latitutde, longitude, DB cur
 def getRegion(lat, lon, cur):
 	
@@ -329,7 +374,99 @@ def getRegion(lat, lon, cur):
 	return results[0][0]
 
 
-def featurize_transition(wordref, toporef, domain, cur, transition_dict):
+def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict, corpus='lgl'):
+	j = 0
+	#Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
+	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+	prev_region = '#START#'
+
+	transition_data = []
+
+	for i in sorted(toporef.keys()):
+		j += 1
+		#print i, toporef[i]
+		lon = toporef[i][1]['long']
+		lat = toporef[i][1]['lat']
+		toponym = toporef[i][0]
+		docid = toporef[i][-2]
+		wid = i
+		regions = []
+
+		#print domain, results[0][0]
+
+		if j > 1:
+			prev_lon = last_topo[1]['long']
+			prev_lat = last_topo[1]['lat']
+			prev_wid = last_topo[-1]
+			prev_docid = last_topo[-2]
+			prev_toponame = last_topo[0]
+			
+			print last_topo[0], "->", toporef[i][0]
+
+			'''if corpus=='lgl':
+				#SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
+				SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
+				cur.execute(SQL, (prev_wid, prev_docid, i, docid))
+				results = cur.fetchall()
+				if len(results) > 0:
+					#print "1st", results
+					pass
+				else:			
+					SQL = "SELECT ST_DISTANCE(p1.polygeog2, ST_GeographyFromText('SRID=4326;POINT(%s %s)')) from lgl_dev_classic as p1 where p1.polygeog2 is not null and p1.wid = %s and p1.docid = %s;" % (prev_lon, prev_lat, '%s', '%s')
+					cur.execute(SQL, (prev_wid, prev_docid))
+					results = cur.fetchall()
+					if len(results) > 0:
+						#print "2nd", results
+						pass
+					else:
+						SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.polygeog2) from lgl_dev_classic as p2 where p2.polygeog2 is not null and p2.wid = %s and p2.docid = %s;" % (lon, lat, '%s', '%s')
+						cur.execute(SQL, (i, docid))
+						results = cur.fetchall()
+						if len(results) > 0:
+							#print "3rd", results
+							pass
+						else: 
+							SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
+							cur.execute(SQL)
+							results = cur.fetchall()
+
+
+				dist_transition = results[0][0]/1000.0
+				
+				#print "Transition Dist:", dist_transition
+				#print "Token Dist:", token_dist 
+				#distbin = get_distbin(Dist_Bins, dist_transition)
+				#print "Dist Bin:", distbin
+				
+				#print "Token Bin:", tokebin'''
+			
+			token_dist = i - last_topo[-1]
+			tokebin = get_tokenbin(Token_Bins, token_dist)
+			
+			current_region = getRegion(lat, lon, cur)
+
+			label = getRegionBin(current_region, prev_region, cur)
+
+			country_name = isCountryName(toponym)
+
+			if prev_toponame.lower() == toponym.lower():
+				sameTopo = '1'
+			else:
+				sameTopo = '0'
+
+
+			transition_data.append([label, [tokebin, sameTopo]])
+
+			
+
+		last_topo = toporef[i]
+		last_topo[-1] = i
+		if j > 1:
+			prev_region = current_region
+
+	return transition_data
+
+def featurize_transition_gen(wordref, toporef, domain, cur, transition_dict):
 	j = 0
 	Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
 	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
@@ -353,42 +490,7 @@ def featurize_transition(wordref, toporef, domain, cur, transition_dict):
 			prev_docid = last_topo[-2]
 			
 			#print last_topo[0], "->", toporef[i][0]
-			#SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-			'''SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
-			cur.execute(SQL, (prev_wid, prev_docid, i, docid))
-			results = cur.fetchall()
-			if len(results) > 0:
-				#print "1st", results
-				pass
-			else:			
-				SQL = "SELECT ST_DISTANCE(p1.polygeog2, ST_GeographyFromText('SRID=4326;POINT(%s %s)')) from lgl_dev_classic as p1 where p1.polygeog2 is not null and p1.wid = %s and p1.docid = %s;" % (prev_lon, prev_lat, '%s', '%s')
-				cur.execute(SQL, (prev_wid, prev_docid))
-				results = cur.fetchall()
-				if len(results) > 0:
-					#print "2nd", results
-					pass
-				else:
-					SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.polygeog2) from lgl_dev_classic as p2 where p2.polygeog2 is not null and p2.wid = %s and p2.docid = %s;" % (lon, lat, '%s', '%s')
-					cur.execute(SQL, (i, docid))
-					results = cur.fetchall()
-					if len(results) > 0:
-						#print "3rd", results
-						pass
-					else: 
-						SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-						cur.execute(SQL)
-						results = cur.fetchall()
-
-
-			dist_transition = results[0][0]/1000.0
-			token_dist = i - last_topo[-1]
-			#print "Transition Dist:", dist_transition
-			#print "Token Dist:", token_dist 
-			distbin = get_distbin(Dist_Bins, dist_transition)
-			#print "Dist Bin:", distbin
-			tokebin = get_tokenbin(Token_Bins, token_dist)
-			#print "Token Bin:", tokebin
-			'''
+			
 
 			
 			current_region = getRegion(lat, lon, cur)
