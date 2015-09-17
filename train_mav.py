@@ -5,6 +5,8 @@ from collections import defaultdict
 import math
 import psycopg2
 import io
+import scipy
+from scipy.sparse import csr_matrix
 
 
 try:
@@ -45,6 +47,48 @@ class transition_model_discrim:
 
 		
 		conn.close()
+
+	def train(self):
+		X = []
+	    Y = []
+
+	    feature_index, label_index = {}, {}
+	    i, j, y = 0, 0, 0
+	    row_indexes, col_indexes, values, labels = [], [], [], []
+	    feature_index[""] = 0
+	    i += 1
+		for line in self.trans_data:
+			if len(line) > 0:
+				label = line[0]
+				feats = line[1]
+			row_indexes.append(len(values))
+			# Add the intercept constant
+			col_indexes.append(0)
+			values.append(1.0)
+			j += 1
+			if label not in label_index:
+				label_index[label] = y
+				y += 1
+			labels.append(label_index[label])
+			for f in feats:
+				if f not in feature_index:
+					feature_index[f] = i
+				i += 1
+				col_indexes.append(feature_index[f])
+				values.append(1.0)
+		row_indexes.append(row_indexes[-1] + 1)
+
+		X = csr_matrix((scipy.array(values, dtype=scipy.float64), scipy.array(col_indexes),
+                    scipy.array(row_indexes)), shape=(j, i), dtype=scipy.float64)
+    	Y = scipy.array(labels)
+
+    	model = linear_model.LogisticRegression(penalty='L2', fit_intercept=False)
+   		model.fit(X, Y)
+    	coefs = model.coef_
+
+    	print label_index
+    	print feature_index
+    	print coefs
 
 	def load_country_names(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
@@ -460,9 +504,9 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 			country_name_feat = isCountryName(toponym, country_names)
 
 			if prev_toponame.lower() == toponym.lower():
-				sameTopo = '1'
+				sameTopo = 'SAME'
 			else:
-				sameTopo = '0'
+				sameTopo = 'NOT-SAME'
 
 
 			transition_data.append([label, [tokebin, sameTopo, country_name_feat]])
@@ -808,6 +852,7 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 
 TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
+TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 
