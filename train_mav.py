@@ -79,7 +79,7 @@ class transition_model_discrim:
 			for f in feats:
 				if f not in feature_index:
 					feature_index[f] = i
-				i += 1
+					i += 1
 				col_indexes.append(feature_index[f])
 				values.append(1.0)
 		row_indexes.append(row_indexes[-1] + 1)
