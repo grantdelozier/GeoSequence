@@ -64,7 +64,8 @@ class transition_model_discrim:
 			for name in row:
 				if name != None:
 					if ',' in name:
-						for nm in name.split(u','):
+						for nm in name.split(','):
+							print unicode(nm)
 							country_names.append(nm.lower())
 					country_names.append(name.lower())
 
