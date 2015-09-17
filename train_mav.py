@@ -60,7 +60,7 @@ class transition_model_discrim:
 
 		#print results
 		for row in results:
-			#print row
+			print row
 			for name in row:
 				if name != None:
 					if ',' in name:
