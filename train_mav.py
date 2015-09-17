@@ -3,11 +3,16 @@ import sys
 import json
 from collections import defaultdict
 import math
-import psycopg2
 import io
 import scipy
 from scipy.sparse import csr_matrix
+from sklearn import linear_model
 
+try:
+	import psycopg2
+except:
+	sys.path.append('/home/02608/grantdel/pythonlib/lib/python2.7/site-packages')
+	import psycopg2
 
 try:
 	os.environ['OBSPATH']
