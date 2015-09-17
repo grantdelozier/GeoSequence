@@ -88,7 +88,7 @@ class transition_model_discrim:
 						scipy.array(row_indexes)), shape=(j, i), dtype=scipy.float64)
 		Y = scipy.array(labels)
 
-		model = linear_model.LogisticRegression(penalty='L2', fit_intercept=False, solver='newton-cg')
+		model = linear_model.LogisticRegression(penalty='l2', fit_intercept=False, C=10.0, solver='newton-cg')
 		model.fit(X, Y)
 		coefs = model.coef_
 
