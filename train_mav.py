@@ -470,7 +470,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 			
 		last_topo = toporef[i]
 		last_topo[-1] = i
-		if j > 1:
+		if j > 0:
 			prev_region = current_region
 
 	return transition_data
