@@ -49,29 +49,22 @@ class transition_model_discrim:
 	def load_country_names(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
 		cur = conn.cursor()
-
 		country_names = []
-
 		SQL = "SELECT p1.name, p1.postal, p1.abbrev, p1.name_long, p1.altnames from countries_2012 as p1;"
-
 		cur.execute(SQL)
-
 		results = cur.fetchall()
 
-		#print results
 		for row in results:
-			#print row
 			for name in row:
 				if name != None:
 					if ',' in name:
 						for nm in name.split(','):
-							#print unicode(nm)
 							country_names.append(unicode(nm.decode('utf-8').lower()))
 					else:
 						country_names.append(unicode(name.decode('utf-8').lower()))
 
-		for n in country_names:
-			print n
+		#for n in country_names:
+		#	print n
 
 		self.country_names = set(country_names)
 
@@ -448,6 +441,8 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 
 		#print domain, results[0][0]
 
+		current_region = getRegion(lat, lon, cur)
+
 		if j > 1:
 			prev_lon = last_topo[1]['long']
 			prev_lat = last_topo[1]['lat']
@@ -459,8 +454,6 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 			
 			token_dist = i - last_topo[-1]
 			tokebin = get_tokenbin(Token_Bins, token_dist)
-			
-			current_region = getRegion(lat, lon, cur)
 
 			label = getRegionBin(current_region, prev_region, cur)
 
@@ -475,7 +468,6 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 			transition_data.append([label, [tokebin, sameTopo, country_name_feat]])
 
 			
-
 		last_topo = toporef[i]
 		last_topo[-1] = i
 		if j > 1:
