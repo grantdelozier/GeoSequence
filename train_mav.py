@@ -6,13 +6,14 @@ import math
 import io
 import scipy
 from scipy.sparse import csr_matrix
-from sklearn import linear_model
+
 
 try:
 	import psycopg2
 except:
-	sys.path.append('/home/02608/grantdel/pythonlib/lib/python2.7/site-packages')
+	sys.path.insert(0, '/home/02608/grantdel/pythonlib/lib/python2.7/site-packages')
 	import psycopg2
+	from sklearn import linear_model
 
 try:
 	os.environ['OBSPATH']
