@@ -392,6 +392,8 @@ def get_tokenbin(Dist_Bins, dist_transition):
 	return 'document'
 
 def getRegionBin(current_region, prev_region, cur):
+	print current_region
+	print prev_region
 	if current_region == prev_region:
 		return 'SAME'
 	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 161000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
