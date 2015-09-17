@@ -91,9 +91,9 @@ class transition_model_discrim:
 		model.fit(X, Y)
 		coefs = model.coef_
 
-    	print label_index
-    	print feature_index
-    	print coefs
+		print label_index
+		print feature_index
+		print coefs
 
 	def load_country_names(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
