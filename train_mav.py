@@ -88,13 +88,16 @@ class transition_model_discrim:
 						scipy.array(row_indexes)), shape=(j, i), dtype=scipy.float64)
 		Y = scipy.array(labels)
 
+		print Y
+		print X
+
 		model = linear_model.LogisticRegression(penalty='l2', fit_intercept=False, C=10.0, solver='newton-cg')
 		model.fit(X, Y)
 		coefs = model.coef_
 
 		print label_index
 		print feature_index
-		print coefs
+		print coefs.tolist()
 
 	def load_country_names(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
