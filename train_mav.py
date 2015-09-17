@@ -60,15 +60,15 @@ class transition_model_discrim:
 
 		#print results
 		for row in results:
-			print row
+			#print row
 			for name in row:
 				if name != None:
 					if ',' in name:
 						for nm in name.split(','):
-							print unicode(nm.decode('utf-8'))
-							country_names.append(nm.lower())
+							#print unicode(nm)
+							country_names.append(unicode(nm.decode('utf-8').lower()))
 					else:
-						country_names.append(name.lower())
+						country_names.append(unicode(name.decode('utf-8').lower()))
 
 		for n in country_names:
 			print n
@@ -397,6 +397,7 @@ def getRegionBin(current_region, prev_region, cur):
 	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 161000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
 	cur.execute(SQL_DIST, (current_region, prev_region))
 	results = cur.fetchall()
+	print results
 	if results[0][0] == True:
 		return "LOCAL/ADJACENT"
 	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 1500000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
