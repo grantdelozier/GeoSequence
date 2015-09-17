@@ -385,14 +385,14 @@ def get_tokenbin(Dist_Bins, dist_transition):
 	return 'document'
 
 def getRegionBin(current_region, prev_region, cur):
-	print current_region
-	print prev_region
+	#print current_region
+	#print prev_region
 	if current_region == prev_region:
 		return 'SAME'
 	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 161000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
 	cur.execute(SQL_DIST, (current_region, prev_region))
 	results = cur.fetchall()
-	print results
+	#print results
 	if results[0][0] == True:
 		return "LOCAL/ADJACENT"
 	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 1500000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
@@ -466,6 +466,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 
 
 			transition_data.append([label, [tokebin, sameTopo, country_name_feat]])
+			print transition_data[-1]
 
 			
 		last_topo = toporef[i]
