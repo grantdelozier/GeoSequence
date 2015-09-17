@@ -71,6 +71,17 @@ class transition_model_discrim:
 
 		conn.close()
 
+	def load_custom_regions(self):
+		conn = psycopg2.connect(os.environ['DB_CONN'])
+		cur = conn.cursor()
+
+		SQL = "SELECT p1.region_name from customgrid as p1;"
+		cur.execute(SQL)
+		returns = cur.fetchall()
+		for name in returns:
+			self.custom_regions.append(name[0])
+		conn.close()
+
 class transition_model:
 	trans_counts = {}
 	custom_regions = []
@@ -790,8 +801,8 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 	print float(cor)/float(total)
 
 
-LM = lang_model()
-LM.load()
+#LM = lang_model()
+#LM.load()
 
 TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
