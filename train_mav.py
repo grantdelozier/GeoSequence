@@ -50,13 +50,13 @@ class transition_model_discrim:
 
 	def train(self):
 		X = []
-	    Y = []
+		Y = []
 
-	    feature_index, label_index = {}, {}
-	    i, j, y = 0, 0, 0
-	    row_indexes, col_indexes, values, labels = [], [], [], []
-	    feature_index[""] = 0
-	    i += 1
+		feature_index, label_index = {}, {}
+		i, j, y = 0, 0, 0
+		row_indexes, col_indexes, values, labels = [], [], [], []
+		feature_index[""] = 0
+		i += 1
 		for line in self.trans_data:
 			if len(line) > 0:
 				label = line[0]
@@ -79,12 +79,12 @@ class transition_model_discrim:
 		row_indexes.append(row_indexes[-1] + 1)
 
 		X = csr_matrix((scipy.array(values, dtype=scipy.float64), scipy.array(col_indexes),
-                    scipy.array(row_indexes)), shape=(j, i), dtype=scipy.float64)
-    	Y = scipy.array(labels)
+						scipy.array(row_indexes)), shape=(j, i), dtype=scipy.float64)
+		Y = scipy.array(labels)
 
-    	model = linear_model.LogisticRegression(penalty='L2', fit_intercept=False)
-   		model.fit(X, Y)
-    	coefs = model.coef_
+		model = linear_model.LogisticRegression(penalty='L2', fit_intercept=False)
+		model.fit(X, Y)
+		coefs = model.coef_
 
     	print label_index
     	print feature_index
