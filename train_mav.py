@@ -20,8 +20,9 @@ except:
 	sys.exit()
 
 class transition_model_discrim:
-	trans_counts = {}
+	trans_data = {}
 	custom_regions = []
+	country_names = []
 
 	def __init__(self):
 		self.trans_counts = {}
@@ -30,6 +31,9 @@ class transition_model_discrim:
 		import ParseLGL
 		conn = psycopg2.connect(os.environ['DB_CONN'])
 
+		self.load_custom_regions()
+		self.load_country_names()
+
 		cur = conn.cursor()
 		m = 0
 		for xml_infile in os.listdir(direct):
@@ -37,7 +41,35 @@ class transition_model_discrim:
 			print xml_infile
 			m += 1
 			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
-			self.trans_counts = featurize_transition_discrim(wordref, toporef, domain, cur, self.trans_counts)
+			self.trans_data = featurize_transition_discrim(wordref, toporef, domain, cur, self.trans_data, self.country_names)
+
+		
+		conn.close()
+
+	def load_country_names(self):
+		conn = psycopg2.connect(os.environ['DB_CONN'])
+		cur = conn.cursor()
+
+		country_names = []
+
+		SQL = "SELECT p1.name, p1.postal, p1.abbrev, p1.name_long, p1.altnames from countries_2012 as p1;"
+
+		cur.execute(SQL)
+
+		results = cur.fetchall()
+
+		for name in results[0]:
+			if ',' in name:
+				for nm in name.split(','):
+					country_names.append(nm.lower())
+			country_names.append(name.lower())
+
+		for n in country_names:
+			print n
+
+		self.country_names = set(country_names)
+
+		conn.close()
 
 class transition_model:
 	trans_counts = {}
@@ -70,6 +102,7 @@ class transition_model:
 
 		self.load_custom_regions()
 
+
 	def load_custom_regions(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
 		cur = conn.cursor()
@@ -79,6 +112,7 @@ class transition_model:
 		returns = cur.fetchall()
 		for name in returns:
 			self.custom_regions.append(name[0])
+		conn.close()
 
 	def binomial_prob_dict(self):
 		p_dict = {}
@@ -356,8 +390,8 @@ def getRegionBin(current_region, prev_region, cur):
 	return "CONTINENT/GLOBAL"
 
 #RETURN COUNTRY if toponym is a name or alt name of a country
-def isCountryName(toponym):
-	if toponym in country_names:
+def isCountryName(toponym, country_names):
+	if toponym.lower() in country_names:
 		return 'COUNTRY'
 	else:
 		return 'NOT-COUNTRY'
@@ -374,7 +408,7 @@ def getRegion(lat, lon, cur):
 	return results[0][0]
 
 
-def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict, corpus='lgl'):
+def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict, country_names):
 	j = 0
 	#Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
 	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
@@ -402,43 +436,6 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 			prev_toponame = last_topo[0]
 			
 			print last_topo[0], "->", toporef[i][0]
-
-			'''if corpus=='lgl':
-				#SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-				SQL = "SELECT ST_DISTANCE(p1.polygeog2, p2.polygeog2) from lgl_dev_classic as p1, lgl_dev_classic as p2 where p1.polygeog2 is not null and p2.polygeog is not null and p2.wid = %s and p2.docid = %s and p1.wid = %s and p1.docid = %s;" % ('%s', '%s', '%s', '%s')
-				cur.execute(SQL, (prev_wid, prev_docid, i, docid))
-				results = cur.fetchall()
-				if len(results) > 0:
-					#print "1st", results
-					pass
-				else:			
-					SQL = "SELECT ST_DISTANCE(p1.polygeog2, ST_GeographyFromText('SRID=4326;POINT(%s %s)')) from lgl_dev_classic as p1 where p1.polygeog2 is not null and p1.wid = %s and p1.docid = %s;" % (prev_lon, prev_lat, '%s', '%s')
-					cur.execute(SQL, (prev_wid, prev_docid))
-					results = cur.fetchall()
-					if len(results) > 0:
-						#print "2nd", results
-						pass
-					else:
-						SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.polygeog2) from lgl_dev_classic as p2 where p2.polygeog2 is not null and p2.wid = %s and p2.docid = %s;" % (lon, lat, '%s', '%s')
-						cur.execute(SQL, (i, docid))
-						results = cur.fetchall()
-						if len(results) > 0:
-							#print "3rd", results
-							pass
-						else: 
-							SQL = "SELECT ST_DISTANCE(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), ST_GeographyFromText('SRID=4326;POINT(%s %s)'));" % (lon, lat, prev_lon, prev_lat)
-							cur.execute(SQL)
-							results = cur.fetchall()
-
-
-				dist_transition = results[0][0]/1000.0
-				
-				#print "Transition Dist:", dist_transition
-				#print "Token Dist:", token_dist 
-				#distbin = get_distbin(Dist_Bins, dist_transition)
-				#print "Dist Bin:", distbin
-				
-				#print "Token Bin:", tokebin'''
 			
 			token_dist = i - last_topo[-1]
 			tokebin = get_tokenbin(Token_Bins, token_dist)
@@ -447,7 +444,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 
 			label = getRegionBin(current_region, prev_region, cur)
 
-			country_name = isCountryName(toponym)
+			country_name_feat = isCountryName(toponym, country_names)
 
 			if prev_toponame.lower() == toponym.lower():
 				sameTopo = '1'
@@ -455,7 +452,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict,
 				sameTopo = '0'
 
 
-			transition_data.append([label, [tokebin, sameTopo]])
+			transition_data.append([label, [tokebin, sameTopo, country_name_feat]])
 
 			
 
@@ -796,13 +793,13 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 LM = lang_model()
 LM.load()
 
-TM = transition_model()
+TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 
-test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
-test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
+#test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
+#test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 
 
 
