@@ -58,11 +58,13 @@ class transition_model_discrim:
 
 		results = cur.fetchall()
 
+		print results[0]
 		for name in results[0]:
-			if ',' in name:
-				for nm in name.split(','):
-					country_names.append(nm.lower())
-			country_names.append(name.lower())
+			if name != None:
+				if ',' in name:
+					for nm in name.split(','):
+						country_names.append(nm.lower())
+				country_names.append(name.lower())
 
 		for n in country_names:
 			print n
