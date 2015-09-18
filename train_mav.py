@@ -181,7 +181,7 @@ class transition_model:
 			m += 1
 			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
 
-			self.trans_counts = featurize_transition_gen(wordref, toporef, domain, cur, self.trans_counts)
+			self.trans_counts = featurize_transition_gen(wordref, toporef, domain, cur)
 			#print self.trans_counts
 			#print toporef
 			#print len(wordref)
