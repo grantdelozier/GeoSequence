@@ -28,7 +28,9 @@ except:
 	sys.exit()
 
 class transition_model_discrim:
-	trans_data = {}
+	trans_data = []
+	feature_index = {}
+	label_index = {}
 	custom_regions = []
 	country_names = []
 
@@ -51,7 +53,6 @@ class transition_model_discrim:
 			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
 			self.trans_data = featurize_transition_discrim(wordref, toporef, domain, cur, self.trans_data, self.country_names)
 
-		
 		conn.close()
 
 	def train(self):
@@ -88,9 +89,6 @@ class transition_model_discrim:
 						scipy.array(row_indexes)), shape=(j, i), dtype=scipy.float64)
 		Y = scipy.array(labels)
 
-		print Y
-		print X
-
 		model = linear_model.LogisticRegression(penalty='l2', fit_intercept=False, C=10.0, solver='newton-cg')
 		model.fit(X, Y)
 		coefs = model.coef_
@@ -98,6 +96,34 @@ class transition_model_discrim:
 		print label_index
 		print feature_index
 		print coefs.tolist()
+
+		self.label_index = label_index
+		self.feature_index = feature_index
+		self.weights = coefs.tolist()
+
+	def log_prob_dict(self, prev_toponame, current_toponame, toke_dist):
+		Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+
+		feature_vector = np.zeros(len(self.feature_index))
+		obs_features = []
+		if prev_toponame.lower() == current_toponame.lower():
+			obs_features.append('SAME')
+		else:
+			obs_features.append('NOT-SAME')
+
+		tokebin = get_tokenbin(Token_Bins, token_dist)
+		if tokebin in self.feature_index:
+			obs_features.append(tokebin)
+
+		prob_dict = {}
+		for label in self.label_index:
+			label_sum = 0.0
+			label_sum += self.weights[self.label_index[label]][0]
+			for feat in obs_features:
+				label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
+			prob_dict[label] = math.exp(label_sum) / (1.0 + math.exp(label_sum))
+		return log_prob_dict
+
 
 	def load_country_names(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
@@ -474,7 +500,7 @@ def getRegion(lat, lon, cur):
 	return results[0][0]
 
 
-def featurize_transition_discrim(wordref, toporef, domain, cur, transition_dict, country_names):
+def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 	j = 0
 	#Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
 	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
@@ -646,6 +672,32 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 
 	ot.close()
 	conn.close()
+
+def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
+	import ParseLGL
+
+	out_test = "test_output3.txt"
+
+	ot = io.open(out_test, 'w', encoding='utf-8')
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cor = 0
+	total = 0
+	obs_sequence = []
+	for f in os.listdir(directory):
+		#print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		ordered_tkeys = sorted(topo_context_dict.keys())
+		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
+		print obs
+		#print "==="
+		#print "obs"
+		#print obs
+		#print "==="
+		states = TM.custom_regions
 
 def test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 
@@ -856,14 +908,14 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 	print float(cor)/float(total)
 
 
-#LM = lang_model()
-#LM.load()
+LM = lang_model()
+LM.load()
 
 TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-#test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
+test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit4")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
