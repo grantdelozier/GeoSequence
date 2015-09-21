@@ -695,7 +695,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		ordered_tkeys = sorted(topo_context_dict.keys())
-		obs = [[topo, topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
+		obs = [[topo, topo_context_dict[topo]['entry'], topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
 		print obs
 		#print "==="
 		#print "obs"
