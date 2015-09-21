@@ -443,6 +443,10 @@ def viterbi(obs, states, TM, LM):
     (prob, state) = max((V[n][y], y) for y in states)
     return (prob, path[state])
 
+
+def viterbi_discrim(obs, states, TM, LM):
+	pass
+
 def print_dptable(V):
     s = "    " + " ".join(("%7d" % i) for i in range(len(V))) + "\n"
     for y in V[0]:
@@ -691,13 +695,15 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		ordered_tkeys = sorted(topo_context_dict.keys())
-		obs = [topo_context_dict[topo]['context'].keys() for topo in ordered_tkeys]
+		obs = [[topo, topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
 		print obs
 		#print "==="
 		#print "obs"
 		#print obs
 		#print "==="
 		states = TM.custom_regions
+		if len(obs) > 0:
+			viterbi_discrim(obs, states, TM, LM)
 
 def test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 
