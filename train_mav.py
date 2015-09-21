@@ -51,7 +51,7 @@ class transition_model_discrim:
 			print xml_infile
 			m += 1
 			wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(direct, xml_infile))
-			self.trans_data = featurize_transition_discrim(wordref, toporef, domain, cur, self.trans_data, self.country_names)
+			self.trans_data = featurize_transition_discrim(wordref, toporef, domain, cur, self.country_names)
 
 		conn.close()
 
