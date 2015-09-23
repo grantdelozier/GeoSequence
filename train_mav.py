@@ -27,6 +27,84 @@ except:
 	print "ERROR: DB_CONN string is not set"
 	sys.exit()
 
+demonyms = set([u'equatorial guineans', u'french southern territories', u'chinese', u'swedish',
+ u'malaysians', u'anguillans', u's\xe3o tom\xe9an', u'dutchwomen', u'turkish', u'incas', u'chadian',
+  u'iraqi', u'martiniquaises', u'futunans', u'georgians', u'tanzanian', u'burkinab\xe9',
+   u'burkinab\xe8', u'azerbaijanis', u'slovenians', u'bermudian', u'bahamians', u'omani',
+    u'nigerians', u'saudi', u'azeris', u'mozambicans', u'croatian', u'uruguayan', u'tunisian',
+     u'japanese', u'czechs', u'central african', u'letts', u'somalis', u'south africans', u'indian',
+      u'poles', u'faroese', u'aruban', u'omanis', u'sahraouis', u'belongers', u'laotians',
+       u'netherlanders', u'r\xe9unionnais', u'french', u'barbudan', u'republic of',
+        u'\xe5land islanders', u'malawians', u'canaleros', u'canadian', u'vietnamese', u'vanuatuan',
+         u'haitians', u'comorans', u'abkhazian', u'chapines', u'panamanian', u'ethiopian',
+          u'yemenis', u'south ossetian', u'italians', u'congolese', u'nepalese', u'hongkongers', u'gibraltarians',
+           u'syrians', u'belizeans', u'bissau-guineans', u'palestinian', u'spaniards', u'indians', u'samoans',
+            u'miquelonnais', u'australian', u'dominicans', u'belgian', u'northern marianans', u'bahamian', u'bulgarian',
+             u'brazilians', u'luxembourgers', u'georgian', u'costa ricans', u'luxembourgish', u'israelis', u'albanians',
+              u'none', u'icelanders', u'filipino', u'bouvet island', u'democratic republic of the', u'eritreans', u'costa rican',
+               u'mauritanians', u'sahrawis', u'bolivians', u'guadeloupe', u'hong kong', u'papua new guineans', u'tajiks', u'nigerien',
+                u'burundian', u'botswanan', u'wallis and futuna islanders', u'guamanian', u'kuwaiti', u'montenegrin', u'macanese',
+                 u'egyptian', u'slovenian', u'mongolians', u'mongols', u'magyars', u'kyrgyz', u'nauruan', u'south sudanese', u'lao',
+                  u'lithuanian', u'fijian', u'maltese', u'kenyans', u'hellenes', u'equatorial guinean', u'guaran\xedes', u'malians',
+                   u'moroccans', u'turks and caicos island', u'tokelauans', u'greek', u'burmese', u'kirgiz', u'mexican', u'futunan',
+                    u"democratic people's republic of", u'maldivians', u'guanacos', u'palauans', u'austrian', u'argentines', u'gabonese',
+                     u'emirian', u'kittitian', u'argentine', u'guatemalan', u'koreans', u'monacans', u'antarctic residents', u'beninois',
+                      u'ugandans', u'chileans', u'saint-martinoise', u'iranians', u'maldivian', u'northern irish', u'mauritanian', u'algerian',
+                       u'new zealanders', u'pakistanis', u'irishwomen', u'surinamese', u'european', u'namibian', u'guatemalans', u'trinis',
+                        u'botswanans', u'slovaks', u'nigerian', u'christmas island', u'honduran', u'andorrans', u'kirghiz', u'caymanian', u'tanzanians',
+ u'afghans', u'greeks', u'uzbekistani', u'mcdonald islands', u'sahraouian', u'barbudans', u'dutch', u'britons', u'kiwis',
+ u'malagasy', u'french guianese', u'mon\xe9gasque', u'abkhaz', u'timorese', u'egyptians', u'bhutanese', u'northern marianan',
+ u'qataris', u'vincentians', u'french polynesian', u'norwegian', u'british', u's\xe3o tom\xe9ans', u'somalian', u'barbadian',
+ u'american', u'belgians', u'sierra leonean', u"people's republic of", u'cubans', u'christmas islanders', u'arubans', u'ayisyen',
+u'micronesian', u'svalbard', u'gambians', u'americans', u'spanish', u'antarctic', u'tongan', u'cambodians', u'r\xe9unionnaises',
+   u'palauan', u'cabo verdean', u'basotho (singular mosotho)', u'mauritians', u'federated states of', u'mon\xe9gasques', u'sint eustatius',
+    u'gibraltar', u'danish', u'solomon islanders', u'herzegovinian', u'burundians', u'greenlandic', u'sri lankans', u'saudi arabians', u'eritrean',
+     u'saint helenian', u'thai', u'moldovan', u'ghanaian', u'pakistani', u'barundi', u'colombians', u'iranian', u'latvians', u'saudi arabian',
+      u'saint-martinois', u'norfolk island', u'north korean', u'belarusians', u'catrachos', u'tunisians', u'motswana', u'philippine', u'scotswomen',
+       u'ecuadorian', u'angolans', u'mongolian', u'abkhazians', u'trinibagonians', u'tobagonian', u'scotsmen', u'salvadoran', u'russians', u'samoan',
+        u'llanitos', u'south korean', u'zimbabwean', u'equatoguineans', u'barth\xe9lemoises', u'mauritian', u'sri lankan', u'british virgin island',
+         u'emirians', u'bissau-guinean', u'ukrainians', u'statian', u'qatari', u'sint maarten', u'germans', u'estonian', u'cuban', u'slovene',
+          u'cura\xe7aoans', u'papuans', u'banyarwanda', u'liechtenstein', u'greenlanders', u'sint maartener', u'moldovans', u'see taiwan',
+           u'hong kongese', u'pitcairn islanders', u'malian', u'german', u'austrians', u'moroccan', u'jordanian', u'cambodian', u'puerto ricans',
+            u'senegalese', u'singaporean', u'dutchmen', u'mozambican', u'romanian', u'saints', u'filipinos', u'bruneian', u'namibians', u'anguillan',
+             u'caymanians', u'montserratians', u'nevisians', u'hungarian', u'comorian', u'emiri', u'tajikistani', u'malawian', u'niueans', u'nevisian',
+              u'turks and caicos islanders', u'emiratis', u'tuvaluans', u'malaysian', u'\xe5land island', u'comoran', u'angolan', u'uzbeks', u'scots',
+               u'papuan', u'kazakhs', u'philippinean', u'channel islander', u'cook island', u'tuvaluan', u'american samoan', u'nicas', u'taiwanese',
+                u'cura\xe7aoan', u'welshmen', u'guambat', u'martiniquais', u'swedes', u'europeans', u'indonesians', u'israeli', u'turks', u'guyanese',
+                 u'northern irishmen', u'mexicans', u'salvadorans', u'puerto rican', u'welshwomen', u'colombian', u'niuean', u'belizean', u'persians',
+                  u'fijians', u'bolivian', u'sahrawian', u'liberian', u'armenian', u'slovenes', u'bulgarians', u'filipinas', u'new caledonian', u'manx',
+                   u'cypriots', u'bahraini', u'montenegrins', u'martinican', u'canadians', u'algerians', u'libyan', u'jamaicans', u'i-kiribati',
+                    u'scottish', u'togolese', u'swazi', u'barth\xe9lemois', u'saudis', u'seychellois', u'rwandans', u'bamar', u'american samoans',
+                     u'laos', u'guadeloupians', u'saba', u'swazis', u'miquelonnaises', u'cabo verdeans', u'new caledonians', u'charr\xfaas', u'somali',
+                      u'grenadians', u'emirati', u'zambian', u'venezuelans', u'sammarinese', u'kyrgyzstani', u'croatians', u'lebanese', u'zambians',
+                       u'frenchwomen', u'bruneians', u'saint vincentian', u'see other words for british', u'uzbek', u'herzegovinians', u'ivorians',
+                        u'zimbabweans', u'kosovan', u'ivorian', u'cook islanders', u'hondurans', u'nicaraguans', u'danes', u'bahrainis', u'saint-pierraises',
+u'saint vincentians', u'sudanese', u'kuwaitis', u'kosovar', u'cariocas', u'bonaire dutch', u'saint-pierrais', u'norfolk islander', u'magyar',
+ u'paraguayans', u'comorians', u'azerbaijani', u'french polynesians', u'tajikistanis', u'ghanaians', u'northern irishwomen',
+  u'south sandwich islands', u'singapore', u'welsh', u'frenchmen', u'djiboutians', u'guineans', u'sahrawi', u'afghan', u'kazakh',
+   u'montserratian', u'mahoran', u'saint lucian', u'central africans', u'iraqis', u'basotho', u'liberians', u'english', u'swiss',
+    u'micronesians', u'the', u'kazakhstanis', u'andorran', u'motswana (sing. batswana)', u'bermudans', u'liechtensteiners', u'belarusian',
+     u'macedonian', u'bangladeshis', u'falkland islanders', u'cocos islanders', u'polish', u'cameroonian', u'icelandic', u'serbs',
+      u'saba dutch', u'ugandan', u'solomon island', u'ethiopians', u'r\xe9unionese', u'falkland island', u'ascension and tristan da cunha',
+       u'wallisian', u'channel island', u'indonesian', u'kyrgyzstanis', u'antiguans', u'vincentian', u'ni-vanuatu', u'tongans', u'finnish',
+        u'bosnians', u'u.s. virgin island', u'serbian', u'bermudan', u'pinoys', u'italian', u'portuguese', u'bonaire', u'chadians',
+         u'quisqueyanos', u'czech', u'finns', u'barbadians', u'kittitians', u'laotian', u'sierra leoneans', u'bajans', u'new zealand',
+          u'uruguayans', u'marshallese', u'libyans', u'papua new guinean', u'jan mayen', u'ukrainian', u'saint helenians', u'luxembourg',
+           u'malinese', u'jordanians', u'englishwomen', u'british virgin islanders', u'tobagonians', u'trinidadian', u'englishmen',
+            u'hungarians', u'paraguayan', u'romanians', u'saint-martinoises', u'kazakhstani', u'chilean', u'vatican citizens', u'gambian',
+             u'kosovars', u'hellenic', u'albanian', u'hongkies', u'maubere', u'antiguan', u'latvian', u'peruvians', u'palestinians',
+              u'trinidadians', u'boricuas', u'united states', u'slovak', u'u.s. virgin islanders', u'beninese', u'pitcairn island',
+               u'cocos island', u'serbians', u'grenadian', u'bangladeshi', u'biot', u'brazilian', u'venezuelan', u'estonians',
+                u'cameroonians', u'azeri', u'south georgia', u'bosnian', u'bermudians', u'hongers', u'south ossetians', u'turkmen',
+                 u'russian', u'haitian', u'wallisians', u'statians', u'dominican', u'macedonians', u'somalians', u'us', u'below',
+                  u'persian', u'jamaican', u'uk', u'vatican', u'saint lucians', u'beninoises', u'irish', u'cypriot', u'peruvian',
+                   u'guamanians', u'singaporeans', u'yemeni', u'croats', u'syrian', u'surinamers', u'south african', u'nicaraguan',
+                    u'guinean', u'ticos', u'djiboutian', u'armenians', u'seychelloises', u'nz', u'turkmens', u'nigeriens', u'rwandan',
+                     u'netherlandic', u'kenyan', u'irishmen', u'tokelauan', u'uzbekistanis', u'aussies', u'equatoguinean', u'monacan', u'nauruans',
+                      u'wallis and futuna', u'nepali', u'australians', u'ecuadorians', u'heard island', u'norwegians', u'mahorans',
+                       u'lithuanians', u'panamanians'])
+
+
 class transition_model_discrim:
 	trans_data = []
 	feature_index = {}
@@ -491,6 +569,9 @@ def isCountryName(toponym, country_names):
 		return 'COUNTRY'
 	else:
 		return 'NOT-COUNTRY'
+
+def isDemonym(toponym, demonyms):
+
 
 
 #Get region given latitutde, longitude, DB cur
