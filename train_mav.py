@@ -180,18 +180,9 @@ class transition_model_discrim:
 		self.weights = coefs.tolist()
 
 	def log_prob_dict(self, prev_toponame, current_toponame, toke_dist):
-		Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
-
 		feature_vector = np.zeros(len(self.feature_index))
-		obs_features = []
-		if prev_toponame.lower() == current_toponame.lower():
-			obs_features.append('SAME')
-		else:
-			obs_features.append('NOT-SAME')
-
-		tokebin = get_tokenbin(Token_Bins, token_dist)
-		if tokebin in self.feature_index:
-			obs_features.append(tokebin)
+		
+		obs_features = discrim_featurize(prev_toponame, current_toponame, toke_dist, self.country_names)
 
 		prob_dict = {}
 		for label in self.label_index:
@@ -237,6 +228,35 @@ class transition_model_discrim:
 		for name in returns:
 			self.custom_regions.append(name[0])
 		conn.close()
+
+def discrim_featurize(prev_toponame, cur_toponame, token_dist, country_names):
+	obs_features = []
+	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+
+	#Add the duplicate toponym feature
+	if prev_toponame.lower() == cur_toponame.lower():
+		obs_features.append('SAME_TOPO')
+
+	#Add the token distance bin feature
+	tokebin = get_tokenbin(Token_Bins, token_dist)
+	if tokebin in Token_Bins:
+		obs_features.append(tokebin)
+
+	#Add the demonym features
+	if len(isDemonym(prev_toponame, demonyms)) > 0:
+		obs_features.append('PREV_DEMONYM')
+	if len(isDemonym(cur_toponame, demonyms)) > 0:
+		obs_features.append('CUR_DEMONYM')
+
+	#Add the is a country name feature
+	if len(isCountryName(prev_toponame, country_names)) > 0:
+		obs_features.append('PREV_COUNTRYNAME')
+	if len(isCountryName(cur_toponame, country_names)) > 0:
+		obs_features.append('CUR_COUNTRYNAME')
+
+
+	return obs_features
+
 
 class transition_model:
 	trans_counts = {}
@@ -303,8 +323,6 @@ class transition_model:
 				prev_total += additive_smoothing
 		prob = cur_region_n / float(prev_total)
 		return prob
-
-
 
 class lang_model:
 
@@ -568,10 +586,14 @@ def isCountryName(toponym, country_names):
 	if toponym.lower() in country_names:
 		return 'COUNTRY'
 	else:
-		return 'NOT-COUNTRY'
+		return ''
 
+#RETURN Demonym is toponym is a demonym
 def isDemonym(toponym, demonyms):
-
+	if toponym.lower() in demonyms:
+		return 'Demonym'
+	else:
+		return ''
 
 
 #Get region given latitutde, longitude, DB cur
@@ -628,8 +650,9 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 			else:
 				sameTopo = 'NOT-SAME'
 
+			obs_features = discrim_featurize(prev_toponame, toponame, token_dist, country_names)
 
-			transition_data.append([label, [tokebin, sameTopo, country_name_feat]])
+			transition_data.append([label, obs_features])
 			print transition_data[-1]
 
 			
