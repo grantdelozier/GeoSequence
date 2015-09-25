@@ -558,6 +558,7 @@ def viterbi_discrim(obs, states, TM, LM, cur):
 		newpath = {}
 		emission_dict = get_emission_dict(LM, obs[t][0])
 		transition_probdict = TM.log_prob_dict(obs[t][1])
+		print obs[t]
 
 		for y in states:
 			#print emission_dict[y]
