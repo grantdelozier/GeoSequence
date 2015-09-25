@@ -540,7 +540,7 @@ def viterbi(obs, states, TM, LM):
     return (prob, path[state])
 
 
-	def viterbi_discrim(obs, states, TM, LM):
+def viterbi_discrim(obs, states, TM, LM):
 	V = [{}]
 	path = {}
 
