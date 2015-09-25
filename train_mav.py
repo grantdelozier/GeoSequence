@@ -612,11 +612,11 @@ def getRegionBin(current_region, prev_region, cur):
 	#print results
 	if results[0][0] == True:
 		return "LOCAL/ADJACENT"
-	SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 1500000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
-	cur.execute(SQL_DIST, (current_region, prev_region))
-	results = cur.fetchall()
-	if results[0][0] == True:
-		return "COUNTRY"
+	#SQL_DIST  = "SELECT ST_DWithin(p1.geog, p2.geog, 1500000.0) from customgrid as p1, customgrid as p2 where p1.region_name = %s and p2.region_name = %s;"
+	#cur.execute(SQL_DIST, (current_region, prev_region))
+	#results = cur.fetchall()
+	#if results[0][0] == True:
+	#	return "COUNTRY"
 	return "CONTINENT/GLOBAL"
 
 #RETURN COUNTRY if toponym is a name or alt name of a country
