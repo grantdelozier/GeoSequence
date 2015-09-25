@@ -540,42 +540,42 @@ def viterbi(obs, states, TM, LM):
     return (prob, path[state])
 
 
-def viterbi_discrim(obs, states, TM, LM):
+	def viterbi_discrim(obs, states, TM, LM):
 	V = [{}]
-    path = {}
-    
-    # Initialize base cases (t == 0)
-    emission_dict = get_emission_dict(LM, obs[0][-1])
-    for y in states:
-        V[0][y] = emission_dict[y]
-        path[y] = [y]
+	path = {}
 
-    # Run Viterbi for t > 0
-    for t in range(1, len(obs)):
-        V.append({})
-        newpath = {}
-        emission_dict = get_emission_dict(LM, obs[t][-1])
-        transition_probdict = TM.log_prob_dict(obs[t][1])
+	# Initialize base cases (t == 0)
+	emission_dict = get_emission_dict(LM, obs[0][-1])
+	for y in states:
+		V[0][y] = emission_dict[y]
+		path[y] = [y]
 
-        for y in states:
-            #print emission_dict[y]
-            #print math.log(emission_dict[y])
-            #for j in states:
-            #    print TM.binomial_prob(j, y)
-            #    print math.log(TM.binomial_prob(j, y))
-            (prob, state) = max((V[t-1][y0] + transition_probdict(getRegionBin(y0, y)) + emission_dict[y], y0) for y0 in states)
-            #(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
-            V[t][y] = prob
-            newpath[y] = path[state] + [y]
+	# Run Viterbi for t > 0
+	for t in range(1, len(obs)):
+		V.append({})
+		newpath = {}
+		emission_dict = get_emission_dict(LM, obs[t][-1])
+		transition_probdict = TM.log_prob_dict(obs[t][1])
 
-     	# Don't need to remember the old paths
-        path = newpath
-    n = 0           # if only one element is observed max is sought in the initialization values
-    if len(obs) != 1:
-        n = t
-    #print_dptable(V)
-    (prob, state) = max((V[n][y], y) for y in states)
-    return (prob, path[state])
+		for y in states:
+			#print emission_dict[y]
+			#print math.log(emission_dict[y])
+			#for j in states:
+			#    print TM.binomial_prob(j, y)
+			#    print math.log(TM.binomial_prob(j, y))
+			(prob, state) = max((V[t-1][y0] + transition_probdict(getRegionBin(y0, y)) + emission_dict[y], y0) for y0 in states)
+			#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
+			V[t][y] = prob
+			newpath[y] = path[state] + [y]
+
+		# Don't need to remember the old paths
+		path = newpath
+	n = 0           # if only one element is observed max is sought in the initialization values
+	if len(obs) != 1:
+		n = t
+	#print_dptable(V)
+	(prob, state) = max((V[n][y], y) for y in states)
+	return (prob, path[state])
 
 
 
