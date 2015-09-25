@@ -179,18 +179,18 @@ class transition_model_discrim:
 		self.feature_index = feature_index
 		self.weights = coefs.tolist()
 
-	def log_prob_dict(self, prev_toponame, current_toponame, toke_dist):
+	#feature_set should be output of discrim_featurize function	
+	def log_prob_dict(self, feature_set):
 		feature_vector = np.zeros(len(self.feature_index))
 		
-		obs_features = discrim_featurize(prev_toponame, current_toponame, toke_dist, self.country_names)
 
 		prob_dict = {}
 		for label in self.label_index:
 			label_sum = 0.0
 			label_sum += self.weights[self.label_index[label]][0]
-			for feat in obs_features:
+			for feat in feature_set:
 				label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
-			prob_dict[label] = math.exp(label_sum) / (1.0 + math.exp(label_sum))
+			prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
 		return log_prob_dict
 
 
@@ -541,7 +541,43 @@ def viterbi(obs, states, TM, LM):
 
 
 def viterbi_discrim(obs, states, TM, LM):
-	pass
+	V = [{}]
+    path = {}
+    
+    # Initialize base cases (t == 0)
+    emission_dict = get_emission_dict(LM, obs[0][-1])
+    for y in states:
+        V[0][y] = emission_dict[y]
+        path[y] = [y]
+
+    # Run Viterbi for t > 0
+    for t in range(1, len(obs)):
+        V.append({})
+        newpath = {}
+        emission_dict = get_emission_dict(LM, obs[t][-1])
+        transition_probdict = TM.log_prob_dict(obs[t][1])
+
+        for y in states:
+            #print emission_dict[y]
+            #print math.log(emission_dict[y])
+            #for j in states:
+            #    print TM.binomial_prob(j, y)
+            #    print math.log(TM.binomial_prob(j, y))
+            (prob, state) = max((V[t-1][y0] + transition_probdict(getRegionBin(y0, y)) + emission_dict[y], y0) for y0 in states)
+            #(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
+            V[t][y] = prob
+            newpath[y] = path[state] + [y]
+
+     	# Don't need to remember the old paths
+        path = newpath
+    n = 0           # if only one element is observed max is sought in the initialization values
+    if len(obs) != 1:
+        n = t
+    #print_dptable(V)
+    (prob, state) = max((V[n][y], y) for y in states)
+    return (prob, path[state])
+
+
 
 def print_dptable(V):
     s = "    " + " ".join(("%7d" % i) for i in range(len(V))) + "\n"
@@ -793,21 +829,65 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 
 	cor = 0
 	total = 0
-	obs_sequence = []
 	for f in os.listdir(directory):
+		obs_sequence = []
 		#print f
 		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
 		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
 		ordered_tkeys = sorted(topo_context_dict.keys())
-		obs = [[topo, topo_context_dict[topo]['entry'], topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
-		print obs
+		obs = [[topo, topo_context_dict[topo]['entry'][0], topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
+		#print obs
 		#print "==="
+		j = 0
+		for o in obs:
+			j += 1
+			topo = o[1]
+			topo_tokeid = o[0]
+			if j > 1:
+				toke_dist = topo_tokeid - prev_topo_tokeid 	
+				trans_features = discrim_featurize(prev_topo, topo, toke_dist, TM.country_names)
+				obs_sequence.append([o[2], trans_features])
+			else:
+				obs_sequence.append([o[2], []])
+			prev_topo = topo
+			prev_topo_tokeid = o[0]
 		#print "obs"
 		#print obs
 		#print "==="
 		states = TM.custom_regions
-		if len(obs) > 0:
-			viterbi_discrim(obs, states, TM, LM)
+		if len(obs_sequence) > 0:
+			prob, prob_path = viterbi_discrim(obs_sequence, states, TM, LM)
+			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
+			print "prob path", zipped_preds
+
+			for pred in zipped_preds:
+				pred_region = pred[0]
+				lat = float(pred[1][1]['lat'])
+				lon = float(pred[1][1]['long'])
+
+
+				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+				#print SQL_ACC
+				cur.execute(SQL_ACC, (pred_region, ))
+				returns = cur.fetchall()
+				if returns[0][0] < 161.0:
+					cor += 1
+				total += 1
+
+				try:
+					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
+					ot.write(u'\n')
+				except:
+					print "=========="
+					print "error writing"
+					print pred
+
+	print "VITERBI DISCRIM ACC:"
+	print cor, "/", total
+	print float(cor)/float(total)
+
+	ot.close()
+	conn.close()
 
 def test_viterbi(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 
