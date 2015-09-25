@@ -650,7 +650,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 			else:
 				sameTopo = 'NOT-SAME'
 
-			obs_features = discrim_featurize(prev_toponame, toponame, token_dist, country_names)
+			obs_features = discrim_featurize(prev_toponame, toponym, token_dist, country_names)
 
 			transition_data.append([label, obs_features])
 			print transition_data[-1]
