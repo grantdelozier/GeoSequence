@@ -545,7 +545,7 @@ def viterbi_discrim(obs, states, TM, LM):
 	path = {}
 
 	# Initialize base cases (t == 0)
-	print obs[0][-1]
+	#print obs[0][-1]
 	emission_dict = get_emission_dict(LM, obs[0][0])
 	for y in states:
 		V[0][y] = emission_dict[y]
