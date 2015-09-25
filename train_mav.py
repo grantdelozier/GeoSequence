@@ -541,7 +541,7 @@ def viterbi(obs, states, TM, LM):
     return (prob, path[state])
 
 
-def viterbi_discrim(obs, states, TM, LM):
+def viterbi_discrim(obs, states, TM, LM, cur):
 	V = [{}]
 	path = {}
 
@@ -565,7 +565,7 @@ def viterbi_discrim(obs, states, TM, LM):
 			#for j in states:
 			#    print TM.binomial_prob(j, y)
 			#    print math.log(TM.binomial_prob(j, y))
-			(prob, state) = max((V[t-1][y0] + transition_probdict(getRegionBin(y0, y)) + emission_dict[y], y0) for y0 in states)
+			(prob, state) = max((V[t-1][y0] + transition_probdict(getRegionBin(y0, y, cur)) + emission_dict[y], y0) for y0 in states)
 			#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
 			V[t][y] = prob
 			newpath[y] = path[state] + [y]
@@ -858,7 +858,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 		#print "==="
 		states = TM.custom_regions
 		if len(obs_sequence) > 0:
-			prob, prob_path = viterbi_discrim(obs_sequence, states, TM, LM)
+			prob, prob_path = viterbi_discrim(obs_sequence, states, TM, LM, cur)
 			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
 			print "prob path", zipped_preds
 
