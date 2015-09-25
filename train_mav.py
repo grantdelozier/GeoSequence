@@ -192,7 +192,7 @@ class transition_model_discrim:
 			for feat in feature_set:
 				label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
 			prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
-		return log_prob_dict
+		return prob_dict
 
 
 	def load_country_names(self):
