@@ -565,7 +565,7 @@ def viterbi_discrim(obs, states, TM, LM, cur):
 			#for j in states:
 			#    print TM.binomial_prob(j, y)
 			#    print math.log(TM.binomial_prob(j, y))
-			(prob, state) = max((V[t-1][y0] + transition_probdict(getRegionBin(y0, y, cur)) + emission_dict[y], y0) for y0 in states)
+			(prob, state) = max((V[t-1][y0] + transition_probdict[getRegionBin(y0, y, cur)] + emission_dict[y], y0) for y0 in states)
 			#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
 			V[t][y] = prob
 			newpath[y] = path[state] + [y]
