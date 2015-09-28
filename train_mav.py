@@ -192,7 +192,8 @@ class transition_model_discrim:
 			label_sum = 0.0
 			label_sum += self.weights[self.label_index[label]][0]
 			for feat in feature_set:
-				label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
+				if feat in self.feature_index:
+					label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
 			prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
 		return prob_dict
 
@@ -225,9 +226,6 @@ class transition_model_discrim:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = "CONTINENT/GLOBAL"
 		self.region_bin_dict = region_bin_dict
-		#print self.region_bin_dict
-		#print self.region_bin_dict['southeast united states']
-		print self.region_bin_dict['southeast united states']['southeast united states']
 		conn.close()					
 
 	def load_country_names(self):
@@ -598,11 +596,6 @@ def viterbi_discrim(obs, states, TM, LM, cur):
 		for y in states:
 			#print emission_dict[y]
 			#print math.log(emission_dict[y])
-			for j in states:
-				print j
-				print y
-				print TM.region_bin_dict[j][y]
-				print transition_probdict[TM.region_bin_dict[j][y]]
 			#    print math.log(TM.binomial_prob(j, y))
 			(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states)
 			#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
