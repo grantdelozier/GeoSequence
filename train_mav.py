@@ -225,6 +225,7 @@ class transition_model_discrim:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = "CONTINENT/GLOBAL"
 		self.region_bin_dict = region_bin_dict
+		print self.region_bin_dict
 		print self.region_bin_dict['southeast united states']
 		print self.region_bin_dict['southeast united states']['southeast united states']
 		conn.close()					
