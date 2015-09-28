@@ -201,7 +201,7 @@ class transition_model_discrim:
 		cur = conn.cursor()
 		region_bin_dict = {}
 		print "Loading Region Bin Dict"
-		for region in self.country_names:
+		for region in self.custom_regions:
 			SQL = "SELECT p1.region_name, p2.region_name, ST_DWithin(p1.geog, p2.geog, 161000.0)  from customgrid as p1, customgrid as p2 where p1.region_name = %s;"
 			cur.execute(SQL, (region, ))
 			results = cur.fetchall()
@@ -225,8 +225,8 @@ class transition_model_discrim:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = "CONTINENT/GLOBAL"
 		self.region_bin_dict = region_bin_dict
-		print self.region_bin_dict
-		print self.region_bin_dict['southeast united states']
+		#print self.region_bin_dict
+		#print self.region_bin_dict['southeast united states']
 		print self.region_bin_dict['southeast united states']['southeast united states']
 		conn.close()					
 
