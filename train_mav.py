@@ -206,7 +206,7 @@ class transition_model_discrim:
 			results = cur.fetchall()
 
 			for row in results:
-				print row
+				#print row
 				reg1 = row[0]
 				reg2 = row[1]
 				if reg1 == reg2:
