@@ -197,6 +197,8 @@ class transition_model_discrim:
 		return prob_dict
 
 	def load_region_bin_dict(self):
+		conn = psycopg2.connect(os.environ['DB_CONN'])
+		cur = conn.cursor()
 		region_bin_dict = {}
 		for region in self.country_names:
 			SQL = "SELECT p1.region_name, p2.region_name, ST_DWithin(p1.geog, p2.geog, 161000.0)  from customgrid as p1, customgrid as p2 where p1.region_name = %s;"
@@ -219,8 +221,8 @@ class transition_model_discrim:
 					if reg2 not in reg1:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = "CONTINENT/GLOBAL"
-		self.region_bin_dict = region_bin_dict					
-
+		self.region_bin_dict = region_bin_dict
+		conn.close()					
 
 	def load_country_names(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
@@ -1128,8 +1130,8 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 	print float(cor)/float(total)
 
 
-LM = lang_model()
-LM.load()
+#LM = lang_model()
+#LM.load()
 
 TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
