@@ -211,15 +211,15 @@ class transition_model_discrim:
 				reg1 = row[0]
 				reg2 = row[1]
 				if reg1 == reg2:
-					if reg2 not in reg1:
+					if reg1 not in region_bin_dict:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = 'SAME'
 				elif row[2] == True:
-					if reg2 not in reg1:
+					if reg1 not in region_bin_dict:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = "LOCAL/ADJACENT"
 				else:
-					if reg2 not in reg1:
+					if reg1 not in region_bin_dict:
 						region_bin_dict[reg1] = {}
 					region_bin_dict[reg1][reg2] = "CONTINENT/GLOBAL"
 		self.region_bin_dict = region_bin_dict
