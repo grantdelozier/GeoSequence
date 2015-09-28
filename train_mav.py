@@ -202,7 +202,7 @@ class transition_model_discrim:
 		region_bin_dict = {}
 		for region in self.country_names:
 			SQL = "SELECT p1.region_name, p2.region_name, ST_DWithin(p1.geog, p2.geog, 161000.0)  from customgrid as p1, customgrid as p2 where p1.region_name = %s;"
-			cur.execute(SQL, (region))
+			cur.execute(SQL, (region, ))
 			results = cur.fetchall()
 
 			for row in results:
