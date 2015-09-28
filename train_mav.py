@@ -206,7 +206,7 @@ class transition_model_discrim:
 			cur.execute(SQL, (region, ))
 			results = cur.fetchall()
 
-			rresults.append([region, region, True])
+			results.append([region, region, True])
 
 			for row in results:
 				#print row
