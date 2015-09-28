@@ -112,6 +112,7 @@ class transition_model_discrim:
 	label_index = {}
 	custom_regions = []
 	country_names = []
+	region_bin_dict = {}
 
 	def __init__(self):
 		self.trans_counts = {}
@@ -122,6 +123,7 @@ class transition_model_discrim:
 
 		self.load_custom_regions()
 		self.load_country_names()
+		self.load_region_bin_dict()
 
 		cur = conn.cursor()
 		m = 0
@@ -193,6 +195,31 @@ class transition_model_discrim:
 				label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
 			prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
 		return prob_dict
+
+	def load_region_bin_dict(self):
+		region_bin_dict = {}
+		for region in self.country_names:
+			SQL = "SELECT p1.region_name, p2.region_name, ST_DWithin(p1.geog, p2.geog, 161000.0)  from customgrid as p1, customgrid as p2 where p1.region_name = %s;"
+			cur.execute(SQL, (region))
+			results = cur.fetchall()
+
+			for row in results:
+				print row
+				reg1 = row[0]
+				reg2 = row[1]
+				if reg1 == reg2:
+					if reg2 not in reg1:
+						region_bin_dict[reg1] = {}
+					region_bin_dict[reg1][reg2] = 'SAME'
+				elif row[2] == True:
+					if reg2 not in reg1:
+						region_bin_dict[reg1] = {}
+					region_bin_dict[reg1][reg2] = "LOCAL/ADJACENT"
+				else:
+					if reg2 not in reg1:
+						region_bin_dict[reg1] = {}
+					region_bin_dict[reg1][reg2] = "CONTINENT/GLOBAL"
+		self.region_bin_dict = region_bin_dict					
 
 
 	def load_country_names(self):
@@ -1106,9 +1133,9 @@ LM.load()
 
 TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
-TM.train()
+#TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit4")
+#test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit4")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
