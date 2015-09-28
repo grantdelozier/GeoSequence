@@ -200,6 +200,7 @@ class transition_model_discrim:
 		conn = psycopg2.connect(os.environ['DB_CONN'])
 		cur = conn.cursor()
 		region_bin_dict = {}
+		print "Loading Region Bin Dict"
 		for region in self.country_names:
 			SQL = "SELECT p1.region_name, p2.region_name, ST_DWithin(p1.geog, p2.geog, 161000.0)  from customgrid as p1, customgrid as p2 where p1.region_name = %s;"
 			cur.execute(SQL, (region, ))
@@ -595,7 +596,7 @@ def viterbi_discrim(obs, states, TM, LM, cur):
 			#for j in states:
 			#    print TM.binomial_prob(j, y)
 			#    print math.log(TM.binomial_prob(j, y))
-			(prob, state) = max((V[t-1][y0] + transition_probdict[getRegionBin(y0, y, cur)] + emission_dict[y], y0) for y0 in states)
+			(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states)
 			#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
 			V[t][y] = prob
 			newpath[y] = path[state] + [y]
@@ -1130,14 +1131,14 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 	print float(cor)/float(total)
 
 
-#LM = lang_model()
-#LM.load()
+LM = lang_model()
+LM.load()
 
 TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
-#TM.train()
+TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-#test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit4")
+test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit4")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
