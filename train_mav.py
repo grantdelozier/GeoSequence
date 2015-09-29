@@ -922,6 +922,9 @@ def test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/LG
 
 				did = pred[1][-2]
 				wid = pred[1][-1]
+				print "pred:", pred_region
+				print "did: ", did
+				print "wid: ", wid
 
 				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s and p1.wid = %s;" % (poly_table_name, '%s', '%s', '%s')				#print SQL_ACC
 				cur.execute(SQL_ACC, (pred_region, did, wid))
@@ -1243,10 +1246,11 @@ TM = transition_model_discrim()
 TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
+#test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
+test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1", poly_table_name="lgl_dev_classic")
 
 
 
