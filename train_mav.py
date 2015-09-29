@@ -188,7 +188,7 @@ class transition_model_discrim:
 		
 
 		prob_dict = {}
-		if len(self.label_index) > 1:
+		if len(self.label_index) > 2:
 			for label in self.label_index:
 				label_sum = 0.0
 				label_sum += self.weights[self.label_index[label]][0]
@@ -197,7 +197,7 @@ class transition_model_discrim:
 						label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
 				prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
 			return prob_dict
-		elif len(self.label_index) == 1:
+		elif len(self.label_index) == 2:
 			discount = .10
 			inv_index = {v: k for k, v in self.label_index.items()}
 			label = inv_index[1]
