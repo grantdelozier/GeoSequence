@@ -926,7 +926,7 @@ def test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/LG
 				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s and p1.wid = %s;" % (poly_table_name, '%s', '%s', '%s')				#print SQL_ACC
 				cur.execute(SQL_ACC, (pred_region, did, wid))
 				returns = cur.fetchall()
-				#print returns
+				print returns
 				if returns[0][0] == None:
 					SQL_POINT = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
 					#print SQL_ACC
