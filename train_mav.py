@@ -214,10 +214,10 @@ class transition_model_discrim:
 				prob_dict2["CONTINENT/GLOBAL"] = math.log(sum([prob_dict[l]*discount for l in prob_dict]))
 				for pb in prob_dict:
 					prob_dict2[pb] = math.log(prob_dict[pb] - (prob_dict[pb]*discount))
-				print "HAVING TO BACK OFF TO CONTINENT/GLOBAL INTERP"
-				prob_dict2[pb]
-				print feature_set
-				sys.exit()
+				#print "HAVING TO BACK OFF TO CONTINENT/GLOBAL INTERP"
+				#prob_dict2[pb]
+				#print feature_set
+				#sys.exit()
 				return prob_dict2
 			return prob_dict
 
@@ -705,7 +705,7 @@ def getRegion(lat, lon, cur):
 def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 	j = 0
 	#Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
-	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 15], 'paragraph':[16, 150], 'document':[151, 4000]}
 	prev_region = '#START#'
 
 	transition_data = []
@@ -761,7 +761,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 def featurize_transition_gen(wordref, toporef, domain, cur, transition_dict):
 	j = 0
 	Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
-	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 15], 'paragraph':[16, 150], 'document':[151, 4000]}
 	prev_region = '#START#'
 	for i in sorted(toporef.keys()):
 		j += 1
