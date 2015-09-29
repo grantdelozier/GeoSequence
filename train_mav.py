@@ -188,7 +188,7 @@ class transition_model_discrim:
 		
 
 		prob_dict = {}
-		if len(self.label_index > 1):
+		if len(self.label_index) > 1:
 			for label in self.label_index:
 				label_sum = 0.0
 				label_sum += self.weights[self.label_index[label]][0]
