@@ -188,14 +188,35 @@ class transition_model_discrim:
 		
 
 		prob_dict = {}
-		for label in self.label_index:
+		if len(self.label_index > 1):
+			for label in self.label_index:
+				label_sum = 0.0
+				label_sum += self.weights[self.label_index[label]][0]
+				for feat in feature_set:
+					if feat in self.feature_index:
+						label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
+				prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
+			return prob_dict
+		elif len(self.label_index) == 1:
+			discount = .10
+			inv_index = {v: k for k, v in self.label_index.items()}
+			label = inv_index[1]
 			label_sum = 0.0
-			label_sum += self.weights[self.label_index[label]][0]
+			label_sum += self.weights[0][0]
 			for feat in feature_set:
 				if feat in self.feature_index:
-					label_sum += self.weights[self.label_index[label]][self.feature_index[feat]]
-			prob_dict[label] = math.log(math.exp(label_sum) / (1.0 + math.exp(label_sum)))
-		return prob_dict
+					label_sum += self.weights[0][self.feature_index[feat]]
+			prob_dict[label] = math.exp(label_sum) / (1.0 + math.exp(label_sum))
+			label2 = inv_index[0]
+			prob_dict[label2] = (1.0 - (math.exp(label_sum) / (1.0 + math.exp(label_sum))))
+			if "CONTINENT/GLOBAL" not in self.label_index:
+				prob_dict2 = {}
+				prob_dict2["CONTINENT/GLOBAL"] = math.log(sum([prob_dict[l]*discount for l in prob_dict]))
+				for pb in prob_dict:
+					prob_dict2[pb] = math.log(prob_dict[pb] - (prob_dict[pb]*discount))
+				return prob_dict2
+			return prob_dict
+
 
 	def load_region_bin_dict(self):
 		conn = psycopg2.connect(os.environ['DB_CONN'])
