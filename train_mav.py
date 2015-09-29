@@ -106,6 +106,121 @@ u'saint vincentians', u'sudanese', u'kuwaitis', u'kosovar', u'cariocas', u'bonai
                        u'lithuanians', u'panamanians'])
 
 
+def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, country_tbl="countries_2012", region_tbl="regions_2012", state_tbl="states_2012", geonames_tbl="geonames_all"):
+	region_entry = []
+
+	norm_topo = topo.title()
+	cntry_gid_list = cntry_alt[norm_topo]
+	region_gid_list = region_alt[norm_topo]
+	state_gid_list = state_alt[norm_topo]
+	pplc_gid_list = pplc_alt[norm_topo]
+
+	SQL1 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p1.postal IN %s or p1.abbrev IN %s or p1.name_long IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (country_tbl, '%s', '%s', '%s', '%s')
+	SQL2 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (region_tbl, '%s')
+	SQL3 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p3.abbrev in %s or p3.postal in %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (state_tbl, '%s', '%s', '%s', '%s')
+	SQL4 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (geonames_tbl, '%s', '%s', '%s')
+	#print "Got here"
+	#print SQL1
+	#print "Countries"
+
+	names = tuple([norm_topo, topo])
+
+	cur.execute(SQL1, (tuple(cntry_gid_list), names, names, names))
+	returns = cur.fetchall()
+	for row in returns:
+		region_entry.append([country_tbl, row[0], row[1], float(row[2])/1000.0])
+		#print "!!!Found Gazet Match!!!"
+		#print region_entry[-1]
+	#print "States"
+	cur.execute(SQL2, (tuple(region_gid_list)))
+	returns = cur.fetchall()
+	for row in returns:
+		region_entry.append([region_tbl, row[0], row[1], float(row[2])/1000.0])
+		#print "!!!Found Gazet Match!!!"
+		#print region_entry[-1]
+	#print "Regions"
+	cur.execute(SQL3, (tuple(state_gid_list), names, names))
+	returns = cur.fetchall()
+	for row in returns:
+		region_entry.append([state_tbl, row[0], row[1], float(row[2])/1000.0])
+		#print "!!!Found Gazet Match!!!"
+		#print region_entry[-1]
+	#print "PPL"
+	cur.execute(SQL4, (tuple(pplc_gid_list)))
+	returns = cur.fetchall()
+	for row in returns:
+		region_entry.append([geonames_tbl, row[0], row[1], float(row[2])/1000.0])
+		#print "!!!Found Gazet Match!!!"
+		#print region_entry[-1]
+
+	print regino_entry
+	return region_entry
+
+
+def getAltGazets(country_tbl="countries_2012", region_tbl="regions_2012", state_tbl="states_2012", geonames_tbl="geonames_all"):
+	#These queries are designed to pull all the alternate names from the geonames, country, state, and region tables. Alternate names are used in later steps to enhance gazetteer matching
+	SQL1 = "SELECT p1.gid, p1.name, p1.name_long, p1.geonames_gid, p1.altnames FROM %s as p1 ;" % country_tbl
+	SQl2 = "SELECT p1.gid, p1.name, p1.name_long, p1.geonames_gid, p1.altnames FROM %s as p1 ;" % region_tbl
+	SQL3 = "SELECT p1.gid, p1.name, p1.geonames_gid, p1.altnames FROM %s as p1 ;" % state_tbl
+	SQL4 = "SELECT p1.gid, p1.name, p1.asciiname, p1.alternames FROM %s as p1 where p1.featurecode = 'PPLC' or p1.featurecode = 'PPLA' or p1.featurecode = 'PPLA2' or p1.featurecode = 'PPL';" % geonames_tbl
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cur.execute(SQL1)
+
+	cntry_alt = {}
+	for row in cur.fetchall():
+		alist = [row[1], row[2]]
+		if row[4] is not None:
+			alist.extend(row[4].split(','))
+		#print alist
+		for w in alist:
+			cntry_alt.setdefault(w, set()).add(row[0])
+		#cntry_alt.setdefault(row[0], list()).append(alist)
+
+	cur.execute(SQL3)
+
+	state_alt = {}
+	for row in cur.fetchall():
+		alist = [row[1], row[2]]
+		if row[3] is not None:
+			alist.extend(row[3].split(','))
+		#print alist
+		for w in alist:
+			state_alt.setdefault(w, set()).add(row[0])
+		#state_alt.setdefault(row[0], list()).append(alist)
+
+	cur.execute(SQL2)
+
+	region_alt = {}
+	for row in cur.fetchall():
+		alist = [row[1], row[2]]
+		#print row
+		if len(row) > 3 and row[4] is not None:
+			alist.extend(row[4].split(','))
+		#print alist
+		for w in alist:
+			region_alt.setdefault(w, set()).add(row[0])
+		#region_alt.setdefault(row[0], list()).append(alist)
+
+	cur.execute(SQL4)
+	pplc_alt = {}
+	for row in cur.fetchall():
+		alist = [row[1], row[2]]
+		#print row
+		if len(row) > 3 and row[3] is not None:
+			alist.extend(row[3].split(','))
+		for w in alist:
+			pplc_alt.setdefault(w, set()).add(row[0])
+
+	print "Done Creating Alt Names"
+	print "Length of PPL AltNames: ", len(pplc_alt)
+
+	conn.close()
+
+	return cntry_alt, region_alt, state_alt, pplc_alt
+
 class transition_model_discrim:
 	trans_data = []
 	feature_index = {}
@@ -959,6 +1074,88 @@ def test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/LG
 	ot.close()
 	conn.close()
 
+def test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
+	cntry_alt, region_alt, state_alt, pplc_alt = getAltGazets()
+
+	import ParseLGL
+
+	out_test = "test_output3.txt"
+
+	ot = io.open(out_test, 'w', encoding='utf-8')
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cor = 0
+	total = 0
+	for f in os.listdir(directory):
+		obs_sequence = []
+		#print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		ordered_tkeys = sorted(topo_context_dict.keys())
+		obs = [[topo, topo_context_dict[topo]['entry'][0], topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
+		#print obs
+		#print "==="
+		j = 0
+		for o in obs:
+			j += 1
+			topo = o[1]
+			topo_tokeid = o[0]
+			if j > 1:
+				toke_dist = topo_tokeid - prev_topo_tokeid 	
+				trans_features = discrim_featurize(prev_topo, topo, toke_dist, TM.country_names)
+				regions_possible = getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt)
+				obs_sequence.append([o[2], trans_features, regions_possible])
+			else:
+				regions_possible = getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt)
+				obs_sequence.append([o[2], [], regions_possible])
+			prev_topo = topo
+			prev_topo_tokeid = o[0]
+		#print "obs"
+		#print obs
+		#print "==="
+		states = TM.custom_regions
+		if len(obs_sequence) > 0:
+			prob, prob_path = viterbi_discrim_tagdict(obs_sequence, states, TM, LM, cur)
+			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
+			print "prob path", zipped_preds
+			incor_path = 0
+
+			for pred in zipped_preds:
+				pred_region = pred[0]
+				lat = float(pred[1][1]['lat'])
+				lon = float(pred[1][1]['long'])
+
+
+				SQL_ACC = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+				#print SQL_ACC
+				cur.execute(SQL_ACC, (pred_region, ))
+				returns = cur.fetchall()
+				if returns[0][0] < 161.0:
+					cor += 1
+				else:
+					incor_path += 1
+				total += 1
+
+				try:
+					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
+					ot.write(u'\n')
+				except:
+					print "=========="
+					print "error writing"
+					print pred
+			print "INCORRECT IN SEQUENCE:", incor_path
+
+	print "VITERBI DISCRIM ACC:"
+	print cor, "/", total
+	print float(cor)/float(total)
+
+	ot.close()
+	conn.close()
+
+
+
 def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 	import ParseLGL
 
@@ -1247,11 +1444,14 @@ def test_pureLM(LM, directory="/home/grant/devel/TopCluster/LGL/articles/dev_tes
 LM = lang_model()
 LM.load()
 
+
+#TM = transition_model()
 TM = transition_model_discrim()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit5")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
+#test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
+test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
