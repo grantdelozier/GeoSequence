@@ -872,6 +872,89 @@ def test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articl
 	ot.close()
 	conn.close()
 
+def test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1", poly_table_name = "lgl_dev_classic"):
+	import ParseLGL
+
+	out_test = "test_output3.txt"
+
+	ot = io.open(out_test, 'w', encoding='utf-8')
+
+	conn = psycopg2.connect(os.environ['DB_CONN'])
+	cur = conn.cursor()
+
+	cor = 0
+	total = 0
+	for f in os.listdir(directory):
+		obs_sequence = []
+		#print f
+		wordref, toporef, domain = ParseLGL.parse_xml(os.path.join(directory, f))
+		topo_context_dict = ParseLGL.getTopoContexts(wordref, toporef, window=1)
+		ordered_tkeys = sorted(topo_context_dict.keys())
+		obs = [[topo, topo_context_dict[topo]['entry'][0], topo_context_dict[topo]['context'].keys()] for topo in ordered_tkeys]
+		#print obs
+		#print "==="
+		j = 0
+		for o in obs:
+			j += 1
+			topo = o[1]
+			topo_tokeid = o[0]
+			if j > 1:
+				toke_dist = topo_tokeid - prev_topo_tokeid 	
+				trans_features = discrim_featurize(prev_topo, topo, toke_dist, TM.country_names)
+				obs_sequence.append([o[2], trans_features])
+			else:
+				obs_sequence.append([o[2], []])
+			prev_topo = topo
+			prev_topo_tokeid = o[0]
+		#print "obs"
+		#print obs
+		#print "==="
+		states = TM.custom_regions
+		if len(obs_sequence) > 0:
+			prob, prob_path = viterbi_discrim(obs_sequence, states, TM, LM, cur)
+			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
+			print "prob path", zipped_preds
+
+			for pred in zipped_preds:
+				pred_region = pred[0]
+				lat = float(pred[1][1]['lat'])
+				lon = float(pred[1][1]['long'])
+
+				did = pred[1][-2]
+				wid = pred[1][-1]
+
+				SQL_ACC = "SELECT ST_DWithin(p1.polygeog2, p2.geog, 160000) from customgrid as p2, %s as p1 where p2.region_name = %s and p1.docid = %s and p1.wid = %s;" % (poly_table_name, '%s', '%s', '%s')				#print SQL_ACC
+				cur.execute(SQL_ACC, (pred_region, did, wid))
+				returns = cur.fetchall()
+				#print returns
+				if returns[0][0] == None:
+					SQL_POINT = "SELECT ST_Distance(ST_GeographyFromText('SRID=4326;POINT(%s %s)'), p2.geog)/1000.0 from customgrid as p2 where p2.region_name = %s;" % (lon, lat, '%s')
+					#print SQL_ACC
+					cur.execute(SQL_POINT, (pred_region, ))
+					returns = cur.fetchall()
+					if returns[0][0] < 160.0:
+						cor += 1
+						#print "backed off to point acc and found CORRECT"
+				elif returns[0][0] == True:
+					cor += 1
+				total += 1
+				#print "viterbi poly total: ", total
+
+				try:
+					ot.write(unicode(pred_region) + u'|' +  unicode(pred[1][0]) + u'|' + unicode(lat) + u'|' + unicode(lon) + u'|' + unicode(returns[0][0]))
+					ot.write(u'\n')
+				except:
+					print "=========="
+					print "error writing"
+					print pred
+
+	print "VITERBI DISCRIM POLY ACC:"
+	print cor, "/", total
+	print float(cor)/float(total)
+
+	ot.close()
+	conn.close()
+
 def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1"):
 	import ParseLGL
 
@@ -1157,10 +1240,10 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model_discrim()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit5")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
+test_viterbi_discrim_poly(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
