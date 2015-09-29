@@ -1248,10 +1248,10 @@ LM = lang_model()
 LM.load()
 
 TM = transition_model_discrim()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit3")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit4")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3")
+test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
