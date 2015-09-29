@@ -93,9 +93,10 @@ def getTopoContexts(wordref, toporef, window=10):
 			i += 1
 		if " " in wordref[t]:
 			for w in wordref[t].split(" "):
-				contextlist.append(w)
+				#contextlist.append(w)
+				contextlist.append(w.title())
 		else:
-			contextlist.append(wordref[t])
+			contextlist.append(wordref[t].title())
 		i = t + 1
 		while i <= t+window and i < len(wordref):
 			if " " in wordref[i]:
