@@ -302,10 +302,10 @@ def discrim_featurize(prev_toponame, cur_toponame, token_dist, country_names):
 	#	obs_features.append(tokebin)
 
 	#'County' is in the toponym
-	#if 'county' in cur_toponame.lower():
-	#	obs_features.append('CUR_COUNTY')
-	#if 'county' in prev_toponame.lower():
-	#	obs_features.append('PREV_COUNTY')
+	if 'county' in cur_toponame.lower():
+		obs_features.append('CUR_COUNTY')
+	if 'county' in prev_toponame.lower():
+		obs_features.append('PREV_COUNTY')
 
 	#Add the demonym features
 	if len(isDemonym(prev_toponame, demonyms)) > 0:
@@ -1001,6 +1001,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 			prob, prob_path = viterbi_discrim(obs_sequence, states, TM, LM, cur)
 			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
 			print "prob path", zipped_preds
+			incor_path = 0
 
 			for pred in zipped_preds:
 				pred_region = pred[0]
@@ -1014,6 +1015,8 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 				returns = cur.fetchall()
 				if returns[0][0] < 161.0:
 					cor += 1
+				else:
+					incor_path += 1
 				total += 1
 
 				try:
@@ -1023,6 +1026,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 					print "=========="
 					print "error writing"
 					print pred
+			print "INCORRECT IN SEQUENCE:", incor_path
 
 	print "VITERBI DISCRIM ACC:"
 	print cor, "/", total
