@@ -290,16 +290,22 @@ class transition_model_discrim:
 
 def discrim_featurize(prev_toponame, cur_toponame, token_dist, country_names):
 	obs_features = []
-	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+	#Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
 
 	#Add the duplicate toponym feature
 	if prev_toponame.lower() == cur_toponame.lower():
 		obs_features.append('SAME_TOPO')
 
 	#Add the token distance bin feature
-	tokebin = get_tokenbin(Token_Bins, token_dist)
-	if tokebin in Token_Bins:
-		obs_features.append(tokebin)
+	#tokebin = get_tokenbin(Token_Bins, token_dist)
+	#if tokebin in Token_Bins:
+	#	obs_features.append(tokebin)
+
+	#'County' is in the toponym
+	#if 'county' in cur_toponame.lower():
+	#	obs_features.append('CUR_COUNTY')
+	#if 'county' in prev_toponame.lower():
+	#	obs_features.append('PREV_COUNTY')
 
 	#Add the demonym features
 	if len(isDemonym(prev_toponame, demonyms)) > 0:
@@ -705,7 +711,6 @@ def getRegion(lat, lon, cur):
 def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 	j = 0
 	#Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
-	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 15], 'paragraph':[16, 150], 'document':[151, 4000]}
 	prev_region = '#START#'
 
 	transition_data = []
@@ -731,24 +736,16 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 			prev_docid = last_topo[-2]
 			prev_toponame = last_topo[0]
 			
-			print last_topo[0], "->", toporef[i][0]
+			#print last_topo[0], "->", toporef[i][0]
 			
 			token_dist = i - last_topo[-1]
-			tokebin = get_tokenbin(Token_Bins, token_dist)
 
 			label = getRegionBin(current_region, prev_region, cur)
-
-			country_name_feat = isCountryName(toponym, country_names)
-
-			if prev_toponame.lower() == toponym.lower():
-				sameTopo = 'SAME'
-			else:
-				sameTopo = 'NOT-SAME'
 
 			obs_features = discrim_featurize(prev_toponame, toponym, token_dist, country_names)
 
 			transition_data.append([label, obs_features])
-			print transition_data[-1]
+			#print transition_data[-1]
 
 			
 		last_topo = toporef[i]
@@ -761,7 +758,7 @@ def featurize_transition_discrim(wordref, toporef, domain, cur, country_names):
 def featurize_transition_gen(wordref, toporef, domain, cur, transition_dict):
 	j = 0
 	Dist_Bins = {'local':[0.0, 161.0], 'region':[161.1, 500.0], 'country':[500.1, 1500.0], 'global':[1501.1, 15000.0]}
-	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 15], 'paragraph':[16, 150], 'document':[151, 4000]}
+	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
 	prev_region = '#START#'
 	for i in sorted(toporef.keys()):
 		j += 1
