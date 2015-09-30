@@ -105,15 +105,31 @@ u'saint vincentians', u'sudanese', u'kuwaitis', u'kosovar', u'cariocas', u'bonai
                       u'wallis and futuna', u'nepali', u'australians', u'ecuadorians', u'heard island', u'norwegians', u'mahorans',
                        u'lithuanians', u'panamanians'])
 
+def flatten(l):
+    for el in l:
+        if isinstance(el, collections.Iterable) and not isinstance(el, basestring):
+            for sub in flatten(el):
+                yield sub
+        else:
+            yield el
 
 def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, country_tbl="countries_2012", region_tbl="regions_2012", state_tbl="states_2012", geonames_tbl="geonames_all"):
 	region_entry = []
 
 	norm_topo = topo.title()
-	cntry_gid_list = cntry_alt[norm_topo]
-	region_gid_list = region_alt[norm_topo]
-	state_gid_list = state_alt[norm_topo]
-	pplc_gid_list = pplc_alt[norm_topo]
+	names = tuple([norm_topo, topo])
+
+	cntry_gid_list = list()
+	cntry_gid_list.extend(flatten([cntry_alt.get(g) for g in names if g in country_alt]))
+
+	region_gid_list = list()
+	region_gid_list.extend(flatten([region_alt.get(g) for g in names if g in region_alt]))
+
+	state_gid_list = list()
+	state_gid_list.extend(flatten([state_alt.get(g) for g in names if g in state_alt]))
+
+	pplc_gid_list = list()
+	pplc_gid_list.extend(flatten(pplc_alt.get(g, -99) for g in names))
 
 	SQL1 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p1.postal IN %s or p1.abbrev IN %s or p1.name_long IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (country_tbl, '%s', '%s', '%s', '%s')
 	SQL2 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (region_tbl, '%s')
@@ -123,7 +139,7 @@ def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, cou
 	#print SQL1
 	#print "Countries"
 
-	names = tuple([norm_topo, topo])
+	
 
 	cur.execute(SQL1, (tuple(cntry_gid_list), names, names, names))
 	returns = cur.fetchall()
