@@ -171,8 +171,8 @@ def getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt
 		#print "!!!Found Gazet Match!!!"
 		#print region_entry[-1]
 
-	print topo
-	print set(region_entry)
+	#print topo
+	#print set(region_entry)
 	return set(region_entry)
 
 
@@ -827,7 +827,7 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 	if len(obs) != 1:
 		n = t
 	#print_dptable(V)
-	if len(obs[n][2]) == 0 or 'CUR_DEMONYM' in obs[t][1]:
+	if len(obs[n][2]) == 0 or 'CUR_DEMONYM' in obs[n][1]:
 		(prob, state) = max((V[n][y], y) for y in states)
 	else:
 		(prob, state) = max((V[n][y], y) for y in states if y in obs[n][2])
