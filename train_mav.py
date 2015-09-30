@@ -1274,6 +1274,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 			zipped_preds = zip(prob_path, [toporef[topo] for topo in ordered_tkeys])
 			print "prob path", zipped_preds
 			incor_path = 0
+			incor_list = []
 
 			for pred in zipped_preds:
 				pred_region = pred[0]
@@ -1289,6 +1290,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 					cor += 1
 				else:
 					incor_path += 1
+					incor_list.append(pred[1][0])
 				total += 1
 
 				try:
@@ -1299,6 +1301,7 @@ def test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/art
 					print "error writing"
 					print pred
 			print "INCORRECT IN SEQUENCE:", incor_path
+			print "INCORRECT LIST:", incor_list
 
 	print "VITERBI DISCRIM ACC:"
 	print cor, "/", total
@@ -1522,11 +1525,11 @@ LM.load()
 
 #TM = transition_model()
 TM = transition_model_discrim()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit2")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit3")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
-test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit2")
+test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit3")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
