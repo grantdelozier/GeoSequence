@@ -172,8 +172,8 @@ def getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt
 		#print region_entry[-1]
 
 	print topo
-	print region_entry
-	return region_entry
+	print set(region_entry)
+	return set(region_entry)
 
 
 def getAltGazets(country_tbl="countries_2012", region_tbl="regions_2012", state_tbl="states_2012", geonames_tbl="geonames_all"):
@@ -777,6 +777,58 @@ def viterbi_discrim(obs, states, TM, LM, cur):
 	(prob, state) = max((V[n][y], y) for y in states)
 	return (prob, path[state])
 
+def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
+	V = [{}]
+	path = {}
+
+	# Initialize base cases (t == 0)
+	#print obs[0][-1]
+	emission_dict = get_emission_dict(LM, obs[0][0])
+	for y in states:
+		if y in obs[0][2]:
+			V[0][y] = emission_dict[y]
+			path[y] = [y]
+		elif len(obs[0][2]) == 0:
+			V[0][y] = emission_dict[y]
+			path[y] = [y]
+
+	# Run Viterbi for t > 0
+	for t in range(1, len(obs)):
+		V.append({})
+		newpath = {}
+		emission_dict = get_emission_dict(LM, obs[t][0])
+		transition_probdict = TM.log_prob_dict(obs[t][1])
+		print obs[t]
+		print transition_probdict
+		for y in states:
+			#print emission_dict[y]
+			#print math.log(emission_dict[y])
+			#    print math.log(TM.binomial_prob(j, y))
+			if y in obs[t][2]:
+				if len(obs[t-1][2]) == 0:
+					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states)
+				else:
+					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states if y0 in obs[t-1][2])
+				#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
+				V[t][y] = prob
+				newpath[y] = path[state] + [y]
+			elif len(obs[t][2]) == 0:
+				if len(obs[t-1][2]) == 0:
+					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states)
+				else:
+					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states if y0 in obs[t-1][2])
+				#(prob, state) = max((V[t-1][y0] + math.log(TM.binomial_prob(y0, y)) + emission_dict[y], y0) for y0 in states)
+				V[t][y] = prob
+				newpath[y] = path[state] + [y]
+
+		# Don't need to remember the old paths
+		path = newpath
+	n = 0           # if only one element is observed max is sought in the initialization values
+	if len(obs) != 1:
+		n = t
+	#print_dptable(V)
+	(prob, state) = max((V[n][y], y) for y in states)
+	return (prob, path[state])
 
 
 def print_dptable(V):
