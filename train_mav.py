@@ -785,10 +785,10 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 	#print obs[0][-1]
 	emission_dict = get_emission_dict(LM, obs[0][0])
 	for y in states:
-		if y in obs[0][2]:
+		if y in obs[0][2] and 'CUR_DEMONYM' not in obs[0][1]:
 			V[0][y] = emission_dict[y]
 			path[y] = [y]
-		elif len(obs[0][2]) == 0:
+		elif len(obs[0][2]) == 0 or 'PREV_DEMONYM' in obs[0][1]:
 			V[0][y] = emission_dict[y]
 			path[y] = [y]
 
@@ -827,7 +827,7 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 	if len(obs) != 1:
 		n = t
 	#print_dptable(V)
-	if len(obs[n][2]) == 0:
+	if len(obs[n][2]) == 0 or 'CUR_DEMONYM' in obs[t][1]:
 		(prob, state) = max((V[n][y], y) for y in states)
 	else:
 		(prob, state) = max((V[n][y], y) for y in states if y in obs[n][2])
