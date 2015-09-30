@@ -120,7 +120,7 @@ def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, cou
 	names = tuple([norm_topo, topo])
 
 	cntry_gid_list = list()
-	cntry_gid_list.extend(flatten([cntry_alt.get(g) for g in names if g in country_alt]))
+	cntry_gid_list.extend(flatten([cntry_alt.get(g) for g in names if g in cntry_alt]))
 
 	region_gid_list = list()
 	region_gid_list.extend(flatten([region_alt.get(g) for g in names if g in region_alt]))
@@ -138,8 +138,6 @@ def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, cou
 	#print "Got here"
 	#print SQL1
 	#print "Countries"
-
-	
 
 	cur.execute(SQL1, (tuple(cntry_gid_list), names, names, names))
 	returns = cur.fetchall()
@@ -182,6 +180,7 @@ def getAltGazets(country_tbl="countries_2012", region_tbl="regions_2012", state_
 
 	conn = psycopg2.connect(os.environ['DB_CONN'])
 	cur = conn.cursor()
+	print "Creating Alt Gazets"
 
 	cur.execute(SQL1)
 
