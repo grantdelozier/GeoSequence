@@ -135,7 +135,7 @@ def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, cou
 	SQL1 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p1.postal IN %s or p1.abbrev IN %s or p1.name_long IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (country_tbl, '%s', '%s', '%s', '%s')
 	SQL2 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (region_tbl, '%s')
 	SQL3 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p3.abbrev in %s or p3.postal in %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (state_tbl, '%s', '%s', '%s')
-	SQL4 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (geonames_tbl, '%s', '%s', '%s')
+	SQL4 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (geonames_tbl, '%s')
 	#print "Got here"
 	#print SQL1
 	#print "Countries"
@@ -143,28 +143,28 @@ def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, cou
 	cur.execute(SQL1, (tuple(cntry_gid_list), names, names, names))
 	returns = cur.fetchall()
 	for row in returns:
-		region_entry.append([country_tbl, row[0], row[1], float(row[2])/1000.0])
+		region_entry.append(row[0])
 		#print "!!!Found Gazet Match!!!"
 		#print region_entry[-1]
 	#print "States"
 	cur.execute(SQL2, (tuple(region_gid_list)))
 	returns = cur.fetchall()
 	for row in returns:
-		region_entry.append([region_tbl, row[0], row[1], float(row[2])/1000.0])
+		region_entry.append(row[0])
 		#print "!!!Found Gazet Match!!!"
 		#print region_entry[-1]
 	#print "Regions"
 	cur.execute(SQL3, (tuple(state_gid_list), names, names))
 	returns = cur.fetchall()
 	for row in returns:
-		region_entry.append([state_tbl, row[0], row[1], float(row[2])/1000.0])
+		region_entry.append(row[0])
 		#print "!!!Found Gazet Match!!!"
 		#print region_entry[-1]
 	#print "PPL"
 	cur.execute(SQL4, (tuple(pplc_gid_list)))
 	returns = cur.fetchall()
 	for row in returns:
-		region_entry.append([geonames_tbl, row[0], row[1], float(row[2])/1000.0])
+		region_entry.append(row[0])
 		#print "!!!Found Gazet Match!!!"
 		#print region_entry[-1]
 
