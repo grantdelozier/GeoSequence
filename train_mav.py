@@ -164,7 +164,7 @@ def getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt
 		#print "!!!Found Gazet Match!!!"
 		#print region_entry[-1]
 	#print "PPL"
-	cur.execute(SQL4, (tuple(pplc_gid_list)))
+	cur.execute(SQL4, (tuple(pplc_gid_list), ))
 	returns = cur.fetchall()
 	for row in returns:
 		region_entry.append(row[0])
