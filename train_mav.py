@@ -788,7 +788,7 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 		if y in obs[0][2] and 'CUR_DEMONYM' not in obs[0][1]:
 			V[0][y] = emission_dict[y]
 			path[y] = [y]
-		elif len(obs[0][2]) == 0 or 'PREV_DEMONYM' in obs[0][1]:
+		elif len(obs[0][2]) == 0 or 'CUR_DEMONYM' in obs[0][1]:
 			V[0][y] = emission_dict[y]
 			path[y] = [y]
 
@@ -805,7 +805,7 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 			#print math.log(emission_dict[y])
 			#    print math.log(TM.binomial_prob(j, y))
 			if y in obs[t][2] and 'CUR_DEMONYM' not in obs[t][1]:
-				if len(obs[t-1][2]) == 0 or 'PREV_DEMONYM' in obs[t-1][1]:
+				if len(obs[t-1][2]) == 0 or 'CUR_DEMONYM' in obs[t-1][1]:
 					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states)
 				else:
 					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states if y0 in obs[t-1][2])
@@ -813,7 +813,7 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 				V[t][y] = prob
 				newpath[y] = path[state] + [y]
 			elif len(obs[t][2]) == 0 or 'CUR_DEMONYM' in obs[t][1]:
-				if len(obs[t-1][2]) == 0 or 'PREV_DEMONYM' in obs[t-1][1]:
+				if len(obs[t-1][2]) == 0 or 'CUR_DEMONYM' in obs[t-1][1]:
 					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states)
 				else:
 					(prob, state) = max((V[t-1][y0] + transition_probdict[TM.region_bin_dict[y0][y]] + emission_dict[y], y0) for y0 in states if y0 in obs[t-1][2])
