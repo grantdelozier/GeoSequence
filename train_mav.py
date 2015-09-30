@@ -5,6 +5,7 @@ from collections import defaultdict
 import math
 import io
 import scipy
+import collections
 from scipy.sparse import csr_matrix
 import numpy as np
 
