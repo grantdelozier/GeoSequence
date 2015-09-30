@@ -1522,11 +1522,11 @@ LM.load()
 
 #TM = transition_model()
 TM = transition_model_discrim()
-TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit1")
+TM.load("/work/02608/grantdel/corpora/LGL/articles/dev_trainsplit2")
 TM.train()
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
 #test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
-test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit1")
+test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit2")
 
 #test_pureLM_poly(LM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
 #test_viterbi_poly(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit4", poly_table_name="lgl_dev_classic")
