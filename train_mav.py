@@ -122,12 +122,15 @@ def getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt
 
 	cntry_gid_list = list()
 	cntry_gid_list.extend(flatten([cntry_alt.get(g) for g in names if g in cntry_alt]))
+	cntry_gid_list.extend([-99])
 
 	region_gid_list = list()
 	region_gid_list.extend(flatten([region_alt.get(g) for g in names if g in region_alt]))
+	region_gid_list.extend([-99])
 
 	state_gid_list = list()
 	state_gid_list.extend(flatten([state_alt.get(g) for g in names if g in state_alt]))
+	state_gid_list.extend([-99])
 
 	pplc_gid_list = list()
 	pplc_gid_list.extend(flatten(pplc_alt.get(g, -99) for g in names))
