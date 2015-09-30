@@ -827,7 +827,10 @@ def viterbi_discrim_tagdict(obs, states, TM, LM, cur):
 	if len(obs) != 1:
 		n = t
 	#print_dptable(V)
-	(prob, state) = max((V[n][y], y) for y in states)
+	if len(obs[n][2]) == 0:
+		(prob, state) = max((V[n][y], y) for y in states)
+	else:
+		(prob, state) = max((V[n][y], y) for y in states if y in obs[n][2])
 	return (prob, path[state])
 
 
