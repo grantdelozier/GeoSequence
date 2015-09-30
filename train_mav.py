@@ -114,7 +114,7 @@ def flatten(l):
         else:
             yield el
 
-def getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt, country_tbl="countries_2012", region_tbl="regions_2012", state_tbl="states_2012", geonames_tbl="geonames_all"):
+def getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt, country_tbl="countries_2012", region_tbl="regions_2012", state_tbl="states_2012", geonames_tbl="geonames_all"):
 	region_entry = []
 
 	norm_topo = topo.title()
@@ -1121,10 +1121,10 @@ def test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora
 			if j > 1:
 				toke_dist = topo_tokeid - prev_topo_tokeid 	
 				trans_features = discrim_featurize(prev_topo, topo, toke_dist, TM.country_names)
-				regions_possible = getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt)
+				regions_possible = getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt)
 				obs_sequence.append([o[2], trans_features, regions_possible])
 			else:
-				regions_possible = getPossibleTopoRegions(topo, cntry_alt, region_alt, state_alt, pplc_alt)
+				regions_possible = getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt)
 				obs_sequence.append([o[2], [], regions_possible])
 			prev_topo = topo
 			prev_topo_tokeid = o[0]
