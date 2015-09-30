@@ -137,7 +137,7 @@ def getPossibleTopoRegions(cur, topo, cntry_alt, region_alt, state_alt, pplc_alt
 
 	SQL1 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p1.postal IN %s or p1.abbrev IN %s or p1.name_long IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (country_tbl, '%s', '%s', '%s', '%s')
 	SQL2 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (region_tbl, '%s')
-	SQL3 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p3.abbrev in %s or p3.postal in %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (state_tbl, '%s', '%s', '%s')
+	SQL3 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s or p1.abbrev in %s or p1.postal in %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (state_tbl, '%s', '%s', '%s')
 	SQL4 = "SELECT p2.region_name FROM %s as p1, customgrid as p2 WHERE p1.gid IN %s and ST_DWithin(p1.geog, p2.geog, 10.0);" % (geonames_tbl, '%s')
 	#print "Got here"
 	#print SQL1
