@@ -354,6 +354,16 @@ class transition_model_discrim:
 				#print feature_set
 				#sys.exit()
 				return prob_dict2
+			if 'LOCAL/ADJACENT' not in self.label_index:
+				prob_dict2 = {}
+				prob_dict2['LOCAL/ADJACENT'] = math.log(sum([prob_dict[l]*discount for l in prob_dict]))
+				for pb in prob_dict:
+					prob_dict2[pb] = math.log(prob_dict[pb] - (prob_dict[pb]*discount))
+				#print "HAVING TO BACK OFF TO CONTINENT/GLOBAL INTERP"
+				#prob_dict2[pb]
+				#print feature_set
+				#sys.exit()
+				return prob_dict2
 			return prob_dict
 
 
