@@ -425,16 +425,16 @@ class transition_model_discrim:
 
 def discrim_featurize(prev_toponame, cur_toponame, token_dist, country_names):
 	obs_features = []
-	#Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
+	Token_Bins = {'adjacent':[0, 4], 'sentence':[5, 25], 'paragraph':[26, 150], 'document':[151, 4000]}
 
 	#Add the duplicate toponym feature
 	if prev_toponame.lower() == cur_toponame.lower():
 		obs_features.append('SAME_TOPO')
 
-	#Add the token distance bin feature
-	#tokebin = get_tokenbin(Token_Bins, token_dist)
-	#if tokebin in Token_Bins:
-	#	obs_features.append(tokebin)
+	Add the token distance bin feature
+	tokebin = get_tokenbin(Token_Bins, token_dist)
+	if tokebin in Token_Bins:
+		obs_features.append(tokebin)
 
 	#'County' is in the toponym
 	if 'county' in cur_toponame.lower():
