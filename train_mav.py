@@ -432,9 +432,9 @@ def discrim_featurize(prev_toponame, cur_toponame, token_dist, country_names):
 		obs_features.append('SAME_TOPO')
 
 	#Add the token distance bin feature
-	tokebin = get_tokenbin(Token_Bins, token_dist)
-	if tokebin in Token_Bins:
-		obs_features.append(tokebin)
+	#tokebin = get_tokenbin(Token_Bins, token_dist)
+	#if tokebin in Token_Bins:
+	#	obs_features.append(tokebin)
 
 	#'County' is in the toponym
 	if 'county' in cur_toponame.lower():
@@ -1375,11 +1375,11 @@ LM.load()
 
 #TM = transition_model()
 TM = transition_model_discrim()
-TM.load("/work/02608/grantdel/corpora/trconllf/dev_trainsplit1")
+TM.load("/work/02608/grantdel/corpora/trconllf/dev_trainsplit2")
 TM.train()
 
 #test_pureLM(LM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit5")
-test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit1")
+test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/trconllf/dev_testsplit2")
 #test_viterbi_discrim(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
 #test_viterbi_discrim_tagdict(LM, TM, directory="/work/02608/grantdel/corpora/LGL/articles/dev_testsplit5")
 
