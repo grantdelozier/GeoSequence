@@ -431,7 +431,7 @@ def discrim_featurize(prev_toponame, cur_toponame, token_dist, country_names):
 	if prev_toponame.lower() == cur_toponame.lower():
 		obs_features.append('SAME_TOPO')
 
-	Add the token distance bin feature
+	#Add the token distance bin feature
 	tokebin = get_tokenbin(Token_Bins, token_dist)
 	if tokebin in Token_Bins:
 		obs_features.append(tokebin)
